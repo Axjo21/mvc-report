@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1> Hej och välkommen! </h1>
+    <article class="col-article">
+        <div class="column">
+            <h2> Axjo21</h2>
+            <p>Jag är 24 år och pluggar mitt första år av Webbprogrammering på BTH. 
+            Min tidigare erfarenhet av programmering, innan jag började studera, var lite HTML och CSS.
+            Efter tre terminer på programmet har jag lärt mig mycket och jag ser fram emot att lära mig ännu mer!</p>
+            <p>Hoppas ni trivs med sidan!</p>
+            <p>/Axel Jönsson.</p>
+        </div>
+        <div class="column">
+            <a href="{{ asset('img/me.jpg') }}">
+                <img src="{{ asset('img/me.jpg') }}" width="450px" alt="">
+            </a>
+        </div>
+    </article>
+{% endblock %}

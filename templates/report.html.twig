@@ -1,0 +1,67 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Report{% endblock %}
+
+{% block body %}
+    <h1>Report</h1>
+    <h2>Använd länkarna för snabb navigering</h2>
+    <nav class="nav-report">
+        <li><a href="#kmom01">Kmom01</a></li>
+        <li><a href="#kmom02">Kmom02</a></li>
+        <li><a href="#kmom03">Kmom03</a></li>
+        <li><a href="#kmom04">Kmom04</a></li>
+        <li><a href="#kmom05">Kmom05</a></li>
+        <li><a href="#kmom06">Kmom06</a></li>
+        <li><a href="#kmom07">Kmom07</a></li>
+        <li><a href="#kmom07/10">Kmom07/10</a></li>
+    </nav>
+    <h2><a id="kmom01">Kmom01</a></h2>
+    <p> --Berätta kort om dina förkunskaper och tidigare erfarenheter kring objektorientering.</p>
+    <p>Min enda förkunskap av objektorientering är från kursen "OO-Python" som jag läste tidigare i våras.
+    Där jag lärde mig några av de mer klassiska formerna av Objektorienterad
+    programmering. I oopy gick vi igenom saker som klasser, arv, metoder, privata/publika attribut med mera.
+    Som jag förstår det så kommer MVC att fokusera på en liknande form av objektorienterad programmering. </p>
+
+    <p> --Berätta kort om PHPs modell för klasser och objekt.
+    Vilka är de grunder man behöver veta/förstå för att kunna komma igång och skapa sina första klasser?</p>
+    <p>Man behöver veta att ett objekt har properties(medlemsvariabler) och methods(metoder, (eller funktioner) som är kopplade till objekt).
+        Medlemsvariablerna är allt som ett objekt behöver lagra. Metoderna är allt som objektet behöver kunna utföra.
+        Man behöver vara medveten om medlemsvariablernas synlighet och på vilken nivå åtkomsten till dem är satt. Är en medlem privat så kan man inte 
+        se eller ändra den utanför klassen, då behöver man skapa metoder som hanterar den funktionaliteten. Så kallade setters och getters. 
+    </p>
+
+    <p> --Reflektera kort över den kodbas, koden, strukturen som användes till uppgiften me/report, hur uppfattar du den?</p>
+    <p>Det påminner mycket om hur det var att ge sig in i Design-kursens första kursmoment. Det är väldigt många filer att hålla reda på och det är mycket man inte skapat själv.
+    Att komma rätt in bland filer man inte själv skapat är utmanande, och man får gissa sig fram till hur mycket av hur det hela hänger ihop.</p>
+
+    <p> --Med tanke på artikeln “PHP The Right Way”, vilka delar in den finner du extra intressanta och värdefulla?
+    Är det några särskilda områden som du känner att du vill veta mer om? Lyft fram några delar av artikeln som du känner mer värdefulla.</p>
+    <p>Det mest värdefulla jag tog med mig från artikeln var huvudsakligen självaste artikelns syfte, att det är lätt att hitta felaktig information 
+    på internet om best practices och att det är bra att lära sig rätt från början. På så sätt var det en intressant artikel, men det är inte en artikel
+    som är väl lämpad för att lära ut PHP från grunden, då de kod-exempel de tog upp var något avancerade.
+    Jag känner att jag inte har speciellt bra koll på Dependencies och tror att det vore bra om jag lärde mig lite mer om det. 
+    Dependencies är kanske inte ett super spännande område men att lära sig hantera dem och göra de mer flexibla genom Dependency Injections
+    låter roligt.</p>
+
+    <p> --Vilken är din TIL för detta kmom?</p>
+    <p>Jag lärde mig att PHP har en inbyggd web server som man kör genom "php -S ...".
+
+    <h2><a id="kmom02">Kmom02</a></h2>
+    <p></p>
+
+    <h2><a id="kmom03">Kmom03</a></h2>
+    <p></p>
+
+    <h2><a id="kmom04">Kmom04</a></h2>
+    <p></p>
+
+    <h2><a id="kmom05">Kmom05</a></h2>
+    <p></p>
+
+    <h2><a id="kmom06">Kmom06</a></h2>
+    <p></p>
+
+    <h2><a id="kmom07/10">Kmom07/10</a></h2>
+    <p></p>
+
+{% endblock %}
