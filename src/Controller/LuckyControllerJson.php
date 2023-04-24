@@ -2,13 +2,20 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-class LuckyControllerJson
+class LuckyControllerJson extends AbstractController
 {
-    #[Route("/api/quote")]
+    #[Route("/api", name: "api_home")]
+    public function api(): Response 
+    {
+        return $this->render('api.html.twig');
+    }
+
+    #[Route("/api/quote", name: "api_quote")]
     public function jsonQuote(): Response
     {
         date_default_timezone_set('Europe/Stockholm');
