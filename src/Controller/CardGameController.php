@@ -80,10 +80,12 @@ class CardGameController extends AbstractController
 
         // logik för att dra ett kort, skriv nya till sessionen...
         $drawnCard = $cardDeck-> drawCard();
+        $cardsLeft = $cardDeck-> getNumberCards();
 
 
         $data = [
-            "drawnCard" => $drawnCard
+            "drawnCard" => $drawnCard,
+            "cardsLeft" => $cardsLeft
         ];
 
         return $this->render('card/deck/draw.html.twig', $data);
