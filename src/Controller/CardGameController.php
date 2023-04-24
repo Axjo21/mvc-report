@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardGameController extends AbstractController
 {
-    #[Route("/card", name: "card_start", methods: ['POST'])]
+    #[Route("/card", name: "card_start", methods: ['GET'])]
     public function home(
         SessionInterface $session
     ): Response
@@ -34,8 +34,9 @@ class CardGameController extends AbstractController
     ): Response
     {
         // denna route kanske inte bör återställa
-        $cardDeck = new DeckOfCards();
-        $session->set("card_deck", $cardDeck);
+        //$cardDeck = new DeckOfCards();
+        //$session->set("card_deck", $cardDeck);
+        $cardDeck = $session->get("card_deck");
 
         $data = [
             "cardDeck" => $cardDeck->getValues()
@@ -68,20 +69,26 @@ class CardGameController extends AbstractController
     #[Route("/card/deck/draw", name: "card_draw", methods: ['GET'])]
     // döp om function
     public function draw(
-        Request $request,
         SessionInterface $session
     ): Response
     {
-        if (isset($_SESSION["card_deck"])){
-            $cardDeck = $request->request->get('card_deck');
-        } else {
-            $cardDeck = new DeckOfCards();
-        }
+        //if (isset($_SESSION["card_deck"]) == true){
+        $cardDeck = $session->get('card_deck');
+        //} else {
+        //    $cardDeck = new DeckOfCards();
+        //}
 
-        // logik för att dra ett kort, skriv nya till sessionen...
         $drawnCard = $cardDeck-> drawCard();
         $cardsLeft = $cardDeck-> getNumberCards();
+        $cardDeck->remove($drawnCard);
+        $session->set("card_deck", $cardDeck);
 
+        //fixa hantering för ifall det är mindre än 1
+        if ($cardsLeft < 1){
+            //don't let app  continue
+            // kanske ha return till annan route (this->renter()...)
+            // eller så hanterar jag det på själva länken till draw direkt i twig-modulen
+        }
 
         $data = [
             "drawnCard" => $drawnCard,
@@ -90,5 +97,6 @@ class CardGameController extends AbstractController
 
         return $this->render('card/deck/draw.html.twig', $data);
     }
+
 
 }

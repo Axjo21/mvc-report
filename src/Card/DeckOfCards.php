@@ -47,18 +47,23 @@ class DeckOfCards
 
     public function drawCard(): string
     {
-        $someValue = random_int(1, 14);
-        $newCard = $this->deck[$someValue];
+        //$someValue = random_int(1, 14);
+        //$newCard = $this->deck[$someValue];
+        $this -> shuffleDeck();
+        $newCard = $this->deck[0];
+        //if (($key = array_search($newCard, $this->deck)) !== false) {
+        unset($this->deck[0]);
+        //}
         return $newCard;
     }
 
-
-
-
-    public function add(Card $cards): void
+    public function remove($card): void
     {
-        $this->deck[] = $cards;
+        if (($key = array_search($card, $this->deck)) !== false) {
+            unset($this->deck[$key]);
+        }
     }
+
 
     public function getNumberCards(): int
     {
