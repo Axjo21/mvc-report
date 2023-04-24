@@ -3,12 +3,17 @@
 {% block title %}Api{% endblock %}
 
 {% block main %}
-    <ul>
-        <li><a href="{{ path('api_home') }}">api home</li></a>
-        <li><a href="{{ path('api_quote') }}">api/quote</li></a>
+    <h1>Api Home</h1>
 
-    </ul>
+    <h2><strong>API Quote:  </strong><a href="{{ path('api_quote') }}">api/quote</a></h2>
+    <p>api/quote visar JSON-data för ett slumplässigt citat tilsammans med tidsstämpel. </p>
 
-    <h1>Api</h1>
+    <h2><strong>API Number:  </strong><a href="{{ path('api_number') }}">/api/lucky/number</a></h2>
+    <p>api/lucky/number visar JSON-data för ett slumpat tal tilsammans med en hälsning. </p>
 
+    <h2><strong>API Deck:  </strong><a href="{{ path('api_deck') }}">/api/deck</a></h2>
+    <p>api/deck visar JSON-data för ett DeckOfCards där korten är sorterade. </p>
+
+    <h2><strong>API Deck Shuffle:  </strong><a href="{{ path('api_shuffle') }}">/api/deck/shuffle</a></h2>
+    <p>api/deck visar JSON-data för ett DeckOfCards efter att kortleken blandats.</p>
 {% endblock %}
