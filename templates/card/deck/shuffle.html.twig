@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block main %}
+<ul>
+    <li><a href="{{ path('card_start') }}">Landing page</li></a>
+    <li><a href="{{ path('card_deck') }}">Show Deck</li></a>
+    <li><a href="{{ path('card_shuffle') }}">Shuffle Deck</li></a>
+    <li><a href="{{ path('card_draw') }}">Draw Card</li></a>
+</ul>
+
+<h1>Card Shuffle</h1>
+
+<p>
+{% for value in cardDeck %}
+    <span class="card">{{ value }}</span>
+{% endfor %}
+</p>
+
+{{ include('flash.html.twig') }}
+
+{% endblock %}
