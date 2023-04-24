@@ -45,17 +45,15 @@ class DeckOfCards
         shuffle($this->deck);
     }
 
-
-
-
-
-
-
-    public function draw(): int
+    public function drawCard(): string
     {
-        $newCard = random_int(1, 10);
+        $someValue = random_int(1, 14);
+        $newCard = $this->deck[$someValue];
         return $newCard;
     }
+
+
+
 
     public function add(Card $cards): void
     {

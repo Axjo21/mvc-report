@@ -12,7 +12,11 @@
 </ul>
 <h1>Draw Card</h1>
 
-<p><span class="card">{{ drawnCard }}</span></p>
+<p>
+{% for value in cardDeck %}
+    <span class="card">{{ value }}</span>
+{% endfor %}
+</p>
 
 {{ include('flash.html.twig') }}
 
