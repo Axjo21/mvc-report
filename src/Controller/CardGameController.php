@@ -33,9 +33,6 @@ class CardGameController extends AbstractController
         SessionInterface $session
     ): Response
     {
-        // denna route kanske inte bör återställa
-        //$cardDeck = new DeckOfCards();
-        //$session->set("card_deck", $cardDeck);
         $cardDeck = $session->get("card_deck");
 
         $data = [
