@@ -18,8 +18,7 @@ class CardGameController extends AbstractController
     #[Route("/card", name: "card_start", methods: ['GET'])]
     public function home(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $cardDeck = new DeckOfCards();
         $session->set("card_deck", $cardDeck);
 
@@ -31,10 +30,10 @@ class CardGameController extends AbstractController
     //döp om function
     public function deck(
         SessionInterface $session
-    ): Response
-    {
-        $cardDeck = $session->get("card_deck");
-
+    ): Response {
+        //$cardDeck = $session->get("card_deck");
+        $cardDeck = new DeckOfCards();
+        $session->set("card_deck", $cardDeck);
         $data = [
             "cardDeck" => $cardDeck->getValues()
         ];
@@ -47,8 +46,7 @@ class CardGameController extends AbstractController
     // döp om function
     public function shuffle(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $cardDeck = new DeckOfCards();
 
         $cardDeck->shuffleDeck();
@@ -67,8 +65,7 @@ class CardGameController extends AbstractController
     // döp om function
     public function draw(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         //if (isset($_SESSION["card_deck"]) == true){
         $cardDeck = $session->get('card_deck');
         //} else {
@@ -81,7 +78,7 @@ class CardGameController extends AbstractController
         $session->set("card_deck", $cardDeck);
 
         //fixa hantering för ifall det är mindre än 1
-        if ($cardsLeft < 1){
+        if ($cardsLeft < 1) {
             //don't let app  continue
             // kanske ha return till annan route (this->renter()...)
             // eller så hanterar jag det på själva länken till draw direkt i twig-modulen
