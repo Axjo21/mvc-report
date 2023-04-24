@@ -74,7 +74,7 @@ class CardGameController extends AbstractController
 
         $drawnCard = $cardDeck-> drawCard();
         $cardsLeft = $cardDeck-> getNumberCards();
-        $cardDeck->remove($drawnCard);
+        //$cardDeck->remove($drawnCard);
         $session->set("card_deck", $cardDeck);
 
         //fixa hantering för ifall det är mindre än 1
@@ -92,5 +92,34 @@ class CardGameController extends AbstractController
         return $this->render('card/deck/draw.html.twig', $data);
     }
 
+    #[Route("/card/deck/draw:{num<\d+>}", name: "card_draw:number", methods: ["GET"])]
+    public function drawManyCards(
+        int $num,
+        SessionInterface $session
+    ): Response {
 
+        $cardDeck = $session->get('card_deck');
+        $cardsLeft = $cardDeck-> getNumberCards();
+
+        if ($num > $cardsLeft) {
+            throw new \Exception("Can not draw that many cards!");
+        }
+
+        $drawnCards = [];
+        for ($i = 1; $i <= $num; $i++) {
+            // här skapas en ny die. kan göra samma för Card() klassen
+            // men då måste jag implementera den klassen först
+            //$card = new DiceGraphic();
+            $drawnCard = $cardDeck-> drawCard();
+            array_push($drawnCards, $drawnCard);
+        }
+        $cardsLeft = $cardDeck-> getNumberCards();
+
+        $data = [
+            "drawnCards" => $drawnCards,
+            "cardsLeft" => $cardsLeft
+        ];
+
+        return $this->render('card/deck/draw:number.html.twig', $data);
+    }
 }

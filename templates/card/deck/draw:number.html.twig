@@ -8,15 +8,18 @@
     <li><a href="{{ path('card_deck') }}">Show Deck</li></a>
     <li><a href="{{ path('card_shuffle') }}">Shuffle Deck</li></a>
     <li><a href="{{ path('card_draw') }}">Draw Card</li></a>
-
 </ul>
-<h1>Draw Card</h1>
+<h1>Draw :number </h1>
+
+<!-- denna bör jag kanske länka till och skapa formulär för !-->
 
 <p>
-{% for value in cardDeck %}
-    <span class="card">{{ value }}</span>
+{% for card in drawnCards %}
+    <span class="card">{{ card }}</span>
 {% endfor %}
 </p>
+<p>Cards left in Deck:<span class="card">{{ cardsLeft }}</span></p>
+
 
 {{ include('flash.html.twig') }}
 
