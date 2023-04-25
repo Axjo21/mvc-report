@@ -4,7 +4,6 @@ namespace App\Card;
 
 class Card
 {
-
     protected $value;
 
     public function __construct($value)

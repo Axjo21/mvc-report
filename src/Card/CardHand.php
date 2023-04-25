@@ -13,7 +13,7 @@ class CardHand
         $this->hand[] = $card;
     }
 
-    public function getNumberDices(): int
+    public function getNumberCards(): int
     {
         return count($this->hand);
     }

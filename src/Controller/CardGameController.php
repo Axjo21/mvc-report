@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Card\Card;
+use App\Card\BetterCard;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
 
@@ -65,23 +66,11 @@ class CardGameController extends AbstractController
     public function draw(
         SessionInterface $session
     ): Response {
-        //if (isset($_SESSION["card_deck"]) == true){
         $cardDeck = $session->get('card_deck');
-        //} else {
-        //    $cardDeck = new DeckOfCards();
-        //}
 
         $drawnCard = $cardDeck-> drawCard();
         $cardsLeft = $cardDeck-> getNumberCards();
-        //$cardDeck->remove($drawnCard);
         $session->set("card_deck", $cardDeck);
-
-        //fixa hantering för ifall det är mindre än 1
-        if ($cardsLeft < 1) {
-            //don't let app  continue
-            // kanske ha return till annan route (this->renter()...)
-            // eller så hanterar jag det på själva länken till draw direkt i twig-modulen
-        }
 
         $data = [
             "drawnCard" => $drawnCard,
@@ -90,6 +79,8 @@ class CardGameController extends AbstractController
 
         return $this->render('card/deck/draw.html.twig', $data);
     }
+
+
 
     #[Route("/card/deck/draw/start", name: "card_draw:number_start")]
     public function drawStartCallback(): Response
@@ -105,20 +96,18 @@ class CardGameController extends AbstractController
     ): Response
     {
         $num = $request->request->get('num_cards');
-
         $session->set("num_cards", $num);
 
         return $this->redirectToRoute('card_draw:number');
     }
     
+
     #[Route("/card/deck/draw/number", name: "card_draw:number", methods: ["GET"])]
     public function drawNumberCards(
         SessionInterface $session
     ): Response {
-
         $cardDeck = $session->get('card_deck');
         $numCards = $session->get('num_cards');
-
         $cardsLeft = $cardDeck-> getNumberCards();
 
         if ($numCards > $cardsLeft) {
@@ -128,7 +117,6 @@ class CardGameController extends AbstractController
         $drawnCards = [];
         $hand = new CardHand();
         for ($i = 1; $i <= $numCards; $i++) {
-            //$card = new DiceGraphic();
             $drawnCard = $cardDeck-> drawCard();
             $hand->add(new Card($drawnCard));
             //array_push($drawnCards, $drawnCard);
