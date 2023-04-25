@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Card\Card;
-use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
 
@@ -92,30 +91,52 @@ class CardGameController extends AbstractController
         return $this->render('card/deck/draw.html.twig', $data);
     }
 
-    #[Route("/card/deck/draw:{num<\d+>}", name: "card_draw:number", methods: ["GET"])]
-    public function drawManyCards(
-        int $num,
+    #[Route("/card/deck/draw/start", name: "card_draw:number_start")]
+    public function drawStartCallback(): Response
+    {
+        return $this->render('card/deck/init.number.html.twig');
+    }
+
+
+    #[Route("/card/deck/draw/init", name: "card_draw:number_init", methods: ['POST'])]
+    public function drawInitCallback(
+        Request $request,
+        SessionInterface $session
+    ): Response
+    {
+        $num = $request->request->get('num_cards');
+
+        $session->set("num_cards", $num);
+
+        return $this->redirectToRoute('card_draw:number');
+    }
+    
+    #[Route("/card/deck/draw/number", name: "card_draw:number", methods: ["GET"])]
+    public function drawNumberCards(
         SessionInterface $session
     ): Response {
 
         $cardDeck = $session->get('card_deck');
+        $numCards = $session->get('num_cards');
+
         $cardsLeft = $cardDeck-> getNumberCards();
 
-        if ($num > $cardsLeft) {
+        if ($numCards > $cardsLeft) {
             throw new \Exception("Can not draw that many cards!");
         }
 
         $drawnCards = [];
-        for ($i = 1; $i <= $num; $i++) {
-            // här skapas en ny die. kan göra samma för Card() klassen
-            // men då måste jag implementera den klassen först
+        $hand = new CardHand();
+        for ($i = 1; $i <= $numCards; $i++) {
             //$card = new DiceGraphic();
             $drawnCard = $cardDeck-> drawCard();
-            array_push($drawnCards, $drawnCard);
+            $hand->add(new Card($drawnCard));
+            //array_push($drawnCards, $drawnCard);
         }
         $cardsLeft = $cardDeck-> getNumberCards();
 
         $data = [
+            "drawnHand" => $hand->getValues(),
             "drawnCards" => $drawnCards,
             "cardsLeft" => $cardsLeft
         ];

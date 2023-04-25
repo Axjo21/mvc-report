@@ -8,16 +8,18 @@
     <li><a href="{{ path('card_deck') }}">Show Deck</li></a>
     <li><a href="{{ path('card_shuffle') }}">Shuffle Deck</li></a>
     <li><a href="{{ path('card_draw') }}">Draw Card</li></a>
+    <li><a href="{{ path('card_draw:number_start') }}">Draw :number cards</li></a>
 </ul>
 <h1>Draw :number </h1>
 
 <!-- denna bör jag kanske länka till och skapa formulär för !-->
 
 <p>
-{% for card in drawnCards %}
+{% for card in drawnHand %}
     <span class="card">{{ card }}</span>
 {% endfor %}
 </p>
+
 <p>Cards left in Deck:<span class="card">{{ cardsLeft }}</span></p>
 
 
