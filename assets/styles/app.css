@@ -29,10 +29,12 @@ header {
 }
 
 footer {
-    margin-bottom: 0px;
-    min-height: 80px;
-    font-size: 2em;
-    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1.8em;
+    font-size: 1.8em;
+    padding: 1.5em;
     background-color: rgb(56, 56, 125);
     color: white;
 }
