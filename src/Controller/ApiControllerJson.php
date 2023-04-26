@@ -26,14 +26,12 @@ class ApiControllerJson extends AbstractController
     public function deck(
         SessionInterface $session
     ): Response {
-        //$cardDeck = $session->get("card_deck");
         $cardDeck = new DeckOfCards();
         $session->set("card_deck", $cardDeck);
         $data = [
             "cardDeck" => $cardDeck->getValues()
         ];
 
-        //return new JsonResponse($data);
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
@@ -41,7 +39,6 @@ class ApiControllerJson extends AbstractController
         return $response;
     }
 
-    //denna ska tydligen vara POST?
     #[Route("/api/deck/shuffle", name: "api_shuffle", methods:["GET"])]
     public function shuffleDeck(
         SessionInterface $session
@@ -56,11 +53,49 @@ class ApiControllerJson extends AbstractController
             "cardDeck" => $cardDeck->getValues()
         ];
 
-        //return new JsonResponse($data);
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
     }
+
+        #[Route("/api/deck/draw", name: "api_draw", methods:["GET"])]
+        public function drawDeck(
+            SessionInterface $session
+        ): Response {
+            $cardDeck = $session->get('card_deck');
+            $drawnCard = $cardDeck-> drawCard();
+            $session->set("card_deck", $cardDeck);
+
+            $response = new JsonResponse($drawnCard);
+            $response->setEncodingOptions(
+                $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            );
+            return $response;
+        }
+
+
+    #[Route("/api/deck/draw:{num<\d+>}", name: "api_draw:number", requirements: ['num' => '\d+'])]
+    public function testDiceHand(
+        SessionInterface $session,
+        int $num = 1
+        ): Response {
+            $cardDeck = $session->get('card_deck');
+            $cardsLeft = $cardDeck-> getNumberCards();
+            if ($num > $cardsLeft) {
+                throw new \Exception("Can not draw that many cards!");
+            }
+            $hand = new CardHand();
+            for ($i = 1; $i <= $num; $i++) {
+                $drawnCard = $cardDeck-> drawCard();
+                $hand->add(new Card($drawnCard));
+            }
+
+            $response = new JsonResponse($hand->getValues());
+            $response->setEncodingOptions(
+                $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            );
+            return $response;
+        }
 }

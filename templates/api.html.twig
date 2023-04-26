@@ -16,4 +16,13 @@
 
     <h2><strong>API Deck Shuffle:  </strong><a href="{{ path('api_shuffle') }}">/api/deck/shuffle</a></h2>
     <p>api/deck visar JSON-data för ett DeckOfCards efter att kortleken blandats.</p>
+
+    <h2><strong>API Draw:  </strong><a href="{{ path('api_draw') }}">/api/deck/draw</a></h2>
+    <p>api/deck/draw drar ett kort från kortleken och visar upp det.</p>
+
+    <h2><strong>API Draw Number:  </strong><a href='{{ path('api_draw:number') }}'>/api/deck/draw:number</a></h2>
+    <p>
+        api/deck/draw:number draw flera kort från kortleken och visar dem. Default nummer =1 om man klickar på länken.
+        Skriv in annat nummer i URLen för att ändra antelet kort.
+    </p>
 {% endblock %}
