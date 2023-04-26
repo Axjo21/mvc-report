@@ -48,7 +48,37 @@
     <p>Jag lärde mig att PHP har en inbyggd web server som man kör genom "php -S ...".
 
     <h2><a id="kmom02">Kmom02</a></h2>
-    <p></p>
+
+    <p> --Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP.</p>
+    <p>
+        Arv - Arv används dels för att återanvända kod och hålla klasser som har mycket gemensamt fri från boilerplate kod.
+        En klass som ärver från en annan klass kallas för "subclass" och den andra klassen kallas för "basklass". Subklassen ärver samtliga metoder
+        och medlemsvariabler från basklassen. Subklasserna kan lägga till funktionalitet eller ändra från den ärvda funktionaliteten utan att ändra
+        på basklassen.<br>
+        Komposition - Komposition är en annan form av relation mellan klasser. I komposition säger man att en klass "has-a" annan klass. Medans i arv
+        säger man att en klass "is-a" annan klass. Det vill säga att i komposition så består en klass av andra klasser och de klasserna som finns med i
+        "huvudklassen" kan inte existera utanför instansen av just den klassen. Till skillnad från aggregation, som är en annan typ av relation, som har mycket
+        gemensamt med komposition, fast där klasserna inte är lika beroende på varandra.<br>
+        Interface - Ett interface är en beskrivning av hur en klass bör implementeras, vilka metoder den bör ha med osv. Kan liknas med "abstract-klass".<br>
+        Trait - Ett trait är en typ av metod som en klass kan extenda och använda sig av. Traits kan inte instansieras själva. 
+    </p>
+    <p> --Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden och dina klasser?</p>
+    <p>
+        Jag började med att studera övningen med "pig" spelet och testade själv på att skapa routes och anpassa pig-rutterna för att passa in på denna uppgiften. 
+        Sedan funderade jag över hur jag skulle strukturera mina klasser och efter det så satte jag igång. Jag märkte snabbt att mycket av övningens krav kunde 
+        uppfyllas genom att endast implementera DeckOfCards klassen och det var det jag gjorde till stor del. Mot slutet, när kraven redan var uppfyllda så fokuserade jag
+        på att flytta över metoder och omstrukturera min kod för att implementera arv och komposition av de andra klasserna. 
+        När det kommer till förbättringspotential så hade jag valt att skapa en komposition mellan DeckOfCards och Cards och jag hade även sparat kortleken sorterad på ett annat sätt. 
+        Allt som allt är jag nöjd med min lösning av uppgiften och jag tycker att jag gjorde ett bra arbete, med tanke på att det var en stor uppgift och jag lade ner mycket tid på den. 
+    </p>
+    <p> --Vilka är dina refelktioner så här långt med att jobb i Symfony med applikationskod enligt MVC?</p>
+    <p>
+        Jag tycker att det är väldigt smidigt att jobba i Symfony och att tillämpa en MVC-struktur på koden. Nackdelen med Symfony, samt liknande moduler är att
+        man inte skriver koden själv, så det kan vara svårt att förstå vad den gör, hur den hänger ihop och varför det fungerar som det gör. 
+    </p>
+    <p> --Vilken är din TIL för detta kmom?</p>
+    <p>Jag har lärt mig mycket om hur Controllers fungerar och jag har även blivit bättre på att använda Git, då jag fokuserade på att skapa många commits detta kmom.</p>
+
 
     <h2><a id="kmom03">Kmom03</a></h2>
     <p></p>
