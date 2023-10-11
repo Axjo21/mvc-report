@@ -16,7 +16,15 @@
 
 <p>
 {% for card in drawnHand %}
-    <span class="card">{{ card }}</span>
+    {% if card[1] == 'spades' %}
+        <span class="spades">{{ card[0] }} </span>
+    {% elseif card[1] == 'hearts' %}
+        <span class="hearts">{{ card[0] }} </span>
+    {% elseif card[1] == 'diamonds' %}
+        <span class="diamonds">{{ card[0] }} </span>
+    {% elseif card[1] == 'clovers' %}
+        <span class="clovers">{{ card[0] }} </span>
+    {% endif %}
 {% endfor %}
 </p>
 

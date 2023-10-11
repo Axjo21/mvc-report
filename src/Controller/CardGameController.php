@@ -6,6 +6,7 @@ use App\Card\Card;
 use App\Card\BetterCard;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
+#use App\Card\oldCardDeck;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,7 +36,8 @@ class CardGameController extends AbstractController
         $cardDeck = new DeckOfCards();
         $session->set("card_deck", $cardDeck);
         $data = [
-            "cardDeck" => $cardDeck->getValues()
+            #"cardDeck" => $cardDeck->getValues()
+            "ourDeck" => $cardDeck->getCards()
         ];
 
         return $this->render('card/deck/deck.html.twig', $data);
@@ -54,7 +56,8 @@ class CardGameController extends AbstractController
         $session->set("card_deck", $cardDeck);
 
         $data = [
-            "cardDeck" => $cardDeck->getValues()
+            #"cardDeck" => $cardDeck->getValues()
+            "ourDeck" => $cardDeck->getCards()
         ];
 
         return $this->render('card/deck/shuffle.html.twig', $data);
@@ -73,7 +76,7 @@ class CardGameController extends AbstractController
         $session->set("card_deck", $cardDeck);
 
         $data = [
-            "drawnCard" => $drawnCard,
+            "drawnCard" => [$drawnCard],
             "cardsLeft" => $cardsLeft
         ];
 
@@ -82,25 +85,24 @@ class CardGameController extends AbstractController
 
 
 
-    #[Route("/card/deck/draw/start", name: "card_draw:number_start")]
+    #[Route("/card/deck/draw/number/start", name: "card_draw:number_start")]
     public function drawStartCallback(): Response
     {
-        return $this->render('card/deck/init.number.html.twig');
+        return $this->render('card/deck/start.number.html.twig');
     }
 
 
-    #[Route("/card/deck/draw/init", name: "card_draw:number_init", methods: ['POST'])]
-    public function drawInitCallback(
+    #[Route("/card/deck/draw/number/init", name: "card_draw:number_init", methods: ['POST'])]
+    public function drawNumberInitCallback(
         Request $request,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $num = $request->request->get('num_cards');
         $session->set("num_cards", $num);
 
         return $this->redirectToRoute('card_draw:number');
     }
-    
+
 
     #[Route("/card/deck/draw/number", name: "card_draw:number", methods: ["GET"])]
     public function drawNumberCards(
@@ -118,7 +120,7 @@ class CardGameController extends AbstractController
         $hand = new CardHand();
         for ($i = 1; $i <= $numCards; $i++) {
             $drawnCard = $cardDeck-> drawCard();
-            $hand->add(new Card($drawnCard));
+            $hand->add($drawnCard);
             //array_push($drawnCards, $drawnCard);
         }
         $cardsLeft = $cardDeck-> getNumberCards();

@@ -14,11 +14,18 @@
 <h1>Card Shuffle</h1>
 
 <p>
-{% for value in cardDeck %}
-    <span class="card">{{ value }}</span>
+{% for card in ourDeck %}
+    {% if card.suit == 'spades' %}
+        <span class="spades">{{ card.value }} </span>
+    {% elseif card.suit == 'hearts' %}
+        <span class="hearts">{{ card.value }} </span>
+    {% elseif card.suit == 'diamonds' %}
+        <span class="diamonds">{{ card.value }} </span>
+    {% elseif card.suit == 'clovers' %}
+        <span class="clovers">{{ card.value }} </span>
+    {% endif %}
 {% endfor %}
 </p>
-
 {{ include('flash.html.twig') }}
 
 {% endblock %}

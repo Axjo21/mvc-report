@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ApiControllerJson extends AbstractController
 {
     #[Route("/api", name: "api_home")]
-    public function api(): Response 
+    public function api(): Response
     {
         return $this->render('api.html.twig');
     }
@@ -66,9 +66,16 @@ class ApiControllerJson extends AbstractController
         ): Response {
             $cardDeck = $session->get('card_deck');
             $drawnCard = $cardDeck-> drawCard();
+            $cardsLeft = $cardDeck-> getNumberCards();
             $session->set("card_deck", $cardDeck);
+            $ourCard = $drawnCard->getDetails();
 
-            $response = new JsonResponse($drawnCard);
+
+            $data = [
+                "Drawn Card" => ["value"=>$ourCard[0], "suit"=>$ourCard[1]],
+                "Cards Left" => $cardsLeft
+            ];
+            $response = new JsonResponse($data);
             $response->setEncodingOptions(
                 $response->getEncodingOptions() | JSON_PRETTY_PRINT
             );
@@ -76,26 +83,32 @@ class ApiControllerJson extends AbstractController
         }
 
 
-    #[Route("/api/deck/draw:{num<\d+>}", name: "api_draw:number", requirements: ['num' => '\d+'])]
+    #[Route("/api/deck/draw/{num<\d+>}", name: "api_draw:number", requirements: ['num' => '\d+'])]
     public function testDiceHand(
         SessionInterface $session,
         int $num = 1
-        ): Response {
-            $cardDeck = $session->get('card_deck');
-            $cardsLeft = $cardDeck-> getNumberCards();
-            if ($num > $cardsLeft) {
-                throw new \Exception("Can not draw that many cards!");
-            }
-            $hand = new CardHand();
-            for ($i = 1; $i <= $num; $i++) {
-                $drawnCard = $cardDeck-> drawCard();
-                $hand->add(new Card($drawnCard));
-            }
-
-            $response = new JsonResponse($hand->getValues());
-            $response->setEncodingOptions(
-                $response->getEncodingOptions() | JSON_PRETTY_PRINT
-            );
-            return $response;
+    ): Response {
+        $cardDeck = $session->get('card_deck');
+        $cardsLeft = $cardDeck-> getNumberCards();
+        if ($num > $cardsLeft) {
+            throw new \Exception("Can not draw that many cards!");
         }
+        $hand = new CardHand();
+        for ($i = 1; $i <= $num; $i++) {
+            $drawnCard = $cardDeck-> drawCard();
+            $hand->add($drawnCard);
+        }
+        $cardsLeft = $cardDeck-> getNumberCards();
+
+        $data = [
+            "Drawn Cards"=>$hand->getValues(),
+            "Cards Left"=>$cardsLeft
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
 }

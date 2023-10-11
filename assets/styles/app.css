@@ -119,3 +119,21 @@ a:hover {
 .card {
     font-size: 5.8em;
 }
+
+.spades {
+    font-size: 5.8em;
+}
+
+.hearts {
+    font-size: 5.8em;
+    color: red;
+}
+
+.diamonds {
+    font-size: 5.8em;
+    color: red;
+}
+
+.clovers {
+    font-size: 5.8em;
+}

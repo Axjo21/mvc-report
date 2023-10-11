@@ -13,7 +13,20 @@
 </ul>
 <h1>Draw Card</h1>
 
-<p><span class="card">{{ drawnCard }}</span></p>
+
+<p>
+    {% if drawnCard[0].suit == 'spades' %}
+        <span class="spades">{{ drawnCard[0].value }} </span>
+    {% elseif drawnCard[0].suit == 'hearts' %}
+        <span class="hearts">{{ drawnCard[0].value }} </span>
+    {% elseif drawnCard[0].suit == 'diamonds' %}
+        <span class="diamonds">{{ drawnCard[0].value }} </span>
+    {% elseif drawnCard[0].suit == 'clovers' %}
+        <span class="clovers">{{ drawnCard[0].value }} </span>
+    {% endif %}
+</p>
+
+
 <p>Cards left in Deck:<span class="card">{{ cardsLeft }}</span></p>
 
 {{ include('flash.html.twig') }}
