@@ -10,6 +10,7 @@ use App\Card\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -60,27 +61,27 @@ class ApiControllerJson extends AbstractController
         return $response;
     }
 
-        #[Route("/api/deck/draw", name: "api_draw", methods:["GET"])]
-        public function drawDeck(
-            SessionInterface $session
-        ): Response {
-            $cardDeck = $session->get('card_deck');
-            $drawnCard = $cardDeck-> drawCard();
-            $cardsLeft = $cardDeck-> getNumberCards();
-            $session->set("card_deck", $cardDeck);
-            $ourCard = $drawnCard->getDetails();
+    #[Route("/api/deck/draw", name: "api_draw", methods:["GET"])]
+    public function drawDeck(
+        SessionInterface $session
+    ): Response {
+        $cardDeck = $session->get('card_deck');
+        $drawnCard = $cardDeck-> drawCard();
+        $cardsLeft = $cardDeck-> getNumberCards();
+        $session->set("card_deck", $cardDeck);
+        $ourCard = $drawnCard->getDetails();
 
 
-            $data = [
-                "Drawn Card" => ["value"=>$ourCard[0], "suit"=>$ourCard[1]],
-                "Cards Left" => $cardsLeft
-            ];
-            $response = new JsonResponse($data);
-            $response->setEncodingOptions(
-                $response->getEncodingOptions() | JSON_PRETTY_PRINT
-            );
-            return $response;
-        }
+        $data = [
+            "Drawn Card" => ["value"=>$ourCard[0], "suit"=>$ourCard[1]],
+            "Cards Left" => $cardsLeft
+        ];
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
 
 
     #[Route("/api/deck/draw/{num<\d+>}", name: "api_draw:number", requirements: ['num' => '\d+'])]

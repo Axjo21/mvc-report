@@ -107,10 +107,8 @@ class DeckOfCards extends BetterCard
         }
     }
 
-
     public function getNumberCards(): int
     {
         return count($this->deck);
     }
-
 }
