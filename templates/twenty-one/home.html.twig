@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Twenty One{% endblock %}
+
+{% block main %}
+<ul>
+    <li><a href="{{ path('game_home') }}">Landing page</li></a>
+    <li><a href="{{ path('game_doc') }}">Documentation</li></a>
+</ul>
+
+<h1>Twenty One Game</h1>
+
+<div class="game-info">
+    <p>
+        Målet med spelet är att komma så nära 21 som möjligt.
+    </p>
+    <p>
+        Ifall man får exakt 21 så vinner man och överstiger 21 i poäng så förlorar man, i övrigt så handlar det om att komma så nära som möjligt.
+    </p>
+    <p>
+        Essen är värda valfritt 1 eller 14, kungarna 13, damerna 12, knektarna 11. Nummerkorten har samma värden som valören. 
+        Ess räknas per automatik som 14 och kommer automatiskt att omräknas som 1 ifall man överstiger 21. 
+    </p>
+</div>
+<a class="game-button" href="{{ path('game_start') }}">Start Game</a>
+
+{% endblock %}

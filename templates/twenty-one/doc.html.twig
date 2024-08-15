@@ -1,0 +1,89 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Twenty One{% endblock %}
+
+{% block main %}
+<ul>
+    <li><a href="{{ path('game_home') }}">Landing page</li></a>
+    <li><a href="{{ path('game_doc') }}">Documentation</li></a>
+</ul>
+
+<h1>21 Documentation</h1>
+
+<h2>Klasser: </h2>
+<p>
+    Jag valde att bygga vidare på de klasser jag redan hade så mycket så möjligt och skapade endast en ny klass, "BankHand".
+    De klass-metoder som redan fanns räckte långt,
+    men jag märkte att korten även behövde ett "poäng" attribut, så det lade jag till samt metoder för att hantera poängen.
+<p>
+
+<h3>Card</h3>
+<p>
+    Denna klass representerar ett kort och initiseras genom att skicka in kortets valör, poäng och en ASCII-bild.
+<p>
+
+<h3>BetterCard</h3>
+<p>
+    Denna klass bygger vidare på "Card" klassen (inheritance) genom att även tillåta anrop till setter-metoder för ASCII-bild,
+    poäng och getter för kortets poäng.
+<p>
+
+<h3>DeckOfCards</h3>
+<p>
+    Denna klass representerar kortleken.
+    Vid initiering av klassen så konstrueras varje kort genom
+    BetterCard klassen och sparas som en array i en medlemsvariabel.
+    Det är från denna klass man drar ett kort.
+<p>
+
+<h3>CardHand</h3>
+<p>
+    Denna klassen representerar spelarens hand. När ett nytt kort dras genom DeckOfCards så läggs det till här.
+
+<p>
+
+<h3>BankHand</h3>
+<p>
+    Denna klassen representerar bankens hand och ärver från CardHand. Här kan man anropa "drawCards()"
+    för att dra x-antal kort som avgörs genom enkel logik. Samtliga kort dras alltså samtidigt.
+<p>
+
+
+<h3>Flowchart</h3>
+<a href="{{ asset('img/mvc-flowchart1.png') }}">
+    <img src="{{ asset('img/mvc-flowchart1.png') }}" width="450px" alt="">
+</a>
+
+
+<h3>Pseudocode</h3>
+<h4>Banks Turn</h4>
+<pre>
+    set score to 0
+
+    WHILE score is less than 17
+        draw another card
+        add the card to the hand
+        calculate hands total points
+        update score
+</pre>
+
+<h4>Calculate winner</h4>
+<pre>
+    set playerScoreDifference to difference from 21
+    set bankScoreDifference to difference from 21
+
+    IF playerScore is 21 THEN
+        Player won
+    ELSEIF playerScore is more than 21 THEN
+        Player lost
+    ELSEIF bankScore is 21 THEN
+        Bank won
+    ELSEIF bankScore is more than 21 THEN
+        Bank lost
+    ELSEIF playerScoreDifference is closer to 21 than bankScoreDifference THEN
+        Player won
+    ELSE
+        Player lost
+    ENDIF
+</pre>
+{% endblock %}

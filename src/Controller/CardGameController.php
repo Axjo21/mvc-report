@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+// modeller (klasserna) -> ha mycket kod
 use App\Card\Card;
 use App\Card\BetterCard;
 use App\Card\CardHand;
@@ -15,6 +16,7 @@ use Symfony\Component\HttpFoundation\Exception;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+// kontroller (routes) -> ha lite kod
 class CardGameController extends AbstractController
 {
     #[Route("/card", name: "card_start", methods: ['GET'])]
@@ -29,13 +31,18 @@ class CardGameController extends AbstractController
 
 
     #[Route("/card/deck", name: "card_deck", methods: ['GET'])]
-    //döp om function
     public function deck(
         SessionInterface $session
     ): Response {
+        if ($session->has('card_deck')) {
+            $cardDeck = $session->get('card_deck');
+        } else {
+            $cardDeck = new DeckOfCards();
+            $session->set('card_deck', $cardDeck);
+        }
         //$cardDeck = $session->get("card_deck");
-        $cardDeck = new DeckOfCards();
-        $session->set("card_deck", $cardDeck);
+        //$cardDeck = new DeckOfCards();
+        //$session->set("card_deck", $cardDeck);
         $data = [
             #"cardDeck" => $cardDeck->getValues()
             "ourDeck" => $cardDeck->getCards()
@@ -50,7 +57,13 @@ class CardGameController extends AbstractController
     public function shuffle(
         SessionInterface $session
     ): Response {
-        $cardDeck = new DeckOfCards();
+        if ($session->has('card_deck')) {
+            $cardDeck = $session->get('card_deck');
+        } else {
+            $cardDeck = new DeckOfCards();
+            $session->set('card_deck', $cardDeck);
+        }
+        //$cardDeck = new DeckOfCards();
 
         $cardDeck->shuffleDeck();
 

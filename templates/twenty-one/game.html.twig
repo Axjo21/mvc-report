@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Twenty One{% endblock %}
+
+{% block main %}
+<ul>
+    <li><a href="{{ path('game_home') }}">Landing page</li></a>
+    <li><a href="{{ path('game_doc') }}">Documentation</li></a>
+</ul>
+
+<h1>Twenty One</h1>
+
+<div class="game-div">
+    {% if drawnCard[0].suit == 'spades' %}
+        <span id="drawn-card" class="spades">{{ drawnCard[0].value }} </span>
+    {% elseif drawnCard[0].suit == 'hearts' %}
+        <span id="drawn-card" class="hearts">{{ drawnCard[0].value }} </span>
+    {% elseif drawnCard[0].suit == 'diamonds' %}
+        <span id="drawn-card" class="diamonds">{{ drawnCard[0].value }} </span>
+    {% elseif drawnCard[0].suit == 'clovers' %}
+        <span id="drawn-card" class="clovers">{{ drawnCard[0].value }} </span>
+    {% endif %}
+
+    <div class="game-hand">
+        {% for card in cardHand[:-1] %}
+            {% if card[1] == 'spades' %}
+                <span class="spades">{{ card[0] }} </span>
+            {% elseif card[1] == 'hearts' %}
+                <span class="hearts">{{ card[0] }} </span>
+            {% elseif card[1] == 'diamonds' %}
+                <span class="diamonds">{{ card[0] }} </span>
+            {% elseif card[1] == 'clovers' %}
+                <span class="clovers">{{ card[0] }} </span>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="game-util">
+        {% if cardPoints > 21 %}
+            <h2>YOU LOST!</h2>
+            <h3>Current points: {{ cardPoints }}</h3>
+        {% elseif cardPoints == 21 %}
+            <h2>YOU WON!</h2>
+            <h3>Current points: {{ cardPoints }}</h3>
+        {% else %}
+            <h3>Current points: {{ cardPoints }}</h3>
+            <a class="game-button" href="{{ path('game_draw') }}">Draw a Card</a>
+            <a class="game-button" href="{{ path('game_stop') }}">Stop</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

@@ -6,10 +6,12 @@ class Card
 {
     protected $value;
     public $suit;
-    public function __construct($value, $suit)
+    public $points;
+    public function __construct($value, $suit, $points)
     {
         $this->value = $value;
         $this->suit = $suit;
+        $this->points = $points;
     }
 
     public function getValue(): string

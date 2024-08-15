@@ -23,6 +23,26 @@ class ApiControllerJson extends AbstractController
         return $this->render('api.html.twig');
     }
 
+    #[Route("/api/game", name: "api_game", methods:["GET"])]
+    public function game(
+        SessionInterface $session
+    ): Response
+    {
+        $cardHand = $session->get('card_hand');
+        $bankHand = $session->get('bank_hand');
+
+        $data = [
+            "Player points" => $cardHand->getPoints(),
+            "Bank points" => $bankHand->getPoints()
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
     #[Route("/api/deck", name: "api_deck", methods:["GET"])]
     public function deck(
         SessionInterface $session

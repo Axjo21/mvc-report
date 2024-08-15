@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Twenty One{% endblock %}
+
+{% block main %}
+<ul>
+    <li><a href="{{ path('game_home') }}">Landing page</li></a>
+    <li><a href="{{ path('game_doc') }}">Documentation</li></a>
+</ul>
+
+<h1>Twenty One</h1>
+
+<div class="game-result">
+    {% set playerScoreDifference = 21 - cardPoints %}
+    {% set bankScoreDifference = 21 - bankPoints  %}
+
+    {% if bankPoints == 21 %}
+        <h2>BANK WON!</h2>
+    {% elseif bankPoints > 21 %}
+        <h2>YOU WON!</h2>
+    {% elseif playerScoreDifference < bankScoreDifference %}
+        <h2>YOU WON!</h2>
+    {% elseif playerScoreDifference > bankScoreDifference %}
+        <h2>YOU LOST!</h2>
+    {% elseif playerScoreDifference == bankScoreDifference %}
+        <h2>YOU BOTH SCORED THE SAME!</h2>
+    {% endif %}
+</div>
+
+
+<div class="game-box">
+    <h3>Player points: {{ cardPoints }}</h3>
+    {% for card in cardHand %}
+        {% if card[1] == 'spades' %}
+            <span class="spades">{{ card[0] }} </span>
+        {% elseif card[1] == 'hearts' %}
+            <span class="hearts">{{ card[0] }} </span>
+        {% elseif card[1] == 'diamonds' %}
+            <span class="diamonds">{{ card[0] }} </span>
+        {% elseif card[1] == 'clovers' %}
+            <span class="clovers">{{ card[0] }} </span>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+<div class="game-box">
+    <h3>Bank points: {{ bankPoints }}</h3>
+    {% for bankCard in bankHand %}
+        {% if bankCard[1] == 'spades' %}
+            <span class="spades">{{ bankCard[0] }} </span>
+        {% elseif bankCard[1] == 'hearts' %}
+            <span class="hearts">{{ bankCard[0] }} </span>
+        {% elseif bankCard[1] == 'diamonds' %}
+            <span class="diamonds">{{ bankCard[0] }} </span>
+        {% elseif bankCard[1] == 'clovers' %}
+            <span class="clovers">{{ bankCard[0] }} </span>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}
