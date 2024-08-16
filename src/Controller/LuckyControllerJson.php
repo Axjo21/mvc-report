@@ -21,11 +21,11 @@ class LuckyControllerJson extends AbstractController
 
         $number = random_int(0, 100);
 
-        if ($number <= 33) {
-            $quote = $firstQuote;
-        } elseif (33 <= $number && $number <= 66) {
+        $quote = $firstQuote;
+
+        if ($number < 33) {
             $quote = $secondQuote;
-        } elseif ($number >= 66) {
+        } elseif ($number > 66) {
             $quote = $thirdQuote;
         }
 

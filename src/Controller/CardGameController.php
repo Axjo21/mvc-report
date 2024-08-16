@@ -12,7 +12,9 @@ use App\Card\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Exception;
+//use Symfony\Component\HttpFoundation\Exception;
+use Exception;
+use RuntimeException;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -34,17 +36,17 @@ class CardGameController extends AbstractController
     public function deck(
         SessionInterface $session
     ): Response {
-        if ($session->has('card_deck')) {
-            $cardDeck = $session->get('card_deck');
-        } else {
+        $cardDeck = $session->get('card_deck');
+
+        if (!$cardDeck) {
             $cardDeck = new DeckOfCards();
             $session->set('card_deck', $cardDeck);
         }
-        //$cardDeck = $session->get("card_deck");
-        //$cardDeck = new DeckOfCards();
-        //$session->set("card_deck", $cardDeck);
+        if (!$cardDeck instanceof DeckOfCards) {
+            throw new RuntimeException('Session data does not match expected content.');
+        }
+
         $data = [
-            #"cardDeck" => $cardDeck->getValues()
             "ourDeck" => $cardDeck->getCards()
         ];
 
@@ -57,20 +59,21 @@ class CardGameController extends AbstractController
     public function shuffle(
         SessionInterface $session
     ): Response {
-        if ($session->has('card_deck')) {
-            $cardDeck = $session->get('card_deck');
-        } else {
+        $cardDeck = $session->get('card_deck');
+
+        if (!$cardDeck) {
             $cardDeck = new DeckOfCards();
             $session->set('card_deck', $cardDeck);
         }
-        //$cardDeck = new DeckOfCards();
+        if (!$cardDeck instanceof DeckOfCards) {
+            throw new RuntimeException('Session data does not match expected content.');
+        }
 
         $cardDeck->shuffleDeck();
 
         $session->set("card_deck", $cardDeck);
 
         $data = [
-            #"cardDeck" => $cardDeck->getValues()
             "ourDeck" => $cardDeck->getCards()
         ];
 
@@ -84,6 +87,10 @@ class CardGameController extends AbstractController
         SessionInterface $session
     ): Response {
         $cardDeck = $session->get('card_deck');
+
+        if (!$cardDeck instanceof DeckOfCards) {
+            throw new RuntimeException('Session data does not match expected content.');
+        }
 
         $drawnCard = $cardDeck-> drawCard();
         $cardsLeft = $cardDeck-> getNumberCards();
@@ -124,10 +131,15 @@ class CardGameController extends AbstractController
     ): Response {
         $cardDeck = $session->get('card_deck');
         $numCards = $session->get('num_cards');
+
+        if (!$cardDeck instanceof DeckOfCards) {
+            throw new RuntimeException('Session data does not match expected content.');
+        }
+
         $cardsLeft = $cardDeck-> getNumberCards();
 
         if ($numCards > $cardsLeft) {
-            throw new \Exception("Can not draw that many cards!");
+            throw new Exception("Can not draw that many cards!");
         }
 
         $drawnCards = [];

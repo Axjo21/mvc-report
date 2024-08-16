@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Exception;
+use RuntimeException;
+
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,17 +22,15 @@ class GameController extends AbstractController
 {
     // välkommen
     #[Route("/game", name: "game_home", methods: ['GET'])]
-    public function home(
-        SessionInterface $session
-    ): Response {
+    public function home(): Response
+    {
         return $this->render('twenty-one/home.html.twig');
     }
 
     // documentation
     #[Route("/game/doc", name: "game_doc", methods: ['GET'])]
-    public function doc(
-        SessionInterface $session
-    ): Response {
+    public function doc(): Response
+    {
         return $this->render('twenty-one/doc.html.twig');
     }
 
@@ -55,6 +55,10 @@ class GameController extends AbstractController
     ): Response {
         $cardDeck = $session->get('card_deck');
         $cardHand = $session->get('card_hand');
+
+        if (!$cardHand instanceof CardHand || !$cardDeck instanceof DeckOfCards) {
+            throw new RuntimeException('Session data does not match expected content.');
+        }
         $drawnCard = $cardDeck-> drawCard();
         $cardsLeft = $cardDeck-> getNumberCards();
         $cardHand->add($drawnCard);
@@ -78,6 +82,12 @@ class GameController extends AbstractController
     ): Response {
         $cardDeck = $session->get('card_deck');
         $cardHand = $session->get('card_hand');
+
+
+        if (!$cardHand instanceof CardHand || !$cardDeck instanceof DeckOfCards) {
+            throw new RuntimeException('Session data does not match expected content.');
+        }
+
         $bankHand = new BankHand($cardDeck);
 
         // dra kort genom bank-klassen som i sin tur drar genom deck-klassen

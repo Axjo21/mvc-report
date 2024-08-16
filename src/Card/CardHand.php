@@ -3,10 +3,14 @@
 namespace App\Card;
 
 use App\Card\Card;
+use App\Card\BetterCard;
 
 class CardHand
 {
-    protected $hand = [];
+    /**
+     * @var BetterCard[]
+     */
+    protected array $hand = [];
 
     public function add(BetterCard $card): void
     {
@@ -18,6 +22,11 @@ class CardHand
         return count($this->hand);
     }
 
+    /**
+     * Såhär skriver man eftersom det returneras en array med arrayer som items
+     * och de arrayerna har strings i dem.
+     * @return String[][]
+     */
     public function getValues(): array
     {
         $values = [];

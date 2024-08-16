@@ -4,10 +4,10 @@ namespace App\Card;
 
 class Card
 {
-    protected $value;
-    public $suit;
-    public $points;
-    public function __construct($value, $suit, $points)
+    protected string $value;
+    public string $suit;
+    public int $points;
+    public function __construct(string $value, string $suit, int $points)
     {
         $this->value = $value;
         $this->suit = $suit;
@@ -18,6 +18,10 @@ class Card
     {
         return $this->value;
     }
+
+    /**
+     * @return string[]
+     */
     public function getDetails(): array
     {
         return [$this->value, $this->suit];

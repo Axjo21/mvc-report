@@ -5,12 +5,16 @@ namespace App\Controller;
 use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\CardHand;
+use App\Card\BankHand;
+
 use App\Card\DeckOfCards;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Exception;
+//use Symfony\Component\HttpFoundation\Exception;
+use Exception;
+use RuntimeException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,11 +30,13 @@ class ApiControllerJson extends AbstractController
     #[Route("/api/game", name: "api_game", methods:["GET"])]
     public function game(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $cardHand = $session->get('card_hand');
         $bankHand = $session->get('bank_hand');
 
+        if (!$cardHand instanceof CardHand ||!$bankHand instanceof BankHand) {
+            throw new RuntimeException('Session data does not match expected content.');
+        }
         $data = [
             "Player points" => $cardHand->getPoints(),
             "Bank points" => $bankHand->getPoints()
@@ -86,6 +92,11 @@ class ApiControllerJson extends AbstractController
         SessionInterface $session
     ): Response {
         $cardDeck = $session->get('card_deck');
+
+        if (!$cardDeck instanceof DeckOfCards) {
+            throw new RuntimeException('Session data does not match expected content.');
+        }
+
         $drawnCard = $cardDeck-> drawCard();
         $cardsLeft = $cardDeck-> getNumberCards();
         $session->set("card_deck", $cardDeck);
@@ -110,9 +121,14 @@ class ApiControllerJson extends AbstractController
         int $num = 1
     ): Response {
         $cardDeck = $session->get('card_deck');
+
+        if (!$cardDeck instanceof DeckOfCards) {
+            throw new RuntimeException('Session data does not match expected content.');
+        }
+
         $cardsLeft = $cardDeck-> getNumberCards();
         if ($num > $cardsLeft) {
-            throw new \Exception("Can not draw that many cards!");
+            throw new Exception("Can not draw that many cards!");
         }
         $hand = new CardHand();
         for ($i = 1; $i <= $num; $i++) {

@@ -7,7 +7,10 @@ use App\Card\BetterCard;
 
 class DeckOfCards extends BetterCard
 {
-    protected $deck;
+    /**
+     * @var BetterCard[]
+     */
+    protected array $deck;
 
     public function __construct()
     {
@@ -43,6 +46,9 @@ class DeckOfCards extends BetterCard
         $this->deck = array_merge($spades, $hearts, $clovers, $diamonds);
     }
 
+    /**
+     * @return BetterCard[]
+     */
     public function getCards(): array
     {
         $values = [];
@@ -52,6 +58,9 @@ class DeckOfCards extends BetterCard
         return $values;
     }
 
+    /**
+     * @return String[]
+     */
     public function getValues(): array
     {
         $values = [];
@@ -61,9 +70,12 @@ class DeckOfCards extends BetterCard
         return $values;
     }
 
-    public function getSuit($value): array
+    /**
+     * @return String[]
+     */
+    public function getSuit(): array
     {
-        $colors = [];
+        $suits = [];
         foreach ($this->deck as $cards) {
             $suits[] = $cards->suit;
         }
@@ -100,9 +112,10 @@ class DeckOfCards extends BetterCard
         return $newCard;
     }
 
-    public function remove($card): void
+    public function remove(BetterCard $card): void
     {
-        if (($key = array_search($card, $this->deck)) !== false) {
+        $key = array_search($card, $this->deck);
+        if ($key !== false) {
             unset($this->deck[$key]);
         }
     }
