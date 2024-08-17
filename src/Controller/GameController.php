@@ -83,19 +83,13 @@ class GameController extends AbstractController
         $cardDeck = $session->get('card_deck');
         $cardHand = $session->get('card_hand');
 
-
         if (!$cardHand instanceof CardHand || !$cardDeck instanceof DeckOfCards) {
             throw new RuntimeException('Session data does not match expected content.');
         }
 
         $bankHand = new BankHand($cardDeck);
-
-        // dra kort genom bank-klassen som i sin tur drar genom deck-klassen
         $bankHand ->drawCards();
         $session->set("bank_hand", $bankHand);
-
-        // uppdatera (onödig)
-        //$session->set("bank_hand", $bankHand);
 
         $data = [
             "cardHand" => $cardHand->getValues(),
