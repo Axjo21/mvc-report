@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Dice;
+
+use PHPUnit\Framework\TestCase;
+
+/**
+ * Test cases for class Dice.
+ */
+class MockedDieTest extends TestCase
+{
+
+    /**
+     * Create a mocked object that always returns 6.
+     */
+    public function testStubRollDiceLastRoll()
+    {
+        // Create a stub for the Dice class.
+        $stub = $this->createMock(Dice::class);
+
+        // Configure the stub.
+        $stub->method('roll')
+            ->willReturn(6);
+
+        $res = $stub->roll();
+        $exp = 6;
+        $this->assertEquals($exp, $res);
+    }
+
+
+    /**
+     * Stub the dices to assure the value can be asserted.
+     */
+    public function testAddStubbedDices()
+    {
+        // Create a stub for the Dice class.
+        $stub = $this->createMock(Dice::class);
+
+        // Configure the stub.
+        $stub->method('roll')
+            ->willReturn(6);
+        $stub->method('lastRoll')
+            ->willReturn(6);
+
+        $dicehand = new DiceHand();
+        $dicehand->addDice(clone $stub);
+        $dicehand->addDice(clone $stub);
+        $dicehand->roll();
+        $res = $dicehand->sum();
+        $this->assertEquals(12, $res);
+    }
+}
