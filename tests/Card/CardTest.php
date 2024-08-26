@@ -9,7 +9,7 @@ use App\Card\Card;
 /**
  * Test cases for class Card.
  */
-final class TestCard extends TestCase
+final class CardTest extends TestCase
 {
     /**
      * Construct object and verify that the object has the expected
@@ -20,9 +20,12 @@ final class TestCard extends TestCase
         $card = new Card('🂮', 'spades', 13);
         $this->assertInstanceOf("\App\Card\Card", $card);
 
-        $card_value = $card->getValue();
+        $cardValue = $card->getValue();
 
-        $this->assertSame('🂮', $card_value);
+        // assertSame:
+        //  "Reports an error identified by $message
+        // if the two variables $expected and $actual do not have the same type and value." - phpunit
+        $this->assertSame('🂮', $cardValue);
     }
 
     /**
@@ -34,8 +37,8 @@ final class TestCard extends TestCase
         $card = new Card('🂮', 'spades', 13);
         $this->assertInstanceOf("\App\Card\Card", $card);
 
-        $card_details = $card->getDetails();
+        $cardDetails = $card->getDetails();
 
-        $this->assertSame(['🂮', 'spades'], $card_details);
+        $this->assertSame(['🂮', 'spades'], $cardDetails);
     }
 }

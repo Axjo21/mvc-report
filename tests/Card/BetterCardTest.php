@@ -9,7 +9,7 @@ use App\Card\BetterCard;
 /**
  * Test cases for class BetterCard.
  */
-final class TestBetterCard extends TestCase
+final class BetterCardTest extends TestCase
 {
 
     /**
@@ -22,9 +22,9 @@ final class TestBetterCard extends TestCase
         $this->assertInstanceOf("\App\Card\BetterCard", $card);
 
         $card->setValue("something");
-        $card_value = $card->getValue();
+        $cardValue = $card->getValue();
 
-        $this->assertSame('something', $card_value);
+        $this->assertSame('something', $cardValue);
     }
 
     /**
@@ -37,8 +37,8 @@ final class TestBetterCard extends TestCase
         $this->assertInstanceOf("\App\Card\BetterCard", $card);
 
         $card->setPoints(2);
-        $card_points = $card->getPoints();
+        $cardPoints = $card->getPoints();
 
-        $this->assertSame(2, $card_points);
+        $this->assertSame(2, $cardPoints);
     }
 }
