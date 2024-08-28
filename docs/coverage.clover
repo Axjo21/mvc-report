@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1724880744">
-  <project timestamp="1724880744">
+<coverage generated="1724883695">
+  <project timestamp="1724883695">
     <file name="/Users/axeljonsson/dbwebb-kurser/mvc/me/report/src/Card/BankHand.php">
       <class name="App\Card\BankHand" namespace="global">
         <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
@@ -34,15 +34,15 @@
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
       </class>
-      <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="16"/>
-      <line num="12" type="stmt" count="16"/>
-      <line num="13" type="stmt" count="16"/>
-      <line num="14" type="stmt" count="16"/>
-      <line num="17" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="19" type="stmt" count="2"/>
-      <line num="25" type="method" name="getDetails" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="27" type="stmt" count="2"/>
-      <metrics loc="30" ncloc="27" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
+      <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="16"/>
+      <line num="18" type="stmt" count="16"/>
+      <line num="19" type="stmt" count="16"/>
+      <line num="20" type="stmt" count="16"/>
+      <line num="26" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="28" type="stmt" count="2"/>
+      <line num="35" type="method" name="getDetails" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="37" type="stmt" count="2"/>
+      <metrics loc="40" ncloc="27" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
     </file>
     <file name="/Users/axeljonsson/dbwebb-kurser/mvc/me/report/src/Card/CardHand.php">
       <class name="App\Card\CardHand" namespace="global">
@@ -413,6 +413,6 @@
       </class>
       <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="12" loc="860" ncloc="784" classes="11" methods="49" coveredmethods="24" conditionals="0" coveredconditionals="0" statements="291" coveredstatements="85" elements="340" coveredelements="109"/>
+    <metrics files="12" loc="870" ncloc="784" classes="11" methods="49" coveredmethods="24" conditionals="0" coveredconditionals="0" statements="291" coveredstatements="85" elements="340" coveredelements="109"/>
   </project>
 </coverage>

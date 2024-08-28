@@ -136,7 +136,57 @@
     </p>
 
     <h2><a id="kmom04">Kmom04</a></h2>
-    <p></p>
+    <p>-- Berätta hur du upplevde att skriva kod som testar annan kod med PHPUnit och hur du upplever phpunit rent allmänt.</p>
+    <p>Jag tycker om att skriva tester för min kod, enhetstester specifikt. </p>
+    <p>
+        PHPUnit var relativt lätt att använda sålänge man tittade i dokumentationen,
+        jag refererade ofta till delen kring assertions när jag skrev mina tester.
+        Jag tycker om att man kunde få se statistik kring ens kodtäckning med hjälp av xdebug,
+        men jag hade önskat att man också såg någon liknande rapport i terminalen.
+    </p>
+
+
+    <p>-- Hur väl lyckades du med kodtäckningen av din kod, lyckades du nå mer än 90% kodtäckning?</p>
+    <p>
+        Jag lyckades nå 100% kodtäckning på alla mina modell klasser. Man kan dock konstatera att det inte betyder att min test suite inte kan förbättras. 
+        Det kan vara lätt att se på 100% kodtäckning och känna sig nöjd, men vad är det igentligen som testas?
+    </p>
+    <p>
+        100% kodtäckning betyder ju att testerna har kört varje rad kod iallafall en gång,
+        men det säger en ingenting om att testerna faktiskt testar den tänkta funktionaliteten av koden.
+        För att förtydliga; efter att man anropat den publika metoden som man vill testa i sitt enhetstest, så räknas det in i kodtäckningen.
+        Vad man sedan använder för assert är alltså inte relevant utifrån en kodtäcknings synvinkel, vilket något underminerar själva meningen med testet. 
+    </p>
+
+    <p>
+        -- Upplever du din egen kod som “testbar kod”
+        eller finns det delar i koden som är mer eller mindre testbar och finns det saker som kan göras för att förbättra kodens testbarhet?
+    </p>
+    <p>
+        Jag tycker att min kod är testbar. En riskfaktor med min kod är att en del metoder anropar andra metoder,
+        tillexempel så anropas "shuffle" metoden när man kör "drawCard" metoden i DeckOfCards.
+        Skulle "shuffle" metoden orsaka ett fel så kan det leda till att enhetstestet för "drawCard" också misslyckas.
+        Jag motverkade detta genom att testa de metoder som var fullständigt självständiga först.
+    </p>
+
+    <p>-- Valde du att skriva om delar av din kod för att förbättra den eller göra den mer testbar, om så berätta lite hur du tänkte.</p>
+    <p>Nej, jag skrev inte om min kod. </p>
+
+    <p>-- Fundera över om du anser att testbar kod är något som kan identifiera “snygg och ren kod”.</p>
+    <p>
+        Jag tycker absolut att testbar kod är en del av "snygg och ren kod", men snygg kod handlar om mer än bara dess testbarhet.
+        Skriver man testbar kod så är det ett tecken på att koden är lätt att förstå,
+        kanske eftersom att den är välstrukturerad eller eftersom den är dokumenterad.
+        Det är även ett tecken på att den inte är allt för komplicerad eller invecklad,
+        något som man motverkar när man tar till designprinciper som MVC, vilket något som enligt mig också är en del av "snygg och ren kod".
+    </p>
+
+    <p>-- Vilken är din TIL för detta kmom?</p>
+    <p>
+        Att när man testar så handlar det inte endast om i vilken grad man uppnår hög kodtäckning eller ej,
+        utan det handlar lika mycket om hur väl genomtänka de testerna man skriver är.
+    </p>
+
 
     <h2><a id="kmom05">Kmom05</a></h2>
     <p></p>

@@ -23,12 +23,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\BetterCard",
             "name": "BetterCard",
-            "summary": "",
+            "summary": "En\u0020avskalad\u0020klass\u0020som\u0020hanterar\u0020v\u00E4rde\u0020och\u0020detaljer\u0020tillh\u00F6rande\u0020korten.",
             "url": "classes/App-Card-BetterCard.html"
         },                {
             "fqsen": "\\App\\Card\\BetterCard\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Construct\u0020the\u0020values",
             "url": "classes/App-Card-BetterCard.html#method___construct"
         },                {
             "fqsen": "\\App\\Card\\BetterCard\u003A\u003AsetValue\u0028\u0029",
@@ -48,22 +48,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Card",
             "name": "Card",
-            "summary": "",
+            "summary": "En\u0020avskalad\u0020klass\u0020som\u0020hanterar\u0020v\u00E4rde\u0020och\u0020detaljer\u0020tillh\u00F6rande\u0020korten.",
             "url": "classes/App-Card-Card.html"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Construct\u0020the\u0020values",
             "url": "classes/App-Card-Card.html#method___construct"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AgetValue\u0028\u0029",
             "name": "getValue",
-            "summary": "",
+            "summary": "Get\u0020value",
             "url": "classes/App-Card-Card.html#method_getValue"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AgetDetails\u0028\u0029",
             "name": "getDetails",
-            "summary": "",
+            "summary": "Get\u0020value\u0020and\u0020suit\u0020as\u0020items\u0020in\u0020an\u0020array",
             "url": "classes/App-Card-Card.html#method_getDetails"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003A\u0024value",
@@ -113,12 +113,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards",
             "name": "DeckOfCards",
-            "summary": "",
+            "summary": "En\u0020avskalad\u0020klass\u0020som\u0020hanterar\u0020v\u00E4rde\u0020och\u0020detaljer\u0020tillh\u00F6rande\u0020korten.",
             "url": "classes/App-Card-DeckOfCards.html"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Construct\u0020the\u0020values",
             "url": "classes/App-Card-DeckOfCards.html#method___construct"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003AgetCards\u0028\u0029",
