@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library{% endblock %}
+
+
+{% block main %}
+    <h1>All books</h1>
+    <nav class="secondary-nav">
+        <ul>
+            <li class="nav-li"><a class="nav-a" href="{{ path('library') }}">Library home</a></li>
+            <li class="nav-li"><a class="nav-a" href="{{ path('library_show_all') }}">All books</a></li>
+            <li class="nav-li"><a class="nav-a" href="{{ path('library_create_new') }}">Create new book</a></li>
+        </ul>
+    </nav>
+    <br>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Isbn</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.isbn }}</td>
+                    <td>
+                        {% if book.image %}
+                            <img src="{{ book.image }}" alt="{{ book.title }}" style="max-width: 70px;">
+                        {% else %}
+                            No image available
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

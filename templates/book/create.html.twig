@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library{% endblock %}
+
+
+{% block main %}
+    <h1>Create new book</h1>
+    <nav class="secondary-nav">
+        <ul>
+            <li class="nav-li"><a class="nav-a" href="{{ path('library') }}">Library home</a></li>
+            <li class="nav-li"><a class="nav-a" href="{{ path('library_view_all') }}">All books</a></li>
+            <li class="nav-li"><a class="nav-a" href="{{ path('library_create_new') }}">Create new book</a></li>
+        </ul>
+    </nav>
+    <br>
+
+
+    <form method="post" action="{{ path('library_create') }}">
+        <label for="book_title">Title</label>
+        <input type="string" name="book_title">
+
+        <label for="book_author">Author</label>
+        <input type="string" name="book_author">
+
+        <label for="book_isbn">ISBN</label>
+        <input type="string" name="book_isbn">
+
+        <input type="submit" name="do_it" value="Create">
+    </form>
+
+
+{% endblock %}
