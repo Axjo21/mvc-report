@@ -7,17 +7,19 @@
     <h1>All books</h1>
     <nav class="secondary-nav">
         <ul>
-            <li class="nav-li"><a class="nav-a" href="{{ path('library') }}">Library home</a></li>
-            <li class="nav-li"><a class="nav-a" href="{{ path('library_show_all') }}">All books</a></li>
-            <li class="nav-li"><a class="nav-a" href="{{ path('library_create_new') }}">Create new book</a></li>
+            <li class="nav-item"><a class="nav-b" href="{{ path('library') }}">Library home</a></li>
+            <li class="nav-item"><a class="nav-b" href="{{ path('library_view_all') }}">All books</a></li>
+            <li class="nav-item"><a class="nav-b" href="{{ path('library_show_all') }}">All books (json)</a></li>
+            <li class="nav-item"><a class="nav-b" href="{{ path('library_create_new') }}">Create new book</a></li>
         </ul>
     </nav>
     <br>
 
 
-    <table>
+    <table class="book-table">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Isbn</th>
@@ -27,10 +29,11 @@
         <tbody>
             {% for book in books %}
                 <tr>
-                    <td>{{ book.title }}</td>
-                    <td>{{ book.author }}</td>
-                    <td>{{ book.isbn }}</td>
-                    <td>
+                    <td class="book-td">{{ book.id }}</td>
+                    <td class="book-td">{{ book.title }}</td>
+                    <td class="book-td">{{ book.author }}</td>
+                    <td class="book-td">{{ book.isbn }}</td>
+                    <td class="book-td">
                         {% if book.image %}
                             <img src="{{ book.image }}" alt="{{ book.title }}" style="max-width: 70px;">
                         {% else %}

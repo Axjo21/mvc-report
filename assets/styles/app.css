@@ -23,14 +23,14 @@ main {
 
 .site-title{
     font-size: 3em;
-    color: white;
+    color: rgb(39, 98, 39);
     padding: 10px;
 }
 
 .site-header {
     max-width: 100%;
-    max-height: 20%;
-    min-height: 15%;
+    max-height: 100%;
+    min-height: 100%;
 }
 
 header {
@@ -42,7 +42,7 @@ footer {
     width: 100%;
     font-size: 1.8em;
     padding: 0.5em;
-    background-color: rgb(56, 56, 125);
+    background-color: rgb(39, 98, 39);
     color: white;
 }
 
@@ -63,7 +63,7 @@ h1 {
 }
 
 .nav-a {
-    color:rgb(255, 255, 255);
+    color:rgb(199, 217, 196);
     font-style: none;
     font-size: 1.5em;
     text-align: center;
@@ -72,7 +72,7 @@ h1 {
 }
 
 a:hover {
-    color:rgb(112, 111, 111);
+    color:rgb(215, 230, 212);
 }
 
 .lucky {
@@ -186,4 +186,32 @@ a:hover {
 
 .game-info {
     width: 35%;
+}
+
+
+.secondary-nav {
+    margin: 0px;
+    font-size: large;
+    padding: 10px;
+    padding-left: 5%;
+}
+
+.nav-item {
+    float: left;
+    margin: 5px;
+}
+
+.nav-b {
+    color: rgb(39, 50, 39);
+    font-size: 1.2em;
+    padding: 0.5em;
+}
+
+
+.book-table {
+    border-radius: 10px;
+}
+
+.book-td {
+    border: solid black 1px;
 }
