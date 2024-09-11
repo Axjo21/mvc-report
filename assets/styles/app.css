@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0 auto;
     background-color: rgb(56, 56, 56);
@@ -9,6 +10,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
 
 main {
     margin: 0 auto;
@@ -21,11 +23,13 @@ main {
     flex: 1;
 }
 
+
 .site-title{
     font-size: 3em;
     color: rgb(39, 98, 39);
     padding: 10px;
 }
+
 
 .site-header {
     max-width: 100%;
@@ -33,10 +37,12 @@ main {
     min-height: 100%;
 }
 
+
 header {
     min-height: 25%;
     margin-bottom: 10px;
 }
+
 
 footer {
     width: 100%;
@@ -46,9 +52,11 @@ footer {
     color: white;
 }
 
+
 h1 {
     border-bottom: 4px double #333e67;
 }
+
 
 .main-nav {
     margin: 0px;
@@ -57,10 +65,12 @@ h1 {
     padding-left: 25%;
 }
 
+
 .nav-li {
     float: left;
     margin: 5px;
 }
+
 
 .nav-a {
     color:rgb(199, 217, 196);
@@ -71,9 +81,11 @@ h1 {
     margin-right: 15px;
 }
 
-a:hover {
+
+.nav-a:hover {
     color:rgb(215, 230, 212);
 }
+
 
 .lucky {
     background-color:yellowgreen;
@@ -83,6 +95,7 @@ a:hover {
 .col-article {
     display: flex;
 }
+
 
 .column {
     flex: 50%;
@@ -97,15 +110,19 @@ a:hover {
     border-color: #c3e6cb;
 }
 
+
 .flash-notice {
     padding: 0.5em;
     color: #004085;
     background-color: #cce5ff;
     border-color: #b8daff;
 }
+
+
 .flash-notice:before {
     content: "ⓘ";
 }
+
 
 .flash-warning {
     padding: 0.5em;
@@ -113,9 +130,12 @@ a:hover {
     background-color: #fff3cd;
     border-color: #ffeeba;
 }
+
+
 .flash-warning:before {
     content: "⚠";
 }
+
 
 .flash-error {
     padding: 0.5em;
@@ -124,28 +144,34 @@ a:hover {
     border-color: #f5c6cb;
 }
 
+
 .card {
     font-size: 5.8em;
 }
+
 
 #drawn-card {
     font-size: 16em;
     justify-self: center;
 }
 
+
 .spades {
     font-size: 5.8em;
 }
+
 
 .hearts {
     font-size: 5.8em;
     color: red;
 }
 
+
 .diamonds {
     font-size: 5.8em;
     color: red;
 }
+
 
 .clovers {
     font-size: 5.8em;
@@ -159,15 +185,18 @@ a:hover {
     color: white;
 }
 
+
 .game-button:hover {
     background-color: #2f5bab;
     color: white;
 }
 
+
 .game-result {
     display: grid;
     justify-content: center;
 }
+
 
 .game-box {
     border: solid rgb(125, 125, 125);
@@ -175,14 +204,17 @@ a:hover {
     padding: 10px;
 }
 
+
 .game-div {
     display: grid;
     justify-content: center;
 }
 
+
 .game-hand {
     margin: -50px 0 50px 0;
 }
+
 
 .game-info {
     width: 35%;
@@ -194,12 +226,23 @@ a:hover {
     font-size: large;
     padding: 10px;
     padding-left: 5%;
+    display: flex;
+    width: 60%;
+    margin-left: 20%;
 }
+
+
+.nav-items {
+    align-items: stretch;
+}
+
 
 .nav-item {
     float: left;
     margin: 5px;
+    list-style-type: none;
 }
+
 
 .nav-b {
     color: rgb(39, 50, 39);
@@ -208,10 +251,79 @@ a:hover {
 }
 
 
-.book-table {
-    border-radius: 10px;
+.nav-b:hover {
+    color: rgb(122, 198, 122);
+    font-size: 1.2em;
+    padding: 0.5em;
 }
 
+
+.book-table {
+    border-radius: 10px;
+    width: 90%;
+    margin-left: 5%;
+}
+
+
+.book-tr:nth-child(even) {
+    background-color: #edecec;
+}
+
+
+.book-tr:nth-child(odd) {
+    background-color: #c1c1c1;
+}
+
+
+.book-th {
+    background-color: #98a79c;
+    border: solid rgb(33, 34, 33) 1px;
+    padding: 15px;
+    font-size: 18px;
+}
+
+
 .book-td {
-    border: solid black 1px;
+    border: solid rgb(61, 63, 61) 1px;
+    padding: 8px;
+}
+
+
+.book-image {
+    height: 10px;
+    max-height: 100px;
+}
+
+
+.create-book-div {
+    width: 25%;
+    margin-left: 37.5%;
+}
+
+
+.book-form-label {
+    font-style: heavy;
+    font-size: 20px;
+}
+
+
+.book-form-input {
+    padding: 5px;
+    margin: 0 0 25px 0;
+    border-radius: 5px;
+    width: 300px;
+}
+
+
+.book-form-submit {
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+    background-color: #2662a5;
+    color: white;
+    font-size: 20px;
+}
+
+.book-form-submit:hover {
+    background-color: #347ed2;
 }

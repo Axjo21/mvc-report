@@ -148,7 +148,7 @@ class BookController extends AbstractController
 
 
     # SHOW ALL (JSON respons)
-    #[Route('/library/show', name: 'library_show_all')]
+    #[Route('/api/library/show', name: 'api_library')]
     public function showAllBook(
         BookRepository $bookRepository
     ): Response {
@@ -163,7 +163,8 @@ class BookController extends AbstractController
 
 
     # SHOW SINGLE (JSON respons)
-    #[Route('/library/show/{id}', name: 'library_by_id')]
+    # gör om så att man hittar genom ISBN istället för id
+    #[Route('/api/library/show/{id}', name: 'api_library_isbn')]
     public function showBookById(
         BookRepository $bookRepository,
         int $id

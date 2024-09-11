@@ -6,15 +6,15 @@
 {% block main %}
     <h1>Library</h1>
         <nav class="secondary-nav">
-            <ul>
+            <ul class="nav-items">
                 <li class="nav-item"><a class="nav-b" href="{{ path('library') }}">Library home</a></li>
                 <li class="nav-item"><a class="nav-b" href="{{ path('library_view_all') }}">All books</a></li>
-                <li class="nav-item"><a class="nav-b" href="{{ path('library_show_all') }}">All books (json)</a></li>
+                <li class="nav-item"><a class="nav-b" href="{{ path('api_library') }}">Library API</a></li>
                 <li class="nav-item"><a class="nav-b" href="{{ path('library_create_new') }}">Create new book</a></li>
             </ul>
         </nav>
         <h2>Welcome to the library!</h2>
-        <pre>Navigate around by using the links. Try to create a new book, update it, view it and finally delete it.</pre>
+        <p>Navigate around by using the links. Try to create a new book, update it, view it and finally delete it.</p>
 
 
 {% endblock %}

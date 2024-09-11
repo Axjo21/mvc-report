@@ -6,28 +6,29 @@
 {% block main %}
     <h1>Create new book</h1>
     <nav class="secondary-nav">
-        <ul>
+        <ul class="nav-items">
             <li class="nav-item"><a class="nav-b" href="{{ path('library') }}">Library home</a></li>
             <li class="nav-item"><a class="nav-b" href="{{ path('library_view_all') }}">All books</a></li>
-            <li class="nav-item"><a class="nav-b" href="{{ path('library_show_all') }}">All books (json)</a></li>
+            <li class="nav-item"><a class="nav-b" href="{{ path('api_library') }}">Library API</a></li>
             <li class="nav-item"><a class="nav-b" href="{{ path('library_create_new') }}">Create new book</a></li>
         </ul>
     </nav>
     <br>
+    <div class="create-book-div">
+        <h3>Create a new book!</h3>
+        <form method="post" action="{{ path('library_create') }}">
+            <label class="book-form-label" for="book_title">Title</label><br>
+            <input class="book-form-input" type="string" name="book_title"><br>
 
+            <label class="book-form-label" for="book_author">Author</label><br>
+            <input class="book-form-input" type="string" name="book_author"><br>
 
-    <form method="post" action="{{ path('library_create') }}">
-        <label for="book_title">Title</label>
-        <input type="string" name="book_title">
+            <label class="book-form-label" for="book_isbn">ISBN</label><br>
+            <input class="book-form-input" type="string" name="book_isbn"><br>
 
-        <label for="book_author">Author</label>
-        <input type="string" name="book_author">
-
-        <label for="book_isbn">ISBN</label>
-        <input type="string" name="book_isbn">
-
-        <input type="submit" name="do_it" value="Create">
-    </form>
+            <input class="book-form-submit" type="submit" name="do_it" value="Create">
+        </form>
+    </div>
 
 
 {% endblock %}
