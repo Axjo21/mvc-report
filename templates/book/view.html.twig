@@ -28,7 +28,7 @@
         </thead>
         <tbody>
             {% for book in books %}
-                <tr class="book-tr">
+                <tr class="book-tr" onclick="window.location.href='{{ path('library_view_by_id', {'id': book.id}) }}';" style="cursor: pointer;">
                     <td class="book-td">{{ book.id }}</td>
                     <td class="book-td">{{ book.title }}</td>
                     <td class="book-td">{{ book.author }}</td>

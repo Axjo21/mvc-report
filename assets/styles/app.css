@@ -275,8 +275,13 @@ h1 {
 }
 
 
+.book-tr:hover {
+    background-color: #8faa8a;
+}
+
+
 .book-th {
-    background-color: #98a79c;
+    background-color: #728d6c;
     border: solid rgb(33, 34, 33) 1px;
     padding: 15px;
     font-size: 18px;
@@ -284,6 +289,30 @@ h1 {
 
 
 .book-td {
+    border: solid rgb(61, 63, 61) 1px;
+    padding: 8px;
+}
+
+
+.sing-book-tr {
+    background-color: #edecec;
+}
+
+
+.sing-book-tr-a:hover {
+    background-color: #86a081;
+}
+
+
+.sing-book-th {
+    background-color: #98a79c;
+    border: solid rgb(33, 34, 33) 1px;
+    padding: 15px;
+    font-size: 18px;
+}
+
+
+.sing-book-td {
     border: solid rgb(61, 63, 61) 1px;
     padding: 8px;
 }
@@ -325,5 +354,20 @@ h1 {
 }
 
 .book-form-submit:hover {
+    background-color: #347ed2;
+}
+
+#book-update-btn {
+    margin: 10px;
+    margin-left: 45%;
+    padding: 6px;
+    border-radius: 5px;
+    width: 120px;
+    background-color: #2662a5;
+    color: white;
+    font-size: 19px;
+}
+
+#book-update-btn:hover {
     background-color: #347ed2;
 }

@@ -82,6 +82,12 @@ class BookController extends AbstractController
     ): Response {
         $book = $bookRepository
             ->find($id);
+        
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id '.$id
+            );
+        }
 
         $data = [
             'book' => $book
@@ -92,11 +98,34 @@ class BookController extends AbstractController
 
 
     # UPDATE
-    #[Route('/library/update/{id}/{value}', name: 'library_update')]
+    #[Route('/library/update_book/{id}', name: 'library_update_book')]
+    public function updateSingleBook(
+        BookRepository $bookRepository,
+        int $id
+    ): Response {
+        $book = $bookRepository
+            ->find($id);
+
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id '.$id
+            );
+        }
+
+        $data = [
+            'book' => $book
+        ];
+
+
+        return $this->render('book/update.html.twig', $data);
+    }
+
+    # UPDATE (actually update)
+    #[Route('/library/update/{id}', name: 'library_update')]
     public function updateBook(
         ManagerRegistry $doctrine,
         int $id,
-        int $title
+        Request $request
     ): Response {
         $entityManager = $doctrine->getManager();
         $book = $entityManager->getRepository(Book::class)->find($id);
@@ -106,11 +135,17 @@ class BookController extends AbstractController
                 'No book found for id '.$id
             );
         }
+        $title = $request->request->get('title');
+        $author = $request->request->get('author');
+        $isbn = $request->request->get('isbn');
 
         $book->setTitle($title);
+        $book->setAuthor($author);
+        $book->setIsbn($isbn);
+
         $entityManager->flush();
 
-        return $this->redirectToRoute('library_show_all');
+        return $this->redirectToRoute('library_view_by_id', ['id' => $id]);
     }
 
 
