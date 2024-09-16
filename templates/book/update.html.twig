@@ -7,16 +7,15 @@
     <h1>Update book</h1>
     <nav class="secondary-nav">
         <ul class="nav-items">
-            <li class="nav-item"><a class="nav-b" href="{{ path('library') }}">Library home</a></li>
+            <li class="nav-item"><a class="nav-b" href="{{ path('library') }}">Home</a></li>
             <li class="nav-item"><a class="nav-b" href="{{ path('library_view_all') }}">All books</a></li>
-            <li class="nav-item"><a class="nav-b" href="{{ path('api_library') }}">Library API</a></li>
             <li class="nav-item"><a class="nav-b" href="{{ path('library_create_new') }}">Create new book</a></li>
         </ul>
     </nav>
     <br>
     <div class="create-book-div">
         <h3>Update book here!</h3>
-        <form method="post" action="{{ path('library_update', {'id': book.id}) }}">
+        <form enctype="multipart/form-data" method="post" action="{{ path('library_update', {'id': book.id}) }}">
             <label class="book-form-label" for="title">Title</label><br>
             <input class="book-form-input" type="string" name="title" value="{{ book.title }}"><br>
 
@@ -25,6 +24,12 @@
 
             <label class="book-form-label" for="isbn">ISBN</label><br>
             <input class="book-form-input" type="string" name="isbn" value="{{ book.isbn }}"><br>
+
+            <label class="book-form-label" for="book_image_update">Image:</label><br>
+            <!-- MAX_FILE_SIZE must precede the file input field -->
+            <input type="hidden" name="MAX_FILE_SIZE" value="90000000" />
+            <!-- Name of input element determines name in $_FILES array -->
+            <input class="book-form-input" type="file" name="book_image_update" />
 
             <input class="book-form-submit" type="submit" name="do_it" value="Update">
         </form>

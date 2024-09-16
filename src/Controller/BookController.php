@@ -42,11 +42,27 @@ class BookController extends AbstractController
         $entityManager = $doctrine->getManager();
         $book = new Book();
 
-        #$book = $entityManager->getRepository(Book::class)->findOneBy([], ['id' => 'DESC']);
 
         $title = $request->request->get('book_title');
         $author = $request->request->get('book_author');
         $isbn = $request->request->get('book_isbn');
+        $imageFile = $request->files->get('book_image');
+
+
+
+        // check if image is set and gather it's mime-type
+        if ($imageFile && $imageFile->isValid()) {
+            $imageMimeType = $imageFile->getMimeType();
+            if (!in_array($imageMimeType, ['image/jpeg', 'image/png', 'image/gif'])) {
+                throw new \Exception('Unsupported image type: ' . $imageMimeType);
+            }
+            $imageData = file_get_contents($imageFile->getPathname());
+            $book->setImage($imageData);
+
+        } else {
+            $error = $imageFile->getError();
+            throw new \Exception('File upload error: ' . $error);
+        }
 
         $book->setTitle($title);
         $book->setAuthor($author);
@@ -56,7 +72,7 @@ class BookController extends AbstractController
         $entityManager->persist($book);
         $entityManager->flush();
 
-        return new Response('Saved new book with id '.$book->getId());
+        return $this->redirectToRoute('library_view_all');
     }
 
 
@@ -67,9 +83,28 @@ class BookController extends AbstractController
     ): Response {
         $books = $bookRepository->findAll();
 
+        $images = [];
+        // save images for each book
+        foreach ($books as $book) {
+            if ($book->getImage()) {
+
+                // use finfo to get it's mime-type
+                $finfo = new \finfo(FILEINFO_MIME_TYPE);
+                $mimeType = $finfo->buffer($book->getImage());
+        
+                $imageData = base64_encode($book->getImage());
+                // save data and mime for each image to the images array
+                $images[$book->getId()] = ['data' => $imageData, 'mime' => $mimeType];
+            }
+        };
+
+
+
         $data = [
-            'books' => $books
+            'books' => $books,
+            'images' => $images
         ];
+        //var_dump($images);
 
         return $this->render('book/view.html.twig', $data);
     }
@@ -89,8 +124,26 @@ class BookController extends AbstractController
             );
         }
 
+
+        if ($book->getImage()) {
+            // Use finfo to detect the MIME type from the binary data
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $mimeType = $finfo->buffer($book->getImage());
+    
+            // Base64 encode the binary image data
+            $imageData = base64_encode($book->getImage());
+            $data = [
+                'book' => $book,
+                'image' => $imageData,
+                'mime_type' => $mimeType
+            ];
+            return $this->render('book/single.html.twig', $data);
+
+        }
+
         $data = [
-            'book' => $book
+            'book' => $book,
+            'image' => null
         ];
 
         return $this->render('book/single.html.twig', $data);
@@ -101,6 +154,7 @@ class BookController extends AbstractController
     #[Route('/library/update_book/{id}', name: 'library_update_book')]
     public function updateSingleBook(
         BookRepository $bookRepository,
+        Request $request,
         int $id
     ): Response {
         $book = $bookRepository
@@ -135,6 +189,27 @@ class BookController extends AbstractController
                 'No book found for id '.$id
             );
         }
+
+
+        $imageFile = $request->files->get('book_image_update');
+
+
+
+        if ($imageFile && $imageFile->isValid()) {
+            $imageMimeType = $imageFile->getMimeType();
+            if (!in_array($imageMimeType, ['image/jpeg', 'image/png', 'image/gif'])) {
+                throw new \Exception('Unsupported image type: ' . $imageMimeType);
+            }
+            // Read the binary content of the image file
+            $imageData = file_get_contents($imageFile->getPathname());
+
+            // Set the binary data to the book entity
+            $book->setImage($imageData);
+        } else {
+            $error = $imageFile->getError();
+            throw new \Exception('File upload error: ' . $error);
+        }
+
         $title = $request->request->get('title');
         $author = $request->request->get('author');
         $isbn = $request->request->get('isbn');
@@ -150,6 +225,28 @@ class BookController extends AbstractController
 
 
     # DELETE
+    #[Route('/library/delete/{id}', name: 'library_delete_book_by_id')]
+    public function deleteSingleBookById(
+        ManagerRegistry $doctrine,
+        int $id
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $book = $entityManager->getRepository(Book::class)->find($id);
+
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id '.$id
+            );
+        }
+        $data = [
+            'book' => $book
+        ];
+
+        return $this->render('book/delete.html.twig', $data);
+    }
+
+
+    # DELETE (actually delete)
     #[Route('/library/delete/{id}', name: 'library_delete_by_id')]
     public function deleteBookById(
         ManagerRegistry $doctrine,

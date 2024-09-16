@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library{% endblock %}
+
+
+{% block main %}
+    <h1>Update book</h1>
+    <nav class="secondary-nav">
+        <ul class="nav-items">
+            <li class="nav-item"><a class="nav-b" href="{{ path('library') }}">Home</a></li>
+            <li class="nav-item"><a class="nav-b" href="{{ path('library_view_all') }}">All books</a></li>
+            <li class="nav-item"><a class="nav-b" href="{{ path('library_create_new') }}">Create new book</a></li>
+        </ul>
+    </nav>
+    <br>
+    <h4>Are you sure you want to delete?</h4>
+    <a href='{{ path('library_delete_by_id', {'id': book.id}) }}'>
+        <div id="book-update-btn">Yes, Delete</div>
+    </a>
+    <a href='{{ path('library_view_by_id', {'id': book.id}) }}'>
+        <div id="book-delete-btn">No, Don't Delete</div>
+    </a>
+
+
+{% endblock %}

@@ -75,7 +75,7 @@ class Book
 
     public function setImage(string $image): static
     {
-        $this->author = $image;
+        $this->image = $image;
 
         return $this;
     }
