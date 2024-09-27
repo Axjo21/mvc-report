@@ -51,17 +51,20 @@ class BookController extends AbstractController
 
 
         // check if image is set and gather it's mime-type
-        if ($imageFile && $imageFile->isValid()) {
-            $imageMimeType = $imageFile->getMimeType();
-            if (!in_array($imageMimeType, ['image/jpeg', 'image/png', 'image/gif'])) {
-                throw new \Exception('Unsupported image type: ' . $imageMimeType);
+        if ($imageFile) {
+            if($imageFile->isValid()) {
+                $imageMimeType = $imageFile->getMimeType();
+                if (!in_array($imageMimeType, ['image/jpeg', 'image/png', 'image/gif'])) {
+                    throw new \Exception('Unsupported image type: ' . $imageMimeType);
+                }
+                $imageData = file_get_contents($imageFile->getPathname());
+                $book->setImage($imageData);
             }
-            $imageData = file_get_contents($imageFile->getPathname());
-            $book->setImage($imageData);
-
         } else {
-            $error = $imageFile->getError();
-            throw new \Exception('File upload error: ' . $error);
+            $defaultImage = '../public/img/book-cover-placeholder.png';
+            
+            $imageData = file_get_contents($defaultImage);
+            $book->setImage($imageData);
         }
 
         $book->setTitle($title);
@@ -71,6 +74,8 @@ class BookController extends AbstractController
         # persist = eventually save, flush = actually save
         $entityManager->persist($book);
         $entityManager->flush();
+
+        $this->addFlash('success', 'Your changes have been saved successfully.');
 
         return $this->redirectToRoute('library_view_all');
     }
@@ -82,7 +87,6 @@ class BookController extends AbstractController
         BookRepository $bookRepository
     ): Response {
         $books = $bookRepository->findAll();
-
         $images = [];
         // save images for each book
         foreach ($books as $book) {
@@ -220,12 +224,14 @@ class BookController extends AbstractController
 
         $entityManager->flush();
 
+        $this->addFlash('success', 'Your changes have been saved successfully.');
+
         return $this->redirectToRoute('library_view_by_id', ['id' => $id]);
     }
 
 
     # DELETE
-    #[Route('/library/delete/{id}', name: 'library_delete_book_by_id')]
+    #[Route('/library/delete_book/{id}', name: 'library_delete_book_by_id')]
     public function deleteSingleBookById(
         ManagerRegistry $doctrine,
         int $id
@@ -264,7 +270,9 @@ class BookController extends AbstractController
         $entityManager->remove($book);
         $entityManager->flush();
 
-        return $this->redirectToRoute('library_show_all');
+        $this->addFlash('success', 'Your changes have been saved successfully.');
+
+        return $this->redirectToRoute('library_view_all');
     }
 
 

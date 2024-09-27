@@ -105,9 +105,9 @@ h1 {
 
 .flash-success {
     padding: 0.5em;
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
+    color: #ffffff;
+    background-color: #155724;
+    border-color: #b7c7ba;
 }
 
 
@@ -357,19 +357,25 @@ h1 {
     background-color: #347ed2;
 }
 
+
+.confirmation-header {
+    max-width: 25%;
+    margin-left:40%;
+}
+
 #book-update-btn {
     margin: 10px;
     margin-left: 45%;
     padding: 6px;
     border-radius: 5px;
-    width: 120px;
-    background-color: #2662a5;
+    width: 200px;
+    background-color: #265ba5;
     color: white;
     font-size: 19px;
 }
 
 #book-update-btn:hover {
-    background-color: #347ed2;
+    background-color: #4562a1;
 }
 
 #book-delete-btn {
@@ -377,12 +383,43 @@ h1 {
     margin-left: 45%;
     padding: 6px;
     border-radius: 5px;
-    width: 120px;
+    width: 200px;
     background-color: #a5534a;
     color: white;
     font-size: 19px;
 }
 
 #book-delete-btn:hover {
+    background-color: #cd6b60;
+}
+
+
+#book-affirm-btn {
+    margin: 10px;
+    margin-left: 45%;
+    padding: 6px;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #26a555;
+    color: white;
+    font-size: 19px;
+}
+
+#book-affirm-btn:hover {
+    background-color: #6cc578;
+}
+
+#book-deny-btn {
+    margin: 10px;
+    margin-left: 45%;
+    padding: 6px;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #a5534a;
+    color: white;
+    font-size: 19px;
+}
+
+#book-deny-btn:hover {
     background-color: #cd6b60;
 }

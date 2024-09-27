@@ -5,9 +5,9 @@
 
 {% block main %}
     <h1>Detail view</h1>
+    {{ include('flash.html.twig') }}
     <nav class="secondary-nav">
         <ul class="nav-items">
-            <li class="nav-item"><a class="nav-b" href="{{ path('library') }}">Home</a></li>
             <li class="nav-item"><a class="nav-b" href="{{ path('library_view_all') }}">All books</a></li>
             <li class="nav-item"><a class="nav-b" href="{{ path('library_create_new') }}">Create new book</a></li>
         </ul>
@@ -41,12 +41,13 @@
             </tr>
         </tbody>
     </table>
-    <a href='{{ path('library_update_book', {'id': book.id}) }}'>
-        <div id="book-update-btn">Update Book</div>
-    </a>
-    <a href='{{ path('library_delete_book_by_id', {'id': book.id}) }}'>
-        <div id="book-delete-btn">Delete Book</div>
-    </a>
+
+    <form method="post" action="{{ path('library_update_book', {'id': book.id}) }}">
+        <button type="submit" id="book-update-btn">Update Book</button>
+    </form>
+    <form method="post" action="{{ path('library_delete_book_by_id', {'id': book.id}) }}">
+        <button type="submit" id="book-delete-btn">Delete Book</button>
+    </form>
     
 
 
