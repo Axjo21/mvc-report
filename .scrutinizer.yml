@@ -19,7 +19,7 @@ build:
                     # version: 8.2.4
         analysis:
             commands:
-                - chmod -x /usr/bin/composer.phar
+                - sudo chmod -x /usr/bin/composer.phar
                 - composer self-update --2  # Update Composer to version 2
                 - php-scrutinizer-run  # Run analysis
             environment:
