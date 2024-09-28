@@ -10,23 +10,21 @@ build:
     nodes:
         my-tests:
             commands:
-                - curl -sS https://getcomposer.org/installer | php -- --install-dir=/tmp --filename=composer  # Install Composer to /tmp
-                - mv /tmp/composer /usr/local/bin/composer  # Move to /usr/local/bin
-                - chmod +x /usr/local/bin/composer  # Make it executable
-                - /usr/local/bin/composer --version  # Verify version
+                - composer self-update --2
             environment:
                 php:
-                    version: 8.3.11
+                    version: 8.3.3
+                    # version: 8.1.13
+                    # version: 8.1.17
+                    # version: 8.2.4
         analysis:
-            commands:
-                - curl -sS https://getcomposer.org/installer | php -- --install-dir=/tmp --filename=composer  # Install Composer to /tmp
-                - mv /tmp/composer /usr/local/bin/composer  # Move to /usr/local/bin
-                - chmod +x /usr/local/bin/composer  # Make it executable
-                - /usr/local/bin/composer --version  # Verify version
-                - php-scrutinizer-run
-            environment:
-                variables:
-                    COMPOSER_MAJOR_VERSION: 2
+            tests:
+                commands:
+                    - composer self-update --2  # Update Composer to version 2
+                    - php-scrutinizer-run  # Run analysis
+                environment:
+                    variables:
+                        COMPOSER_MAJOR_VERSION: 2
     tests:
         override:
             -   command: "composer phpunit"
