@@ -27,10 +27,10 @@ build:
             environment:
                 variables:
                     COMPOSER_MAJOR_VERSION: 2
-
     tests:
         override:
-            - command: "/usr/local/bin/composer phpunit"
+            -   command: "composer phpunit"
+                # command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
                 coverage:
                     file: "docs/coverage.clover"
                     format: "php-clover"
