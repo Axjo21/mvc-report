@@ -17,13 +17,12 @@ build:
                 php:
                     version: 8.3.11
         analysis:
-            commands:
-                - composer self-update --2
             environment:
                 variables:
                     COMPOSER_MAJOR_VERSION: 2
             tests:
                 override:
+                    - composer self-update --2
                     - composer --version 
                     - php-scrutinizer-run
                     #- phpcs-run # Not used, missing config file
