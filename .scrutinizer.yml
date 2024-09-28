@@ -5,7 +5,7 @@ filter:
     excluded_paths: [vendor/*, test/*]
 
 build:
-    image: php:8.3
+    image: default-bionic
 
     nodes:
         my-tests:
@@ -17,6 +17,8 @@ build:
                 php:
                     version: 8.3.11
         analysis:
+            commands:
+                - composer self-update --2
             environment:
                 variables:
                     COMPOSER_MAJOR_VERSION: 2
