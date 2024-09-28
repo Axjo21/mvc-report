@@ -9,7 +9,7 @@ build:
 
     nodes:
         my-tests:
-            before:
+            before_scripts:
                 - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
                 - composer self-update --2
             environment:
