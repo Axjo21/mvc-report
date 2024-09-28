@@ -10,30 +10,27 @@ build:
     nodes:
         my-tests:
             commands:
-                - composer self-update --2
+                - curl -sS https://getcomposer.org/installer | php -- --install-dir=/tmp --filename=composer  # Install Composer to /tmp
+                - mv /tmp/composer /usr/local/bin/composer  # Move to /usr/local/bin
+                - chmod +x /usr/local/bin/composer  # Make it executable
+                - /usr/local/bin/composer --version  # Verify version
             environment:
-                variables:
-                    COMPOSER_MAJOR_VERSION: 2 
                 php:
                     version: 8.3.11
         analysis:
             commands:
-                - composer self-update --2
+                - curl -sS https://getcomposer.org/installer | php -- --install-dir=/tmp --filename=composer  # Install Composer to /tmp
+                - mv /tmp/composer /usr/local/bin/composer  # Move to /usr/local/bin
+                - chmod +x /usr/local/bin/composer  # Make it executable
+                - /usr/local/bin/composer --version  # Verify version
                 - php-scrutinizer-run
-                #- phpcs-run # Not used, missing config file
             environment:
                 variables:
                     COMPOSER_MAJOR_VERSION: 2
-            #tests:
-            #    override:
-            #        - composer self-update --2
-            #        - composer --version 
-            #        - php-scrutinizer-run
-            #        #- phpcs-run # Not used, missing config file
+
     tests:
         override:
-            -   command: "composer phpunit"
-                # command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
+            - command: "/usr/local/bin/composer phpunit"
                 coverage:
                     file: "docs/coverage.clover"
                     format: "php-clover"
