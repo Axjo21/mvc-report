@@ -9,8 +9,6 @@ build:
 
     nodes:
         my-tests:
-            commands:
-                - composer self-update --2
             environment:
                 php:
                     version: 8.3.3
@@ -18,11 +16,6 @@ build:
                     # version: 8.1.17
                     # version: 8.2.4
         analysis:
-            commands:
-                - composer self-update --2
-            environment:
-                php:
-                    version: 8.3.3
             tests:
                 override:
                     - php-scrutinizer-run
