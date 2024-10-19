@@ -26,6 +26,9 @@ build:
                     - php-scrutinizer-run
                     #- phpcs-run # Not used, missing config file
         coverage:
+            environment:
+                php:
+                    version: 8.3.3
             tests:
                 override:
                     -   command: "composer phpunit"
