@@ -68,17 +68,35 @@ class Book
         return $this;
     }
 
-    public function getImage(): ?string
+    public function setDetails(
+        ?string $title = null,
+        ?string $author = null, 
+        ?string $isbn = null
+    ): static
     {
+        $this->title = $title;
+        $this->author = $author;
+        $this->ISBN = $isbn;
+        return $this;
+    }
+
+    public function getImage(): ?array
+    {       
+        if($this->image) {
+            // Use finfo to detect the MIME type from the binary data
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $mimeType = $finfo->buffer($this->image);
+
+            // Base64 encode the binary image data
+            $imageData = base64_encode($this->image);
+            return [
+                'imageData' => $imageData,
+                'mimeType' => $mimeType
+            ];
+        }
         return $this->image;
     }
 
-    public function setImageOLD(string $image): static
-    {
-        $this->image = $image;
-
-        return $this;
-    }
 
     public function setImage(object $imageFile, ?bool $defaultImage = false): void
     {

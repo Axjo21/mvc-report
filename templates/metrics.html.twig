@@ -200,33 +200,37 @@
                         I will also fix some of the issues and violations.
                     </p>
 
-                    <h3>Issues and Violations</h3>
+                    <h3>Issues</h3>
                     <p>
-                        Scrutinizer and Phpmetrics highlight some violations that should be fixed.
+                        Scrutinizer highlight some issues that should be fixed.
                         I'm choosing these improvents because they are easy to fix and will contribute to better code quality.
-                        Issues and violations are common occurences but they should be addressed when encountered since some might have rather
+                        Issues and defects are common occurences but they should be addressed when encountered since some might have rather
                         unexpected side effects.
                     </p>
-                    <img src="{{ asset('img/improv-metrics-violations.png') }}" width="600px" alt="phpmetrics violations">
-                    <p>
-                        Phpmetrics violations: I will fix all of the violations highlighted in the phpmetrics report. 
-                    </p>
+
 
                     <img src="{{ asset('img/improv-scrut-issues.png') }}" width="600px" alt="scrutinizer issues">
                     <p>
-                        Scrutinizer issues: For a closer look at the individual issues highlighted in the scrutinizer report, refer to the images higher up in this article.
+                        Scrutinizer issues: For a closer look at the individual issues highlighted in the scrutinizer report,
+                        please refer to the images higher up in this article.
                         I will only adress the ApiControllerJson, BookController and BookRepository issues from the scrutinizer report.
                     </p>
                     <p>
-                        Fixing these issues will result in only 2 issues for the scrutinizer report and 0 violations for the phpmetrics report.
+                        Fixing these issues will result in only 2 issues for the scrutinizer report.
+                    </p>
+                    <img src="{{ asset('img/scrut-fix-issues1.png') }}" width="250px" alt="scrutinizer issues 1">
+                    <img src="{{ asset('img/scrut-fix-issues2.png') }}" width="600px" alt="scrutinizer issues 2">
+                    <p>
+                        This is how it looks after addressing the issues.
                     </p>
 
                     <h3>CRAP</h3>
                     <img src="{{ asset('img/scrut-crap.png') }}" width="600px" alt="scrutinizer crap 1">
-                    <img src="{{ asset('img/scrut-crap2.png') }}" width="600px" alt="scrutinizer crap 2">
                     <p>
                         Notice the CRAP Score being 30, which is 10 higher than the second highest.
                     </p>
+                    <img src="{{ asset('img/scrut-crap2.png') }}" width="600px" alt="scrutinizer crap 2">
+
                     <p>
                         BookControllers updateBook method recieves a bad CRAP score. This is calculated based on it's complexity vs coverage.
                         I chose this improvement since it was a clear outlier in terms of how bad the code was.
@@ -242,7 +246,9 @@
                         What this does really, is simply moving the complexity around, but it is better to not have it in the controller.
                         It also isn't very complex to begin with, as it is only 4 if-statements total, but it's a good excercise. 
                     </p>
-
+                    <img src="{{ asset('img/scrut-crap3.png') }}" width="600px" alt="scrutinizer crap 3">
+                    <p>As expected, after placing the logic in the Book entity, it now has the same problem.</p>
+                    <p>after writing unit tests..</p>
 
                     <h3>Complexity</h3>
                     <p>
@@ -268,6 +274,12 @@
                         being among the worst rated classes for multiple metrics in the reports due to it's complexity.
                         Honestly, it will probably still be one of the most complex classes even after i make some improvements,
                         but i am still hoping that the metrics will be significantly better. 
+                    </p>
+                    <p>
+                        I will put the logic for uploading of images in the Book Entity instead of in the BookController.
+                        This will mean that i have to change the "/library/view" and "/library/view/{id}" routes in the controller.
+                        Since i did something similar for the setImage method in the CRAP part of this article, i'm hoping that 
+                        BookController will be made less complex.
                     </p>
                     
 
