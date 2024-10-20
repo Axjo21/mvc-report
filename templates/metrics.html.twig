@@ -129,15 +129,14 @@
                     <a href="https://scrutinizer-ci.com/g/Axjo21/mvc-report/?branch=main">
                         <img src="https://scrutinizer-ci.com/g/Axjo21/mvc-report/badges/quality-score.png?b=main">
                     </a>
+                    <a href="https://scrutinizer-ci.com/g/Axjo21/mvc-report/code-structure/main/code-coverage">
+                        <img src="https://scrutinizer-ci.com/g/Axjo21/mvc-report/badges/coverage.png?b=main">
+                    </a>
                     <a href="https://scrutinizer-ci.com/g/Axjo21/mvc-report/inspections/f347e79f-ff58-4505-a7ab-5108ac7fbfca/log">
                         <img src="https://scrutinizer-ci.com/g/Axjo21/mvc-report/badges/build.png?b=main">
                     </a>
-                    
-                    <p>
-                        Behöver enabla coverage i scrutinizer
-                        Hamnar min coverage i vendor/bin/phpunit? som det står i composer.json
-                        eller hamnar den i docs/coverage?
-                    </p>
+
+
                     <img src="{{ asset('img/scrutinizer-overview.png') }}" width="800px" alt="Scrutinizer Overview">
                     <p>This is how the report looks before doing any improvements.</p>
 
@@ -182,7 +181,12 @@
                     <h3 class="phpmetrics-h3">Coverage</h3>
                     <p>
                         As you can see on the first image, coverage was not enabled when i ran the build.
-                    </p> 
+                        After enabling it and running a new inspection this is how it looks:
+                    </p>
+                    <img src="{{ asset('img/scrut-coverage2.png') }}" width="800px" alt="scrutinizer coverage">
+                    <p>
+                        A coverage of only 20% is not acceptable. It should atleast be between 40-60%, and ideally above 70%.
+                    </p>
 
 
 
@@ -190,29 +194,101 @@
 
                     <h2>Förbättringar</h2>
                     <p>
-                        Based on the reports, it would seem like the biggest issues with my code is that some of the classes are too complex, and that
+                        Based on the reports, it would seem like the biggest issues with my code is that some of the
+                        classes are too complex, and that
                         the coverage should be increased. This is what i will focus on mostly.
-                        (I will also look into Coupling(?))
+                        I will also fix some of the issues and violations.
                     </p>
-                    
-                    <h3>Cyclomatic complexity</h3>
+
+                    <h3>Issues and Violations</h3>
+                    <p>
+                        Scrutinizer and Phpmetrics highlight some violations that should be fixed.
+                        I'm choosing these improvents because they are easy to fix and will contribute to better code quality.
+                        Issues and violations are common occurences but they should be addressed when encountered since some might have rather
+                        unexpected side effects.
+                    </p>
+                    <img src="{{ asset('img/improv-metrics-violations.png') }}" width="600px" alt="phpmetrics violations">
+                    <p>
+                        Phpmetrics violations: I will fix all of the violations highlighted in the phpmetrics report. 
+                    </p>
+
+                    <img src="{{ asset('img/improv-scrut-issues.png') }}" width="600px" alt="scrutinizer issues">
+                    <p>
+                        Scrutinizer issues: For a closer look at the individual issues highlighted in the scrutinizer report, refer to the images higher up in this article.
+                        I will only adress the ApiControllerJson, BookController and BookRepository issues from the scrutinizer report.
+                    </p>
+                    <p>
+                        Fixing these issues will result in only 2 issues for the scrutinizer report and 0 violations for the phpmetrics report.
+                    </p>
+
+                    <h3>CRAP</h3>
+                    <img src="{{ asset('img/scrut-crap.png') }}" width="600px" alt="scrutinizer crap 1">
+                    <img src="{{ asset('img/scrut-crap2.png') }}" width="600px" alt="scrutinizer crap 2">
+                    <p>
+                        Notice the CRAP Score being 30, which is 10 higher than the second highest.
+                    </p>
+                    <p>
+                        BookControllers updateBook method recieves a bad CRAP score. This is calculated based on it's complexity vs coverage.
+                        I chose this improvement since it was a clear outlier in terms of how bad the code was.
+                        To reduce it's CRAP score i will firstly make an effort to reduce it's complexity, and afterward i will write unit tests for it.
+                        I think that this will result in a much better CRAP score.
+                        Implementing this improvement will also contribute to decreased overall complexity and increased overall coverage.
+                    </p>
+                    <p>
+                        I am actually happy with the structure after looking closer at the method. 
+                        I think the reason it recieves a somewhat higher complexity score is that it performs some error handling
+                        of the uploaded images mime-type.
+                        I have decided to move this functionality into the Book Entity, which at the moment is very bare-bones.
+                        What this does really, is simply moving the complexity around, but it is better to not have it in the controller.
+                        It also isn't very complex to begin with, as it is only 4 if-statements total, but it's a good excercise. 
+                    </p>
+
+
+                    <h3>Complexity</h3>
                     <p>
                         Some of my classes are too complex, making them hard to develop and maintain.
                         To fix this i will simplify the classes wherever possible.
-                        I will focus on the controllers, these should be "thin" anyways according to the MVC methodology, so it is not a good sign that these are
+                        I will focus on the controllers, these should be "thin" anyways according to the MVC design pattern, so it is not a good sign that these are
                         the classes that have the highest complexity and maintainability index.
                     </p>
+                    <img src="{{ asset('img/improv-complex-bookcontroller.png') }}" width="800px" alt="BookController complexity 1">
 
-                    <h3>Coverage</h3>
                     <p>
-                        My coverage for some classes are not enough. I want to increase the coverage and also remove the "theoretical bugs" that i discussed previously
+                        I will primarily focus on BookController as it has the highest complexity.
+                        According to Phpmetrics it has a WMC (Weighted Methods per Class) of 27.
+                        WMC seems to be related to how complex the classes methods are. It's cyclomatic complexity is also high.
+                    </p>
+                    <img src="{{ asset('img/improv-complex-book2.png') }}" width="300px" alt="BookController complexity 2">
+                    <p>
+                        BookController is the biggest red circle. I'm hoping it turns green or atleast orange after refactoring.
+                    </p>
+                    <img src="{{ asset('img/improv-complex-book3.png') }}" width="800px" alt="BookController complexity 3">
+                    <p>
+                        I am choosing this improvement because i noticed BookController
+                        being among the worst rated classes for multiple metrics in the reports due to it's complexity.
+                        Honestly, it will probably still be one of the most complex classes even after i make some improvements,
+                        but i am still hoping that the metrics will be significantly better. 
+                    </p>
+                    
+
+
+                    <h3>Coverage (gör sist)</h3>
+                    <p>
+                        My coverage for some classes are not enough. I want to increase the coverage and also remove the "theoretical bugs" that i discussed previously.
+                        The classes in most need of testing is the controllers. But maybe i'll focus on Dice, Entity and Repository. 
+                    </p>
+                    <img src="{{ asset('img/improv-coverage1.png') }}" width="800px" alt="Dice coverage 1">
+                    <p>I will test the "roll" method in the Dice class. This will result in 100% coverage for this class.</p>
+
+                    <img src="{{ asset('img/improv-coverage2.png') }}" width="800px" alt="Controller coverage 1">
+                    <p>
+                        I will try to write some unit tests for the BookController class.
+                        I'm choosing this class since it is one of the larger controllers, so I need to make sure it's robustly tested.
+                        I am not at all sure how to write tests for a controller, so by doing this i will learn and be better equipped to write
+                        tests for the other controllers in the future. 
+                        The resulting metric after implementation of some tests will hopefully be above 40%. 
                     </p>
 
-
-                    <h3>Fix violations</h3>
-                    <p>
-                        Scrutinizer and Phpmetrics highlight some violations that should be fixed.
-                    </p>
 
 
                     <h2>Diskussion</h2>

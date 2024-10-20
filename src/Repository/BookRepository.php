@@ -38,8 +38,9 @@ class BookRepository extends ServiceEntityRepository
     /**
      * Find all producs having a value above the specified one with SQL.
      * 
-     * @return [][] Returns an array of arrays (i.e. a raw data set)
+     * #return [][] Returns an array of arrays (i.e. a raw data set)
      */
+    /*
     public function findByMinimumValue2($value): array
     {
         $conn = $this->getEntityManager()->getConnection();
@@ -54,6 +55,7 @@ class BookRepository extends ServiceEntityRepository
 
         return $resultSet->fetchAllAssociative();
     }
+    */
 
 //    /**
 //     * @return Book[] Returns an array of Book objects

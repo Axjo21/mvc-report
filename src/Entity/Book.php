@@ -73,10 +73,33 @@ class Book
         return $this->image;
     }
 
-    public function setImage(string $image): static
+    public function setImageOLD(string $image): static
     {
         $this->image = $image;
 
         return $this;
     }
+
+    public function setImage(object $imageFile, ?bool $defaultImage = false): void
+    {
+        if($defaultImage) {
+            $defaultImage = '../public/img/book-cover-placeholder.png';
+            $imageData = file_get_contents($defaultImage);
+            $this->image = $imageData;
+        }
+
+        if ($imageFile && $imageFile->isValid()) {
+            $imageMimeType = $imageFile->getMimeType();
+            if (!in_array($imageMimeType, ['image/jpeg', 'image/png', 'image/gif'])) {
+                throw new \Exception('Unsupported image type: ' . $imageMimeType);
+            }
+            // Read the binary content of the image file
+            $imageData = file_get_contents($imageFile->getPathname());
+            $this->image = $imageData;
+        } else {
+            $error = $imageFile->getError();
+            throw new \Exception('File upload error: ' . $error);
+        }
+    }
+
 }

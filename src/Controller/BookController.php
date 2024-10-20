@@ -42,29 +42,14 @@ class BookController extends AbstractController
         $entityManager = $doctrine->getManager();
         $book = new Book();
 
-
         $title = $request->request->get('book_title');
         $author = $request->request->get('book_author');
         $isbn = $request->request->get('book_isbn');
         $imageFile = $request->files->get('book_image');
 
-
-
         // check if image is set and gather it's mime-type
         if ($imageFile) {
-            if($imageFile->isValid()) {
-                $imageMimeType = $imageFile->getMimeType();
-                if (!in_array($imageMimeType, ['image/jpeg', 'image/png', 'image/gif'])) {
-                    throw new \Exception('Unsupported image type: ' . $imageMimeType);
-                }
-                $imageData = file_get_contents($imageFile->getPathname());
-                $book->setImage($imageData);
-            }
-        } else {
-            $defaultImage = '../public/img/book-cover-placeholder.png';
-            
-            $imageData = file_get_contents($defaultImage);
-            $book->setImage($imageData);
+            $book->setImage($imageFile);
         }
 
         $book->setTitle($title);
@@ -101,8 +86,6 @@ class BookController extends AbstractController
                 $images[$book->getId()] = ['data' => $imageData, 'mime' => $mimeType];
             }
         };
-
-
 
         $data = [
             'books' => $books,
@@ -158,7 +141,6 @@ class BookController extends AbstractController
     #[Route('/library/update_book/{id}', name: 'library_update_book')]
     public function updateSingleBook(
         BookRepository $bookRepository,
-        Request $request,
         int $id
     ): Response {
         $book = $bookRepository
@@ -185,48 +167,53 @@ class BookController extends AbstractController
         int $id,
         Request $request
     ): Response {
-        $entityManager = $doctrine->getManager();
-        $book = $entityManager->getRepository(Book::class)->find($id);
-
-        if (!$book) {
-            throw $this->createNotFoundException(
-                'No book found for id '.$id
-            );
-        }
-
-
-        $imageFile = $request->files->get('book_image_update');
-
-
-
-        if ($imageFile && $imageFile->isValid()) {
-            $imageMimeType = $imageFile->getMimeType();
-            if (!in_array($imageMimeType, ['image/jpeg', 'image/png', 'image/gif'])) {
-                throw new \Exception('Unsupported image type: ' . $imageMimeType);
+        try {
+            $entityManager = $doctrine->getManager();
+            $book = $entityManager->getRepository(Book::class)->find($id);
+    
+            if (!$book) {
+                throw $this->createNotFoundException(
+                    'No book found for id '.$id
+                );
             }
-            // Read the binary content of the image file
-            $imageData = file_get_contents($imageFile->getPathname());
+    
+            $imageFile = $request->files->get('book_image_update');
+            $book->setImage($imageFile);
 
-            // Set the binary data to the book entity
-            $book->setImage($imageData);
-        } else {
-            $error = $imageFile->getError();
-            throw new \Exception('File upload error: ' . $error);
+            /*
+            if ($imageFile && $imageFile->isValid()) {
+                $imageMimeType = $imageFile->getMimeType();
+                if (!in_array($imageMimeType, ['image/jpeg', 'image/png', 'image/gif'])) {
+                    throw new \Exception('Unsupported image type: ' . $imageMimeType);
+                }
+                // Read the binary content of the image file
+                $imageData = file_get_contents($imageFile->getPathname());
+    
+                // Set the binary data to the book entity
+                $book->setImage($imageData);
+            } else {
+                $error = $imageFile->getError();
+                throw new \Exception('File upload error: ' . $error);
+            }
+            */
+    
+            $title = $request->request->get('title');
+            $author = $request->request->get('author');
+            $isbn = $request->request->get('isbn');
+    
+            $book->setTitle($title);
+            $book->setAuthor($author);
+            $book->setIsbn($isbn);
+    
+            $entityManager->flush();
+    
+            $this->addFlash('success', 'Your changes have been saved successfully.');
+    
+            return $this->redirectToRoute('library_view_by_id', ['id' => $id]);
+        } catch (\Exception $e) {
+            $this->addFlash('error', 'An error occurred: ' . $e->getMessage());
+            return $this->redirectToRoute('library_view_by_id', ['id' => $id]);
         }
-
-        $title = $request->request->get('title');
-        $author = $request->request->get('author');
-        $isbn = $request->request->get('isbn');
-
-        $book->setTitle($title);
-        $book->setAuthor($author);
-        $book->setIsbn($isbn);
-
-        $entityManager->flush();
-
-        $this->addFlash('success', 'Your changes have been saved successfully.');
-
-        return $this->redirectToRoute('library_view_by_id', ['id' => $id]);
     }
 
 
@@ -316,6 +303,7 @@ class BookController extends AbstractController
     }
 
 
+    /*
     # EJ ANVÄND
     #[Route('/library/view/{value}', name: 'library_view_minimum_value')]
     public function viewBookWithMinimumValue(
@@ -342,5 +330,6 @@ class BookController extends AbstractController
 
         return $this->json($products);
     }
+    */
 
 }
