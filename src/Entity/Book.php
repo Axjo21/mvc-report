@@ -80,7 +80,7 @@ class Book
         return $this;
     }
 
-    public function getImage(): ?array
+    public function getImage(): mixed
     {       
         if($this->image) {
             // Use finfo to detect the MIME type from the binary data

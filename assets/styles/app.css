@@ -440,3 +440,67 @@ h1 {
 .phpmetrics-h3 {
     padding-top: 50px;
 }
+
+.metrics-intro{
+    border: solid black 2px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 200px;
+    background-color: rgb(233, 231, 231);
+}
+
+.metrics-phpmetrics {
+    border: solid black 2px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 200px;
+    background-color: rgb(233, 231, 231);
+}
+
+.metrics-scrutinizer {
+    border: solid black 2px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 200px;
+    background-color: rgb(233, 231, 231);
+}
+
+.metrics-improvements {
+    border: solid black 2px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 200px;
+    background-color: rgb(233, 231, 231);
+}
+
+.metrics-discussion {
+    border: solid black 2px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 200px;
+    background-color: rgb(233, 231, 231);
+}
+
+.before-h4 {
+    font-weight: bold;
+    text-decoration: underline;
+    border: solid red 3px;
+    padding: 10px 60px;
+}
+
+.after-h4 {
+    font-weight: bold;
+    text-decoration: underline;
+    border: solid green 3px;
+    padding: 10px 60px;
+}

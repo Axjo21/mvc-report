@@ -1,0 +1,10 @@
+jag ska öka coverage
+
+vilka klasser ska testas?
+
+Dice
+    roll() for 100%
+Book entity 
+    setImage(CRAP) (skriv om CRAP score och coverage i CRAP section)
+BookController
+    just to increase coverage

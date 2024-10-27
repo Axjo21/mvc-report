@@ -8,335 +8,353 @@
         <div class="column">
             <div class="metrics-container">
                 <div class="metrics-report">
-                    <h2>Introduction</h2>
+                    <div class="metrics-intro">
+                        <h2>Introduction</h2>
 
 
-                    <h3>Codestyle</h3>
-                    <p>
-                        Adhering to a codestyle is important since it makes the code more uniform, predictable and with minimal distractions, 
-                        which makes it easier to read. This is especially important when collaborating in a shared codebase.
-                    </p>
+                        <h3>Codestyle</h3>
+                        <p>
+                            Adhering to a codestyle is important since it makes the code more uniform, predictable and with minimal distractions, 
+                            which makes it easier to read. This is especially important when collaborating in a shared codebase.
+                        </p>
 
 
-                    <h3>Coverage</h3>
-                    <p>
-                        Coverage is basically a percentage of how much of your code is covered by tests.
-                        Meaning, the higher coverage you have the higher the chance of your code functioning as it should with minimal defects.
-                        Having a low coverage serves as a warning that your code might not be reliable. 
-                        It should be noted that this is only a metric for what your codes quality seems to be and not it's actual quality,
-                        since a badly written test will still contribute to the overall coverage.
-                        The better your tests are, the closer this metric comes to reflecting it's actual quality.
-                    </p>
-                    <img src="{{ asset('img/intro-coverage.png') }}" width="300px" alt="intro coverage">
-                    <p>
-                        This is a rather bad score and should be improved. There is currently no assurance that the 9 classes are functional or safe,
-                        other than the manual testing i've performed during development. 
-                    </p>
+                        <h3>Coverage</h3>
+                        <p>
+                            Coverage is basically a percentage of how much of your code is covered by tests.
+                            Meaning, the higher coverage you have the higher the chance of your code functioning as it should with minimal defects.
+                            Having a low coverage serves as a warning that your code might not be reliable. 
+                            It should be noted that this is only a metric for what your codes quality seems to be and not it's actual quality,
+                            since a badly written test will still contribute to the overall coverage.
+                            The better your tests are, the closer this metric comes to reflecting it's actual quality.
+                        </p>
+                        <img src="{{ asset('img/intro-coverage.png') }}" width="300px" alt="intro coverage">
+                        <p>
+                            This is a rather bad score and should be improved. There is currently no assurance that the 9 classes are functional or safe,
+                            other than the manual testing i've performed during development. 
+                        </p>
 
 
-                    <h3>Complexity</h3>
-                    <p>
-                        How complex the code is. Higher complexity means that the code will likely be harder to maintain, develop and test.
-                        Having a high complexity makes the code harder to understand and it might be less efficient as well as more prone to errors and defects.
-                        Lowering your codes complexity can potentially be a difficult undertaking and you might have to completely refactor it in order to
-                        make it more maintainable in the future, which can be costly. 
-                    </p>
-                    <img src="{{ asset('img/intro-complexity.png') }}" width="300px" alt="intro complexity 1">
-                    <p>
-                        When consulting Generative AI what a "good" and "bad" score would be, it would seem like my score would definetely fall into the 
-                        "bad" category.
-                    </p>
-                    <img src="{{ asset('img/intro-complexity-2.png') }}" width="800px" alt="intro complexity 2">
-                    <p>
-                        The biggest thiefs seem to be the controllers, especially the BookController. This should be addressed in order to promote better code quality.
-                    </p>
+                        <h3>Complexity</h3>
+                        <p>
+                            How complex the code is. Higher complexity means that the code will likely be harder to maintain, develop and test.
+                            Having a high complexity makes the code harder to understand and it might be less efficient as well as more prone to errors and defects.
+                            Lowering your codes complexity can potentially be a difficult undertaking and you might have to completely refactor it in order to
+                            make it more maintainable in the future, which can be costly. 
+                        </p>
+                        <img src="{{ asset('img/intro-complexity.png') }}" width="300px" alt="intro complexity 1">
+                        <p>
+                            When consulting Generative AI what a "good" and "bad" score would be, it would seem like my score would definetely fall into the 
+                            "bad" category.
+                        </p>
+                        <img src="{{ asset('img/intro-complexity-2.png') }}" width="800px" alt="intro complexity 2">
+                        <p>
+                            The biggest thiefs seem to be the controllers, especially the BookController. This should be addressed in order to promote better code quality.
+                        </p>
 
 
-                    <h3>Cohesion</h3>
-                    <p>
-                        Cohesion refers to how well groupings of code align in terms of their functionality and purpouse.
-                        A class or module that performs multiple tasks will result in lower cohesion, in which case it might be better to separate them
-                        into more than one part with each part haiving a single responsibility. 
-                    </p>
+                        <h3>Cohesion</h3>
+                        <p>
+                            Cohesion refers to how well groupings of code align in terms of their functionality and purpouse.
+                            A class or module that performs multiple tasks will result in lower cohesion, in which case it might be better to separate them
+                            into more than one part with each part haiving a single responsibility. 
+                        </p>
 
 
-                    <h3>Coupling</h3>
-                    <p>
-                        Refers to how independent classes are from each other.
-                        If making a change to one class affects another class then this forces you to address the change in the other class,
-                        which is not good. The classes, modules, functions should be as independent as possible to avoid this problem.<br><br>
-                        There are two types of coupling, Afferent and Efferent Coupling.<br>
-                        Afferent Coupling denotes how many classes the given class will affect.<br>
-                        Efferent Coupling denotes how many classes affect the given class.
-                    </p>
-                    <img src="{{ asset('img/intro-coupling.png') }}" width="800px" alt="intro coupling">
-                    <p>
-                        The controller for the card game has quite alot of classes which might affect it. This could potentially be a maintainability risk. 
-                        However, when looking at which classes are counted into the Efferent Coupling, we can see that it's primarily
-                        "DeckOfCards" and "CardHand" which might be an issue,
-                        the rest being: Request, Response, Exception, RuntimeException, AbstractController, Route and SessionInterface
-                        which come from Symfony and are needed for a controller like this.
-                    </p>
+                        <h3>Coupling</h3>
+                        <p>
+                            Refers to how independent classes are from each other.
+                            If making a change to one class affects another class then this forces you to address the change in the other class,
+                            which is not good. The classes, modules, functions should be as independent as possible to avoid this problem.<br><br>
+                            There are two types of coupling, Afferent and Efferent Coupling.<br>
+                            Afferent Coupling denotes how many classes the given class will affect.<br>
+                            Efferent Coupling denotes how many classes affect the given class.
+                        </p>
+                        <img src="{{ asset('img/intro-coupling.png') }}" width="800px" alt="intro coupling">
+                        <p>
+                            The controller for the card game has quite alot of classes which might affect it. This could potentially be a maintainability risk. 
+                            However, when looking at which classes are counted into the Efferent Coupling, we can see that it's primarily
+                            "DeckOfCards" and "CardHand" which might be an issue,
+                            the rest being: Request, Response, Exception, RuntimeException, AbstractController, Route and SessionInterface
+                            which come from Symfony and are needed for a controller like this.
+                        </p>
 
 
-                    <h3>CRAP</h3>
-                    <p>
-                        Change Risk Analyzer and Predictor estimates the amount of work it will take to make changes to a method.
-                        The estimate is based on the methods complexity and coverage. 
-                    </p>
+                        <h3>CRAP</h3>
+                        <p>
+                            Change Risk Analyzer and Predictor estimates the amount of work it will take to make changes to a method.
+                            The estimate is based on the methods complexity and coverage. 
+                        </p>
 
 
+                    </div>
+                    <div class="metrics-phpmetrics">
+                        <h2>Phpmetrics</h2>
+                        <img src="{{ asset('img/phpmetrics-overview.png') }}" width="800px" alt="Phpmetrics overview">
+                        <p>This is how the report looks before doing any improvements.</p>
+
+                        <h3 class="phpmetrics-h3">Cyclomatic Complexity</h3>
+                        <img src="{{ asset('img/cyclomatic-circles.png') }}" width="500px" alt="Cyclomatic circles">
+                        <img class="phpmetrics-h3" src="{{ asset('img/cyclomatic-stats.png') }}" width="500px" alt="Cyclomatic stats">
+                        <p> BookController, CardGameController, ApiController each have a low maintainability index (red circles).
+                            Furthermore BookController has quite a high Cyclomatic Complexity. This should be fixed to promote better code quality. 
+                        </p>
+
+                        <h3 class="phpmetrics-h3">Violations (Code smell?)</h3>
+                        <img src="{{ asset('img/violations-stats.png') }}" width="500px" alt="Phpmetrics violations">
+                        <p>
+                            My app has 2 package violations, they come from Card och Entity.
+                            It also has 2 class violations, with around 0.5 bugs accoring to theory. Scrutinizer tells me to improve the unit tests for these classes
+                            to ensure that there are no bugs. 
+                        </p>
+
+                        <h3 class="phpmetrics-h3">Coverage</h3>
+                        <img src="{{ asset('img/never-called-by-tests.png') }}" width="500px" alt="phpmetrics tests">
+                        <p>
+                            I have 9 classes which are never tested. These should be tested in order to increase coverage.
+                            Looking at the report we can see that the Controllers are not tested. The combination of them not being tested and also them having
+                            the highest complexity within my code is not good. Having a higher complexity can sometimes be ok,
+                            but then they should atleast be tested rigorously.
+                        </p>
+
+                        <h3 class="phpmetrics-h3">Packages in need of update</h3>
+                        <img src="{{ asset('img/package-needs-update.png') }}" width="500px" alt="phpmetrics packages">
+                        <p>
+                            There are some packages that should be updated, this should be a quick fix.
+                        </p>
+
+                    </div>
+
+                    <div class="metrics-scrutinizer">
+                        <h2>Scrutinizer</h2>
+                        <a href="https://scrutinizer-ci.com/g/Axjo21/mvc-report/?branch=main">
+                            <img src="https://scrutinizer-ci.com/g/Axjo21/mvc-report/badges/quality-score.png?b=main">
+                        </a>
+                        <a href="https://scrutinizer-ci.com/g/Axjo21/mvc-report/code-structure/main/code-coverage">
+                            <img src="https://scrutinizer-ci.com/g/Axjo21/mvc-report/badges/coverage.png?b=main">
+                        </a>
+                        <a href="https://scrutinizer-ci.com/g/Axjo21/mvc-report/inspections/f347e79f-ff58-4505-a7ab-5108ac7fbfca/log">
+                            <img src="https://scrutinizer-ci.com/g/Axjo21/mvc-report/badges/build.png?b=main">
+                        </a>
 
 
-                    <h2>Phpmetrics</h2>
-                    <img src="{{ asset('img/phpmetrics-overview.png') }}" width="800px" alt="Phpmetrics overview">
-                    <p>This is how the report looks before doing any improvements.</p>
-
-                    <h3 class="phpmetrics-h3">Cyclomatic Complexity</h3>
-                    <img src="{{ asset('img/cyclomatic-circles.png') }}" width="500px" alt="Cyclomatic circles">
-                    <img class="phpmetrics-h3" src="{{ asset('img/cyclomatic-stats.png') }}" width="500px" alt="Cyclomatic stats">
-                    <p> BookController, CardGameController, ApiController each have a low maintainability index (red circles).
-                        Furthermore BookController has quite a high Cyclomatic Complexity. This should be fixed to promote better code quality. 
-                    </p>
-
-                    <h3 class="phpmetrics-h3">Violations (Code smell?)</h3>
-                    <img src="{{ asset('img/violations-stats.png') }}" width="500px" alt="Phpmetrics violations">
-                    <p>
-                        My app has 2 package violations, they come from Card och Entity.
-                        It also has 2 class violations, with around 0.5 bugs accoring to theory. Scrutinizer tells me to improve the unit tests for these classes
-                        to ensure that there are no bugs. 
-                    </p>
-
-                    <h3 class="phpmetrics-h3">Coverage</h3>
-                    <img src="{{ asset('img/never-called-by-tests.png') }}" width="500px" alt="phpmetrics tests">
-                    <p>
-                        I have 9 classes which are never tested. These should be tested in order to increase coverage.
-                        Looking at the report we can see that the Controllers are not tested. The combination of them not being tested and also them having
-                        the highest complexity within my code is not good. Having a higher complexity can sometimes be ok,
-                        but then they should atleast be tested rigorously.
-                    </p>
-
-                    <h3 class="phpmetrics-h3">Packages in need of update</h3>
-                    <img src="{{ asset('img/package-needs-update.png') }}" width="500px" alt="phpmetrics packages">
-                    <p>
-                        There are some packages that should be updated, this should be a quick fix.
-                    </p>
+                        <img src="{{ asset('img/scrutinizer-overview.png') }}" width="800px" alt="Scrutinizer Overview">
+                        <p>This is how the report looks before doing any improvements.</p>
 
 
+                        <h3 class="phpmetrics-h3">Issues (Codestyle and Code Smell)</h3>
+                        <img src="{{ asset('img/scrut-issues.png') }}" width="800px" alt="scrutinizer issues">
+                        <p>
+                            The report highlighted 6 issues. I will primarily look at the ones related to code that i have written myself.
+                        </p>
+                        <h4 class="phpmetrics-h3">ApiControllerJson.php</h4>
+                        <img src="{{ asset('img/scrut-issue1.png') }}" width="500px" alt="scrutinizer issue 1">
+                        <p>
+                            This tries to retrieve the BookGraphic class which i have since deleted. This line can safely be removed.
+                        </p>
+                        <h4 class="phpmetrics-h3">BookController.php</h4>
+                        <img src="{{ asset('img/scrut-issue2.png') }}" width="500px" alt="scrutinizer issue 2">
+                        <p>
+                            This route never makes use of the $request parameter. This line can safely be removed.
+                        </p>
+                        <h4 class="phpmetrics-h3">BookRepository.php</h4>
+                        <img src="{{ asset('img/scrut-issue3.png') }}" width="500px" alt="scrutinizer issue 3">
+                        <p>
+                            It seems like i have used the wrong documentation format for illustrating that
+                            an array with each item also being arrays is what will be returned.
+                            Furthermore, it's from the method "findByMinimumValue2", which is only used in one route that itself is never used.
+                            The method and the route can safely be removed. But i will instead comment them out for now, since it was an interesting method.
+                        </p>
 
 
-                    <h2>Scrutinizer</h2>
-                    <a href="https://scrutinizer-ci.com/g/Axjo21/mvc-report/?branch=main">
-                        <img src="https://scrutinizer-ci.com/g/Axjo21/mvc-report/badges/quality-score.png?b=main">
-                    </a>
-                    <a href="https://scrutinizer-ci.com/g/Axjo21/mvc-report/code-structure/main/code-coverage">
-                        <img src="https://scrutinizer-ci.com/g/Axjo21/mvc-report/badges/coverage.png?b=main">
-                    </a>
-                    <a href="https://scrutinizer-ci.com/g/Axjo21/mvc-report/inspections/f347e79f-ff58-4505-a7ab-5108ac7fbfca/log">
-                        <img src="https://scrutinizer-ci.com/g/Axjo21/mvc-report/badges/build.png?b=main">
-                    </a>
+                        <h3 class="phpmetrics-h3">Complexity</h3>
+                        <img src="{{ asset('img/scrut-complexity1.png') }}" width="800px" alt="scrutinizer complexity 1">
+                        <p>
+                            Some of my controllers have a relatively high complexity rating. (number of ifs and loops)
+                            Since the controllers should be "thin" according to the MVC design pattern, this is potentially not very good code quality.
+                        </p>
+                        <img src="{{ asset('img/scrut-worst.png') }}" width="800px" alt="scrutinizer worst rated">
+                        <p>
+                            These are some of the worst rated classes and methods. The rating is based on their complexity (among other metrics).
+                            They still score quite well, but perhaps I should take a closer look at these specific classes.
+                        </p>
+
+                        <h3 class="phpmetrics-h3">Coverage</h3>
+                        <p>
+                            As you can see on the first image, coverage was not enabled when i ran the build.
+                            After enabling it and running a new inspection this is how it looks:
+                        </p>
+                        <img src="{{ asset('img/scrut-coverage2.png') }}" width="800px" alt="scrutinizer coverage">
+                        <p>
+                            A coverage of only 20% is not acceptable. It should atleast be between 40-60%, and ideally above 70%.
+                        </p>
 
 
-                    <img src="{{ asset('img/scrutinizer-overview.png') }}" width="800px" alt="Scrutinizer Overview">
-                    <p>This is how the report looks before doing any improvements.</p>
+                    </div>
+                    <div class="metrics-improvements">
+
+                        <h2>Förbättringar</h2>
+                        <p>
+                            Based on the reports, it would seem like the biggest issues with my code is that some of the
+                            classes are too complex, and that
+                            the coverage should be increased. This is what i will focus on mostly.
+                            I will also fix some of the issues and violations.
+                        </p>
+
+                        <h3>Issues</h3>
+                        <h4 class="before-h4">Before:</h4>
+                        <p>
+                            Scrutinizer highlight some issues that should be fixed.
+                            I'm choosing these improvents because they are easy to fix and will contribute to better code quality.
+                            Issues and defects are common occurences but they should be addressed when encountered since some might have rather
+                            unexpected side effects.
+                        </p>
 
 
-                    <h3 class="phpmetrics-h3">Issues (Codestyle and Code Smell)</h3>
-                    <img src="{{ asset('img/scrut-issues.png') }}" width="800px" alt="scrutinizer issues">
-                    <p>
-                        The report highlighted 6 issues. I will primarily look at the ones related to code that i have written myself.
-                    </p>
-                    <h4 class="phpmetrics-h3">ApiControllerJson.php</h4>
-                    <img src="{{ asset('img/scrut-issue1.png') }}" width="500px" alt="scrutinizer issue 1">
-                    <p>
-                        This tries to retrieve the BookGraphic class which i have since deleted. This line can safely be removed.
-                    </p>
-                    <h4 class="phpmetrics-h3">BookController.php</h4>
-                    <img src="{{ asset('img/scrut-issue2.png') }}" width="500px" alt="scrutinizer issue 2">
-                    <p>
-                        This route never makes use of the $request parameter. This line can safely be removed.
-                    </p>
-                    <h4 class="phpmetrics-h3">BookRepository.php</h4>
-                    <img src="{{ asset('img/scrut-issue3.png') }}" width="500px" alt="scrutinizer issue 3">
-                    <p>
-                        It seems like i have used the wrong documentation format for illustrating that
-                        an array with each item also being arrays is what will be returned.
-                        Furthermore, it's from the method "findByMinimumValue2", which is only used in one route that itself is never used.
-                        The method and the route can safely be removed. But i will instead comment them out for now, since it was an interesting method.
-                    </p>
+                        <img src="{{ asset('img/improv-scrut-issues.png') }}" width="600px" alt="scrutinizer issues">
+                        <p>
+                            Scrutinizer issues: For a closer look at the individual issues highlighted in the scrutinizer report,
+                            please refer to the images higher up in this article.
+                            I will only adress the ApiControllerJson, BookController and BookRepository issues from the scrutinizer report.
+                        </p>
+                        <p>
+                            Fixing these issues will result in only 2 issues for the scrutinizer report.
+                        </p>
+                        <h4 class="after-h4">After:</h4>
+                        <img src="{{ asset('img/scrut-fix-issues1.png') }}" width="250px" alt="scrutinizer issues 1">
+                        <img src="{{ asset('img/scrut-fix-issues2.png') }}" width="600px" alt="scrutinizer issues 2">
+                        <p>
+                            This is how it looks after addressing the issues.
+                        </p>
+
+                        <h3>CRAP</h3>
+                        <h4 class="before-h4">Before:</h4>
+                        <img src="{{ asset('img/scrut-crap.png') }}" width="600px" alt="scrutinizer crap 1">
+                        <p>
+                            Notice the CRAP Score being 30, which is 10 higher than the second highest.
+                        </p>
+                        <img src="{{ asset('img/scrut-crap2.png') }}" width="600px" alt="scrutinizer crap 2">
+
+                        <p>
+                            BookControllers updateBook method recieves a bad CRAP score. This is calculated based on it's complexity vs coverage.
+                            I chose this improvement since it was a clear outlier in terms of how bad the code was.
+                            To reduce it's CRAP score i will firstly make an effort to reduce it's complexity, and afterward i will write unit tests for it.
+                            I think that this will result in a much better CRAP score.
+                            Implementing this improvement will also contribute to decreased overall complexity and increased overall coverage.
+                        </p>
+                        <p>
+                            I am actually happy with the structure after looking closer at the method. 
+                            I think the reason it recieves a somewhat higher complexity score is that it performs some error handling
+                            of the uploaded images mime-type.
+                            I have decided to move this functionality into the Book Entity, which at the moment is very bare-bones.
+                            What this does really, is simply moving the complexity around, but it is better to not have it in the controller.
+                            It also isn't very complex to begin with, as it is only 4 if-statements total, but it's a good excercise. 
+                        </p>
+                        <h4 class="after-h4">After:</h4>
+                        <img src="{{ asset('img/controller-update-crap.png') }}" width="800px" alt="BookController updateBook crap 1">
+                        <p>This is how the updateBooks CRAP score looks like now. (from 30 to 12)</p>
+                        <img src="{{ asset('img/scrut-crap3.png') }}" width="600px" alt="scrutinizer crap 3">
+                        <p>As expected, after placing the logic in the Book entity, it now has the same problem.</p>
+                        <p>after writing unit tests..</p>
+
+                        <h3>Complexity</h3>
+                        <h4 class="before-h4">Before:</h4>
+                        <p>
+                            Some of my classes are too complex, making them hard to develop and maintain.
+                            To fix this i will simplify the classes wherever possible.
+                            I will focus on the controllers, these should be "thin" anyways according to the MVC design pattern, so it is not a good sign that these are
+                            the classes that have the highest complexity and maintainability index.
+                        </p>
+                        <img src="{{ asset('img/improv-complex-bookcontroller.png') }}" width="800px" alt="BookController complexity 1">
+
+                        <p>
+                            I will primarily focus on BookController as it has the highest complexity.
+                            According to Phpmetrics it has a WMC (Weighted Methods per Class) of 27.
+                            WMC seems to be related to how complex the classes methods are. It's cyclomatic complexity is also high.
+                        </p>
+                        <img src="{{ asset('img/improv-complex-book2.png') }}" width="300px" alt="BookController complexity 2">
+                        <p>
+                            BookController is the biggest red circle. I'm hoping it turns green or atleast orange after refactoring.
+                        </p>
+                        <img src="{{ asset('img/improv-complex-book3.png') }}" width="800px" alt="BookController complexity 3">
+                        <p>
+                            I am choosing this improvement because i noticed BookController
+                            being among the worst rated classes for multiple metrics in the reports due to it's complexity.
+                            Honestly, it will probably still be one of the most complex classes even after i make some improvements,
+                            but i am still hoping that the metrics will be significantly better. 
+                        </p>
+                        <p>
+                            I will put the logic for uploading of images in the Book Entity instead of in the BookController.
+                            This will mean that i have to change the "/library/view" and "/library/view/{id}" routes in the controller.
+                            Since i did something similar for the setImage method in the CRAP part of this article, i'm hoping that 
+                            BookController will be made less complex. I will also create a new "setDetails" method in Card entity which will
+                            update the details, instead of having to call setTitle, setAuthor and setISBN.
+                        </p>
+                        <h4 class="after-h4">After:</h4>
+                        <img src="{{ asset('img/controller-complexity1.png') }}" width="800px" alt="BookController complexity 4">
+                        <p>
+                            After implementing these changes this is how it looks. It's WCM dropped from 27 to 21, it's cyclomatic complexity dropped from 
+                            15 to 11. And it's Relative system and structural complexity dropped from around 800 to 400.
+                        </p>
+                        
 
 
-                    <h3 class="phpmetrics-h3">Complexity</h3>
-                    <img src="{{ asset('img/scrut-complexity1.png') }}" width="800px" alt="scrutinizer complexity 1">
-                    <p>
-                        Some of my controllers have a relatively high complexity rating. (number of ifs and loops)
-                        Since the controllers should be "thin" according to the MVC design pattern, this is potentially not very good code quality.
-                    </p>
-                    <img src="{{ asset('img/scrut-worst.png') }}" width="800px" alt="scrutinizer worst rated">
-                    <p>
-                        These are some of the worst rated classes and methods. The rating is based on their complexity (among other metrics).
-                        They still score quite well, but perhaps I should take a closer look at these specific classes.
-                    </p>
+                        <h3>Coverage</h3>
+                        <h4 class="before-h4">Before:</h4>
+                        <p>
+                            My coverage for some classes are not enough.
+                            The classes in most need of testing is the controllers. But i'll focus on Dice and Book entity. 
+                            I would have liked to have tested the BookController, since it is in need of testing, but
+                            unit testing a controller can be hard since you would have to mock most things, e2e testing would
+                            be a better alternative for testing of a controller.
+                        </p>
+                        <img src="{{ asset('img/improv-coverage1.png') }}" width="800px" alt="Dice coverage 1">
+                        <p>
+                            I will test the "roll" method in the Dice class. This will result in 100% coverage for this class.
+                            I am aiming at 100% coverage for the Book entity.
+                        </p>
 
-                    <h3 class="phpmetrics-h3">Coverage</h3>
-                    <p>
-                        As you can see on the first image, coverage was not enabled when i ran the build.
-                        After enabling it and running a new inspection this is how it looks:
-                    </p>
-                    <img src="{{ asset('img/scrut-coverage2.png') }}" width="800px" alt="scrutinizer coverage">
-                    <p>
-                        A coverage of only 20% is not acceptable. It should atleast be between 40-60%, and ideally above 70%.
-                    </p>
+                        <img src="{{ asset('img/improv-coverage2.png') }}" width="800px" alt="Controller coverage 1">
+                        <h4 class="after-h4">After:</h4>
 
 
-
-
-
-                    <h2>Förbättringar</h2>
-                    <p>
-                        Based on the reports, it would seem like the biggest issues with my code is that some of the
-                        classes are too complex, and that
-                        the coverage should be increased. This is what i will focus on mostly.
-                        I will also fix some of the issues and violations.
-                    </p>
-
-                    <h3>Issues</h3>
-                    <p>
-                        Scrutinizer highlight some issues that should be fixed.
-                        I'm choosing these improvents because they are easy to fix and will contribute to better code quality.
-                        Issues and defects are common occurences but they should be addressed when encountered since some might have rather
-                        unexpected side effects.
-                    </p>
-
-
-                    <img src="{{ asset('img/improv-scrut-issues.png') }}" width="600px" alt="scrutinizer issues">
-                    <p>
-                        Scrutinizer issues: For a closer look at the individual issues highlighted in the scrutinizer report,
-                        please refer to the images higher up in this article.
-                        I will only adress the ApiControllerJson, BookController and BookRepository issues from the scrutinizer report.
-                    </p>
-                    <p>
-                        Fixing these issues will result in only 2 issues for the scrutinizer report.
-                    </p>
-                    <img src="{{ asset('img/scrut-fix-issues1.png') }}" width="250px" alt="scrutinizer issues 1">
-                    <img src="{{ asset('img/scrut-fix-issues2.png') }}" width="600px" alt="scrutinizer issues 2">
-                    <p>
-                        This is how it looks after addressing the issues.
-                    </p>
-
-                    <h3>CRAP</h3>
-                    <img src="{{ asset('img/scrut-crap.png') }}" width="600px" alt="scrutinizer crap 1">
-                    <p>
-                        Notice the CRAP Score being 30, which is 10 higher than the second highest.
-                    </p>
-                    <img src="{{ asset('img/scrut-crap2.png') }}" width="600px" alt="scrutinizer crap 2">
-
-                    <p>
-                        BookControllers updateBook method recieves a bad CRAP score. This is calculated based on it's complexity vs coverage.
-                        I chose this improvement since it was a clear outlier in terms of how bad the code was.
-                        To reduce it's CRAP score i will firstly make an effort to reduce it's complexity, and afterward i will write unit tests for it.
-                        I think that this will result in a much better CRAP score.
-                        Implementing this improvement will also contribute to decreased overall complexity and increased overall coverage.
-                    </p>
-                    <p>
-                        I am actually happy with the structure after looking closer at the method. 
-                        I think the reason it recieves a somewhat higher complexity score is that it performs some error handling
-                        of the uploaded images mime-type.
-                        I have decided to move this functionality into the Book Entity, which at the moment is very bare-bones.
-                        What this does really, is simply moving the complexity around, but it is better to not have it in the controller.
-                        It also isn't very complex to begin with, as it is only 4 if-statements total, but it's a good excercise. 
-                    </p>
-                    <img src="{{ asset('img/scrut-crap3.png') }}" width="600px" alt="scrutinizer crap 3">
-                    <p>As expected, after placing the logic in the Book entity, it now has the same problem.</p>
-                    <p>after writing unit tests..</p>
-
-                    <h3>Complexity</h3>
-                    <p>
-                        Some of my classes are too complex, making them hard to develop and maintain.
-                        To fix this i will simplify the classes wherever possible.
-                        I will focus on the controllers, these should be "thin" anyways according to the MVC design pattern, so it is not a good sign that these are
-                        the classes that have the highest complexity and maintainability index.
-                    </p>
-                    <img src="{{ asset('img/improv-complex-bookcontroller.png') }}" width="800px" alt="BookController complexity 1">
-
-                    <p>
-                        I will primarily focus on BookController as it has the highest complexity.
-                        According to Phpmetrics it has a WMC (Weighted Methods per Class) of 27.
-                        WMC seems to be related to how complex the classes methods are. It's cyclomatic complexity is also high.
-                    </p>
-                    <img src="{{ asset('img/improv-complex-book2.png') }}" width="300px" alt="BookController complexity 2">
-                    <p>
-                        BookController is the biggest red circle. I'm hoping it turns green or atleast orange after refactoring.
-                    </p>
-                    <img src="{{ asset('img/improv-complex-book3.png') }}" width="800px" alt="BookController complexity 3">
-                    <p>
-                        I am choosing this improvement because i noticed BookController
-                        being among the worst rated classes for multiple metrics in the reports due to it's complexity.
-                        Honestly, it will probably still be one of the most complex classes even after i make some improvements,
-                        but i am still hoping that the metrics will be significantly better. 
-                    </p>
-                    <p>
-                        I will put the logic for uploading of images in the Book Entity instead of in the BookController.
-                        This will mean that i have to change the "/library/view" and "/library/view/{id}" routes in the controller.
-                        Since i did something similar for the setImage method in the CRAP part of this article, i'm hoping that 
-                        BookController will be made less complex.
-                    </p>
-                    
-
-
-                    <h3>Coverage (gör sist)</h3>
-                    <p>
-                        My coverage for some classes are not enough. I want to increase the coverage and also remove the "theoretical bugs" that i discussed previously.
-                        The classes in most need of testing is the controllers. But maybe i'll focus on Dice, Entity and Repository. 
-                    </p>
-                    <img src="{{ asset('img/improv-coverage1.png') }}" width="800px" alt="Dice coverage 1">
-                    <p>I will test the "roll" method in the Dice class. This will result in 100% coverage for this class.</p>
-
-                    <img src="{{ asset('img/improv-coverage2.png') }}" width="800px" alt="Controller coverage 1">
-                    <p>
-                        I will try to write some unit tests for the BookController class.
-                        I'm choosing this class since it is one of the larger controllers, so I need to make sure it's robustly tested.
-                        I am not at all sure how to write tests for a controller, so by doing this i will learn and be better equipped to write
-                        tests for the other controllers in the future. 
-                        The resulting metric after implementation of some tests will hopefully be above 40%. 
-                    </p>
-
-
-
-                    <h2>Diskussion</h2>
-                    <pre>
-                        Avsluta med ett stycke “Diskussion” där du diskuterar kort kring det du nyss gjort.
-                        Kan man aktivt jobba med kodkvalitet och “clean code” på detta sättet?
-                        Finns det fördelar och kanske nackdelar?
-                        Ser du andra möjligheter att jobba mot “clean code”?
-                    </pre>
-                    <p>
-                        Att jobba med Phpmetrics för clean code är ett bra arbetssätt eftersom det går snabbt och lätt att generera en rapport.
-                        Jag tycker att den information man fick från phpmetrics var mycket bra och lätt att läsa men de hade gärna kunnat vara lite mer
-                        transparanta angående var mätvärdena kommer ifrån, så att de är lättare att åtgärda problem.
-                        Tillexempel så vore det inte speciellt svårt för dem att skriva ut vilka klasser en klass har Afferrent- eller Efferrent Coupling för.
-                        Det är iochförsig inte speciellt svårt att ta reda på själv men det hade minskat behovet att gå mellan rapporten och själva koden för att få 
-                        en helhetsbild över vad mätvärdet faktiskt innebär.
-                    </p>
-                    <p> 
-                        Scrutinizer CI gör att ens kod blir mer pålitlig eftersom den utför sin funktion vid varje push. Detta gör det lättare att upptäcka problem
-                        tidigt i en utvecklingsprocess. Jag fick relativt bra poäng på mina inspections, vilket kan ha bidragit till att
-                        Scrutinizers rapport inte var så utförlig, men det intryck jag fick var att Phpmetrics var lite mer användbart för ta reda på ens 
-                        kodkvalitet och att Scrutinizer var ett snabbt och enkelt verktyg att använda för att säkerställa att koden faktiskt funkade.
-                        Däremot var Scrutinizer lite mer exakt i sin rapport över vad de baserade sina mätvärden på. 
-                    </p>
-                    <p>
-                        Andra sätt att jobba med clean code kan vara att göra code reviews, pair programming, statiska valideringsverktyg, pull requests.
-                        Att arbeta med Test Driven Development metologin kan även bidra till bättre kod, eftersom koden man skriver är baserad på tester
-                        så man kommer automatiskt att ha en hög coverage.
-                        Generella fenomen som kan bidra till bättre kodkvalitet kan vara att man som utvecklare har tillräckligt med tid att skapa något gediget
-                        och att ens organisation har ett långsiktigt tänk; att de prioriterar långvarig underhållning av koden istället för att begära snabba resultat.
-                    </p>
-                    <p>
-                        Nu är jag en relativ nybörjare på programmering,
-                        men jag kan tänka mig att när man blir mer erfaren så kommer man att ha bättre koll medan man utvecklar
-                        så att koden man skriver är mer testbar och lättare att underhålla.
-                    </p>
+                    </div>
+                    <div class="metrics-discussion">
+                        <h2>Diskussion</h2>
+                        <pre>
+                            Avsluta med ett stycke “Diskussion” där du diskuterar kort kring det du nyss gjort.
+                            Kan man aktivt jobba med kodkvalitet och “clean code” på detta sättet?
+                            Finns det fördelar och kanske nackdelar?
+                            Ser du andra möjligheter att jobba mot “clean code”?
+                        </pre>
+                        <p>
+                            Att jobba med Phpmetrics för clean code är ett bra arbetssätt eftersom det går snabbt och lätt att generera en rapport.
+                            Jag tycker att den information man fick från phpmetrics var mycket bra och lätt att läsa men de hade gärna kunnat vara lite mer
+                            transparanta angående var mätvärdena kommer ifrån, så att de är lättare att åtgärda problem.
+                            Tillexempel så vore det inte speciellt svårt för dem att skriva ut vilka klasser en klass har Afferrent- eller Efferrent Coupling för.
+                            Det är iochförsig inte speciellt svårt att ta reda på själv men det hade minskat behovet att gå mellan rapporten och själva koden för att få 
+                            en helhetsbild över vad mätvärdet faktiskt innebär.
+                        </p>
+                        <p> 
+                            Scrutinizer CI gör att ens kod blir mer pålitlig eftersom den utför sin funktion vid varje push. Detta gör det lättare att upptäcka problem
+                            tidigt i en utvecklingsprocess. Jag fick relativt bra poäng på mina inspections, vilket kan ha bidragit till att
+                            Scrutinizers rapport inte var så utförlig, men det intryck jag fick var att Phpmetrics var lite mer användbart för ta reda på ens 
+                            kodkvalitet och att Scrutinizer var ett snabbt och enkelt verktyg att använda för att säkerställa att koden faktiskt funkade.
+                            Däremot var Scrutinizer lite mer exakt i sin rapport över vad de baserade sina mätvärden på. 
+                        </p>
+                        <p>
+                            Andra sätt att jobba med clean code kan vara att göra code reviews, pair programming, statiska valideringsverktyg, pull requests.
+                            Att arbeta med Test Driven Development metologin kan även bidra till bättre kod, eftersom koden man skriver är baserad på tester
+                            så man kommer automatiskt att ha en hög coverage.
+                            Generella fenomen som kan bidra till bättre kodkvalitet kan vara att man som utvecklare har tillräckligt med tid att skapa något gediget
+                            och att ens organisation har ett långsiktigt tänk; att de prioriterar långvarig underhållning av koden istället för att begära snabba resultat.
+                        </p>
+                        <p>
+                            Nu är jag en relativ nybörjare på programmering,
+                            men jag kan tänka mig att när man blir mer erfaren så kommer man att ha bättre koll medan man utvecklar
+                            så att koden man skriver är mer testbar och lättare att underhålla.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
