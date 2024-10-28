@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class BookController extends AbstractController
 {
     # HOME
-    #[Route('/library', name: 'library')]
+    #[Route('/library', name: 'library', methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('book/home.html.twig', [
@@ -23,7 +23,7 @@ class BookController extends AbstractController
 
 
     # CREATE (form)
-    #[Route('/library/create_new', name: 'library_create_new')]
+    #[Route('/library/create_new', name: 'library_create_new', methods: ['GET'])]
     public function createNewBook(): Response
     {
         return $this->render('book/create.html.twig', [
@@ -33,7 +33,7 @@ class BookController extends AbstractController
 
 
     # CREATE (actually create)
-    #[Route('/library/create', name: 'library_create')]
+    #[Route('/library/create', name: 'library_create', methods: ['POST'])]
     public function createBook(
         ManagerRegistry $doctrine,
         Request $request
@@ -66,7 +66,7 @@ class BookController extends AbstractController
 
 
     # VIEW ALL
-    #[Route('/library/view', name: 'library_view_all')]
+    #[Route('/library/view', name: 'library_view_all', methods: ['GET'])]
     public function viewAllBook(
         BookRepository $bookRepository
     ): Response {
@@ -93,7 +93,7 @@ class BookController extends AbstractController
     }
 
     # VIEW SINGLE
-    #[Route('/library/view/{id}', name: 'library_view_by_id')]
+    #[Route('/library/view/{id}', name: 'library_view_by_id', methods: ['GET', 'POST'])]
     public function viewBookById(
         BookRepository $bookRepository,
         int $id
@@ -128,7 +128,7 @@ class BookController extends AbstractController
 
 
     # UPDATE
-    #[Route('/library/update_book/{id}', name: 'library_update_book')]
+    #[Route('/library/update_book/{id}', name: 'library_update_book', methods: ['GET', 'POST'])]
     public function updateSingleBook(
         BookRepository $bookRepository,
         int $id
@@ -151,7 +151,7 @@ class BookController extends AbstractController
     }
 
     # UPDATE (actually update)
-    #[Route('/library/update/{id}', name: 'library_update')]
+    #[Route('/library/update/{id}', name: 'library_update', methods: ['POST'])]
     public function updateBook(
         ManagerRegistry $doctrine,
         int $id,
@@ -188,7 +188,7 @@ class BookController extends AbstractController
 
 
     # DELETE
-    #[Route('/library/delete_book/{id}', name: 'library_delete_book_by_id')]
+    #[Route('/library/delete_book/{id}', name: 'library_delete_book_by_id', methods: ['POST'])]
     public function deleteSingleBookById(
         ManagerRegistry $doctrine,
         int $id
@@ -210,7 +210,7 @@ class BookController extends AbstractController
 
 
     # DELETE (actually delete)
-    #[Route('/library/delete/{id}', name: 'library_delete_by_id')]
+    #[Route('/library/delete/{id}', name: 'library_delete_by_id', methods: ['POST'])]
     public function deleteBookById(
         ManagerRegistry $doctrine,
         int $id
@@ -245,7 +245,7 @@ class BookController extends AbstractController
 
 
     # SHOW ALL (JSON respons)
-    #[Route('/api/library/books', name: 'api_library')]
+    #[Route('/api/library/books', name: 'api_library', methods: ['GET'])]
     public function showAllBook(
         BookRepository $bookRepository
     ): Response {
@@ -260,7 +260,7 @@ class BookController extends AbstractController
 
     // FÖR ISBN
     # SHOW SINGLE (JSON respons)
-    #[Route('/api/library/book/{isbn}', name: 'api_library_isbn')]
+    #[Route('/api/library/book/{isbn}', name: 'api_library_isbn', methods: ['GET'])]
     public function showBookByIsbn(
         BookRepository $bookRepository,
         string $isbn
@@ -279,7 +279,7 @@ class BookController extends AbstractController
     }
 
     // FÖR ID
-    #[Route('/api/library/show/{id}', name: 'api_library_id')]
+    #[Route('/api/library/show/{id}', name: 'api_library_id', methods: ['GET'])]
     public function showBookById(
         BookRepository $bookRepository,
         int $id

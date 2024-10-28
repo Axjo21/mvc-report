@@ -25,9 +25,7 @@
             <input class="book-form-input" type="string" name="book_isbn"><br>
             
             <label class="book-form-label" for="book_image">Image:</label><br>
-            <!-- MAX_FILE_SIZE must precede the file input field -->
             <input type="hidden" name="MAX_FILE_SIZE" value="90000000" />
-            <!-- Name of input element determines name in $_FILES array -->
             <input class="book-form-input" type="file" name="book_image" />
 
             <input class="book-form-submit" type="submit" name="do_it" value="Create">
