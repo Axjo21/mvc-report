@@ -108,15 +108,15 @@
                                 <section>
                                         <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/app.html">App</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-controller.html">Controller</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-repository.html">Repository</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    LuckyControllerJson
+    BookRepository
 
         <span class="phpdocumentor-element__extends">
-        extends <abbr title="\Symfony\Bundle\FrameworkBundle\Controller\AbstractController">AbstractController</abbr>
+        extends <abbr title="\Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository">ServiceEntityRepository</abbr>
     </span>
     
             <div class="phpdocumentor-element__package">
@@ -135,9 +135,9 @@
 </div>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/LuckyControllerJson.php"><a href="files/src-controller-luckycontrollerjson.html"><abbr title="src/Controller/LuckyControllerJson.php">LuckyControllerJson.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Repository/BookRepository.php"><a href="files/src-repository-bookrepository.html"><abbr title="src/Repository/BookRepository.php">BookRepository.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">10</span>
+    <span class="phpdocumentor-element-found-in__line">12</span>
 
     </aside>
 
@@ -145,6 +145,22 @@
 
 
 
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/App-Repository-BookRepository.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">extends</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>ServiceEntityRepository&lt;Book&gt;</p>
+</section>
+
+                                    </dd>
+                                            </dl>
 
 
 
@@ -152,7 +168,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="classes/App-Controller-LuckyControllerJson.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/App-Repository-BookRepository.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -167,21 +183,29 @@
 
 <h4 id="toc-methods">
     Methods
-    <a href="classes/App-Controller-LuckyControllerJson.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/App-Repository-BookRepository.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/App-Controller-LuckyControllerJson.html#method_jsonNumber">jsonNumber()</a>
+    <a class="" href="classes/App-Repository-BookRepository.html#method___construct">__construct()</a>
     <span>
-                                &nbsp;: <abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr>    </span>
+                                &nbsp;: mixed    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/App-Controller-LuckyControllerJson.html#method_jsonQuote">jsonQuote()</a>
+    <a class="" href="classes/App-Repository-BookRepository.html#method_findByIsbn">findByIsbn()</a>
     <span>
-                                &nbsp;: <abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr>    </span>
+                                &nbsp;: mixed    </span>
 </dt>
+<dd>Find book having a matching isbn.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Repository-BookRepository.html#method_findByMinimumValue">findByMinimumValue()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Find all books having a value above the specified one.</dd>
 
     </dl>
 
@@ -194,7 +218,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/App-Controller-LuckyControllerJson.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/App-Repository-BookRepository.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -203,52 +227,94 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_jsonNumber">
-        jsonNumber()
-        <a href="classes/App-Controller-LuckyControllerJson.html#method_jsonNumber" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method___construct">
+        __construct()
+        <a href="classes/App-Repository-BookRepository.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/LuckyControllerJson.php"><a href="files/src-controller-luckycontrollerjson.html"><abbr title="src/Controller/LuckyControllerJson.php">LuckyControllerJson.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Repository/BookRepository.php"><a href="files/src-repository-bookrepository.html"><abbr title="src/Repository/BookRepository.php">BookRepository.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">44</span>
+    <span class="phpdocumentor-element-found-in__line">14</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">jsonNumber</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\Persistence\ManagerRegistry">ManagerRegistry</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$registry</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
     
-    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$registry</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\Persistence\ManagerRegistry">ManagerRegistry</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
     
 
     
-    <section class="phpdocumentor-attributes">
-        <h5 class="phpdocumentor-elements__header" id="attributes">
-            Attributes <a href="classes/App-Controller-LuckyControllerJson.html#method_jsonNumber#attributes" class="headerlink"><i class="fas fa-link"></i></a>
 
-        </h5>
-                    <dl class="phpdocumentor-argument-list">
-    <dt class="phpdocumentor-argument-list__entry">
-        #[<abbr title="\Symfony\Component\Routing\Annotation\Route">Route</abbr>]
-    </dt>
-        <dd class="phpdocumentor-argument-list__entry">
-        &quot;/api/lucky/number&quot;
-    </dd>
-        <dd class="phpdocumentor-argument-list__entry">
-        $name: &quot;api_number&quot;
-    </dd>
-    </dl>
-            </section>
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_findByIsbn">
+        findByIsbn()
+        <a href="classes/App-Repository-BookRepository.html#method_findByIsbn" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Repository/BookRepository.php"><a href="files/src-repository-bookrepository.html"><abbr title="src/Repository/BookRepository.php">BookRepository.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">24</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Find book having a matching isbn.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">findByIsbn</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$isbn</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$isbn</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span>
+        <span class="phpdocumentor-signature__response_type">mixed</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Returns an array of Book objects</p>
+</section>
+
             </section>
 
 </article>
@@ -258,52 +324,50 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_jsonQuote">
-        jsonQuote()
-        <a href="classes/App-Controller-LuckyControllerJson.html#method_jsonQuote" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_findByMinimumValue">
+        findByMinimumValue()
+        <a href="classes/App-Repository-BookRepository.html#method_findByMinimumValue" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/LuckyControllerJson.php"><a href="files/src-controller-luckycontrollerjson.html"><abbr title="src/Controller/LuckyControllerJson.php">LuckyControllerJson.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Repository/BookRepository.php"><a href="files/src-repository-bookrepository.html"><abbr title="src/Repository/BookRepository.php">BookRepository.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">40</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Find all books having a value above the specified one.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">jsonQuote</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">findByMinimumValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
     
-    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
     
 
     
-    <section class="phpdocumentor-attributes">
-        <h5 class="phpdocumentor-elements__header" id="attributes">
-            Attributes <a href="classes/App-Controller-LuckyControllerJson.html#method_jsonQuote#attributes" class="headerlink"><i class="fas fa-link"></i></a>
-
-        </h5>
-                    <dl class="phpdocumentor-argument-list">
-    <dt class="phpdocumentor-argument-list__entry">
-        #[<abbr title="\Symfony\Component\Routing\Annotation\Route">Route</abbr>]
-    </dt>
-        <dd class="phpdocumentor-argument-list__entry">
-        &quot;/api/quote&quot;
-    </dd>
-        <dd class="phpdocumentor-argument-list__entry">
-        $name: &quot;api_quote&quot;
-    </dd>
-    </dl>
-            </section>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span>
+        <span class="phpdocumentor-signature__response_type">mixed</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Returns an array of Book objects</p>
+</section>
+
             </section>
 
 </article>
@@ -313,7 +377,7 @@
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Controller/LuckyControllerJson.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Repository/BookRepository.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -412,7 +476,7 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                <li><a href="classes/App-Controller-LuckyControllerJson.html#toc-methods">Methods</a></li>
+                                                                                <li><a href="classes/App-Repository-BookRepository.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
             
@@ -420,8 +484,9 @@
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li class=""><a href="classes/App-Controller-LuckyControllerJson.html#method_jsonNumber">jsonNumber()</a></li>
-                                            <li class=""><a href="classes/App-Controller-LuckyControllerJson.html#method_jsonQuote">jsonQuote()</a></li>
+                                            <li class=""><a href="classes/App-Repository-BookRepository.html#method___construct">__construct()</a></li>
+                                            <li class=""><a href="classes/App-Repository-BookRepository.html#method_findByIsbn">findByIsbn()</a></li>
+                                            <li class=""><a href="classes/App-Repository-BookRepository.html#method_findByMinimumValue">findByMinimumValue()</a></li>
                                     </ul>
             </li>
                     </ul>
@@ -441,7 +506,7 @@
     </section>
 </section>
         </div>
-        <a href="classes/App-Controller-LuckyControllerJson.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/App-Repository-BookRepository.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

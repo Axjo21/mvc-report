@@ -18,13 +18,13 @@ class BookRepository extends ServiceEntityRepository
 
     /**
      * Find book having a matching isbn.
-     * 
-     * @return Book Returns an array of Book objects
+     *
+     * @return mixed Returns an array of Book objects
      */
-    public function findByIsbn($isbn): Book | null
+    public function findByIsbn(string $isbn): mixed
     {
         return $this->createQueryBuilder('b')
-        ->andWhere('b.ISBN = :isbn')
+        ->andWhere('b.isbn = :isbn')
         ->setParameter('isbn', $isbn)
         ->getQuery()
         ->getOneOrNullResult();
@@ -34,10 +34,10 @@ class BookRepository extends ServiceEntityRepository
     # ANPASSA FÖR BOK TABELL
     /**
      * Find all books having a value above the specified one.
-     * 
-     * @return Book[] Returns an array of Book objects
+     *
+     * @return mixed Returns an array of Book objects
      */
-    public function findByMinimumValue($value): array
+    public function findByMinimumValue(int $value): mixed
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.value >= :value')
@@ -51,7 +51,7 @@ class BookRepository extends ServiceEntityRepository
     # ALTERNATIV TILL OVAN (?)
     /**
      * Find all producs having a value above the specified one with SQL.
-     * 
+     *
      * #return [][] Returns an array of arrays (i.e. a raw data set)
      */
     /*
@@ -71,28 +71,5 @@ class BookRepository extends ServiceEntityRepository
     }
     */
 
-//    /**
-//     * @return Book[] Returns an array of Book objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('b.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Book
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

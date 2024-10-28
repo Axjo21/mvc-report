@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\Book;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\BookRepository;
@@ -42,15 +43,12 @@ class BookController extends AbstractController
         $entityManager = $doctrine->getManager();
         $book = new Book();
 
-        $title = $request->request->get('book_title');
-        $author = $request->request->get('book_author');
-        $isbn = $request->request->get('book_isbn');
+        $title = (string) $request->request->get('book_title');
+        $author = (string) $request->request->get('book_author');
+        $isbn = (string) $request->request->get('book_isbn');
         $imageFile = $request->files->get('book_image');
 
-        // check if image is set and gather it's mime-type
-        if ($imageFile) {
-            $book->setImage($imageFile);
-        }
+        $book->setImage($imageFile);
 
         $book->setDetails($title, $author, $isbn);
 
@@ -75,9 +73,9 @@ class BookController extends AbstractController
         // save images for each book
         foreach ($books as $book) {
             $result = $book->getImage();
-            if($result) {
-                $imageData = $result['imageData'];
-                $mimeType = $result['mimeType'];
+            if($result && is_array($result)) {
+                $imageData = $result['imageData'] ?? null;
+                $mimeType = $result['mimeType'] ?? null;
                 // save data and mime for each image to the images array
                 $images[$book->getId()] = ['data' => $imageData, 'mime' => $mimeType];
             }
@@ -100,7 +98,7 @@ class BookController extends AbstractController
     ): Response {
         $book = $bookRepository
             ->find($id);
-        
+
         if (!$book) {
             throw $this->createNotFoundException(
                 'No book found for id '.$id
@@ -109,9 +107,9 @@ class BookController extends AbstractController
 
         $result = $book->getImage();
 
-        if($result) {
-            $imageData = $result['imageData'];
-            $mimeType = $result['mimeType'];
+        if($result && is_array($result)) {
+            $imageData = $result['imageData'] ?? null;
+            $mimeType = $result['mimeType'] ?? null;
             $data = [
                 'book' => $book,
                 'image' => $imageData,
@@ -123,7 +121,7 @@ class BookController extends AbstractController
             'book' => $book,
             'image' => null
         ];
-        return $this->render('book/single.html.twig', $data);   
+        return $this->render('book/single.html.twig', $data);
     }
 
 
@@ -160,25 +158,27 @@ class BookController extends AbstractController
         try {
             $entityManager = $doctrine->getManager();
             $book = $entityManager->getRepository(Book::class)->find($id);
-    
+
             if (!$book) {
                 throw $this->createNotFoundException(
                     'No book found for id '.$id
                 );
             }
-    
-            $imageFile = $request->files->get('book_image_update');
-            $book->setImage($imageFile);
 
-            $title = $request->request->get('title');
-            $author = $request->request->get('author');
-            $isbn = $request->request->get('isbn');
+            $imageFile = $request->files->get('book_image_update');
+            if ($imageFile) {
+                $book->setImage($imageFile);
+            }
+
+            $title = (string) $request->request->get('title');
+            $author = (string) $request->request->get('author');
+            $isbn = (string) $request->request->get('isbn');
             $book->setDetails($title, $author, $isbn);
 
             $entityManager->flush();
-    
+
             $this->addFlash('success', 'Your changes have been saved successfully.');
-    
+
             return $this->redirectToRoute('library_view_by_id', ['id' => $id]);
         } catch (\Exception $e) {
             $this->addFlash('error', 'An error occurred: ' . $e->getMessage());
@@ -230,64 +230,6 @@ class BookController extends AbstractController
         $this->addFlash('success', 'Your changes have been saved successfully.');
 
         return $this->redirectToRoute('library_view_all');
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # SHOW ALL (JSON respons)
-    #[Route('/api/library/books', name: 'api_library', methods: ['GET'])]
-    public function showAllBook(
-        BookRepository $bookRepository
-    ): Response {
-        $books = $bookRepository
-            ->findAll();
-        $response = $this->json($books);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-    }
-
-    // FÖR ISBN
-    # SHOW SINGLE (JSON respons)
-    #[Route('/api/library/book/{isbn}', name: 'api_library_isbn', methods: ['GET'])]
-    public function showBookByIsbn(
-        BookRepository $bookRepository,
-        string $isbn
-    ): Response {
-
-        $book = $bookRepository->findByIsbn($isbn);
-
-        if (!$book) {
-            $data = [
-                'book' => "not found"
-            ];
-            return $this->json($data);
-        }
-
-        return $this->json($book);
-    }
-
-    // FÖR ID
-    #[Route('/api/library/show/{id}', name: 'api_library_id', methods: ['GET'])]
-    public function showBookById(
-        BookRepository $bookRepository,
-        int $id
-    ): Response {
-        $book = $bookRepository
-            ->find($id);
-
-        return $this->json($book);
     }
 
 }
