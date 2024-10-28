@@ -6,30 +6,32 @@
     <h1>Api Home</h1>
 
     <h2><strong>API Quote:  </strong><a href="{{ path('api_quote') }}">api/quote</a></h2>
-    <p>api/quote visar JSON-data för ett slumplässigt citat tilsammans med tidsstämpel. </p>
+    <p>Visar JSON-data för ett slumplässigt citat tilsammans med tidsstämpel. </p>
 
     <h2><strong>API Number:  </strong><a href="{{ path('api_number') }}">/api/lucky/number</a></h2>
-    <p>api/lucky/number visar JSON-data för ett slumpat tal tilsammans med en hälsning. </p>
+    <p>Visar JSON-data för ett slumpat tal tilsammans med en hälsning. </p>
 
     <h2><strong>API Deck:  </strong><a href="{{ path('api_deck') }}">/api/deck</a></h2>
-    <p>api/deck visar JSON-data för ett DeckOfCards där korten är sorterade. </p>
+    <p>Visar JSON-data för ett DeckOfCards där korten är sorterade. </p>
 
     <h2><strong>API Deck Shuffle:  </strong><a href="{{ path('api_shuffle') }}">/api/deck/shuffle</a></h2>
-    <p>api/deck visar JSON-data för ett DeckOfCards efter att kortleken blandats.</p>
+    <p>Visar JSON-data för ett DeckOfCards efter att kortleken blandats.</p>
 
     <h2><strong>API Draw:  </strong><a href="{{ path('api_draw') }}">/api/deck/draw</a></h2>
-    <p>api/deck/draw drar ett kort från kortleken och visar upp det.</p>
+    <p>Drar ett kort från kortleken och visar upp det.</p>
 
     <h2><strong>API Draw Number:  </strong><a href='{{ path('api_draw:number') }}'>/api/deck/draw:number</a></h2>
     <p>
-        api/deck/draw:number draw flera kort från kortleken och visar dem. Default nummer =1 om man klickar på länken.
+        Draw flera kort från kortleken och visar dem. Default nummer =1 om man klickar på länken.
         Skriv in annat nummer i URLen för att ändra antelet kort.
     </p>
 
     <h2><strong>API Game:  </strong><a href="{{ path('api_game') }}">/api/game</a></h2>
-    <p>api/game visar den aktuella ställningen i kortspelet 21.</p>
+    <p>Visar den aktuella ställningen i kortspelet 21.</p>
 
     <h2><strong>API Library:  </strong><a href="{{ path('api_library') }}">/api/library/books</a></h2>
-    <p>api/library/books visar samtliga böcker i biblioteket.</p>
-
+    <p>Visar samtliga böcker i biblioteket.</p>
+    
+    <h2><strong>API Library ISBN Example:  </strong><a href="{{ path('api_library_isbn', { 'isbn': '9090-2033-9191' }) }}">api/library/book/9090-2033-9191</a></h2>
+    <p>Visar en bok som matchar med isbn.</p>
 {% endblock %}

@@ -16,6 +16,20 @@ class BookRepository extends ServiceEntityRepository
         parent::__construct($registry, Book::class);
     }
 
+    /**
+     * Find book having a matching isbn.
+     * 
+     * @return Book Returns an array of Book objects
+     */
+    public function findByIsbn($isbn): Book | null
+    {
+        return $this->createQueryBuilder('b')
+        ->andWhere('b.ISBN = :isbn')
+        ->setParameter('isbn', $isbn)
+        ->getQuery()
+        ->getOneOrNullResult();
+    }
+
 
     # ANPASSA FÖR BOK TABELL
     /**

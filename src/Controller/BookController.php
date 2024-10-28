@@ -245,7 +245,7 @@ class BookController extends AbstractController
 
 
     # SHOW ALL (JSON respons)
-    #[Route('/api/library/show', name: 'api_library')]
+    #[Route('/api/library/books', name: 'api_library')]
     public function showAllBook(
         BookRepository $bookRepository
     ): Response {
@@ -258,10 +258,28 @@ class BookController extends AbstractController
         return $response;
     }
 
-
+    // FÖR ISBN
     # SHOW SINGLE (JSON respons)
-    # gör om så att man hittar genom ISBN istället för id
-    #[Route('/api/library/show/{id}', name: 'api_library_isbn')]
+    #[Route('/api/library/book/{isbn}', name: 'api_library_isbn')]
+    public function showBookByIsbn(
+        BookRepository $bookRepository,
+        string $isbn
+    ): Response {
+
+        $book = $bookRepository->findByIsbn($isbn);
+
+        if (!$book) {
+            $data = [
+                'book' => "not found"
+            ];
+            return $this->json($data);
+        }
+
+        return $this->json($book);
+    }
+
+    // FÖR ID
+    #[Route('/api/library/show/{id}', name: 'api_library_id')]
     public function showBookById(
         BookRepository $bookRepository,
         int $id
