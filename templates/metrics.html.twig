@@ -24,7 +24,8 @@
                             Coverage is basically a percentage of how much of your code is covered by tests.
                             Meaning, the higher coverage you have the higher the chance of your code functioning as it should with minimal defects.
                             Having a low coverage serves as a warning that your code might not be reliable. 
-                            It should be noted that this is only a metric for what your codes quality seems to be and not it's actual quality,
+                            It should be noted that this is only a metric for what your codes quality <strong>seems</strong> to be and
+                            not it's <strong>actual</strong> quality,
                             since a badly written test will still contribute to the overall coverage.
                             The better your tests are, the closer this metric comes to reflecting it's actual quality.
                         </p>
@@ -84,6 +85,7 @@
                         <p>
                             Change Risk Analyzer and Predictor estimates the amount of work it will take to make changes to a method.
                             The estimate is based on the methods complexity and coverage. 
+                            Writing more tests for such a method will reduce in a better CRAP score. 
                         </p>
 
 
@@ -181,7 +183,7 @@
 
                         <h3 class="phpmetrics-h3">Coverage</h3>
                         <p>
-                            As you can see on the first image, coverage was not enabled when i ran the build.
+                            As you can see on the first image, coverage was not enabled when i ran the first build.
                             After enabling it and running a new inspection this is how it looks:
                         </p>
                         <img src="{{ asset('img/scrut-coverage2.png') }}" width="800px" alt="scrutinizer coverage">
@@ -193,7 +195,7 @@
                     </div>
                     <div class="metrics-improvements">
 
-                        <h2>Förbättringar</h2>
+                        <h2>Improvements (Förbättringar)</h2>
                         <p>
                             Based on the reports, it would seem like the biggest issues with my code is that some of the
                             classes are too complex, and that
@@ -255,7 +257,11 @@
                         <p>This is how the updateBooks CRAP score looks like now. (from 30 to 12)</p>
                         <img src="{{ asset('img/scrut-crap3.png') }}" width="600px" alt="scrutinizer crap 3">
                         <p>As expected, after placing the logic in the Book entity, it now has the same problem.</p>
-                        <p>after writing unit tests..</p>
+                        <p><strong>After fixing some errors that came up when validating my code i had to make further adjustments, which resulted in this:</strong></p> 
+                        <img src="{{ asset('img/updated-CRAP.png') }}" width="800px" alt="BookController updateBook crap 1">
+                        <p>I am actually quite happy with how the method looks. To better it's CRAP score i will write some unit tests for it.</p>
+
+
 
                         <h3>Complexity</h3>
                         <h4 class="before-h4">Before:</h4>

@@ -116,7 +116,7 @@ class Book
             $this->image = $imageData;
             return;
         } elseif ($imageFile === null) {
-            $defaultImage = '../public/img/book-cover-placeholder.png';
+            $defaultImage =  '../public/img/book-cover-placeholder.png';
             $imageData = file_get_contents($defaultImage);
             if ($imageData === false) {
                 $this->image = null;
@@ -127,7 +127,7 @@ class Book
         }
         if ($imageFile instanceof UploadedFile) {
             $error = $imageFile->getError();
-            throw new Exception('File upload error: ' . $error);
+            throw new Exception($error);
         }
         throw new Exception('File upload error');
     }
