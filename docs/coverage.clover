@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1730229215">
-  <project timestamp="1730229215">
+<coverage generated="1730229425">
+  <project timestamp="1730229425">
     <file name="/Users/axeljonsson/dbwebb-kurser/mvc/me/report/src/Card/BankHand.php">
       <class name="App\Card\BankHand" namespace="global">
         <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
@@ -62,12 +62,12 @@
       <line num="43" type="stmt" count="2"/>
       <line num="44" type="stmt" count="2"/>
       <line num="47" type="stmt" count="2"/>
-      <line num="49" type="stmt" count="1"/>
-      <line num="51" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="2"/>
+      <line num="51" type="stmt" count="2"/>
       <line num="52" type="stmt" count="1"/>
-      <line num="56" type="stmt" count="1"/>
-      <line num="57" type="stmt" count="1"/>
-      <line num="58" type="stmt" count="1"/>
+      <line num="56" type="stmt" count="2"/>
+      <line num="57" type="stmt" count="2"/>
+      <line num="58" type="stmt" count="2"/>
       <line num="61" type="stmt" count="2"/>
       <metrics loc="64" ncloc="51" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="21" coveredelements="21"/>
     </file>

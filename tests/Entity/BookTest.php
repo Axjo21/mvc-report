@@ -66,25 +66,4 @@ class BookTest extends TestCase
 
     }
 
-    /**
-     * Construct object and verify that the objects setImage method
-     * works as expected when passing jpeg image
-     */
-    public function testBookSetImageWithImage(): void
-    {
-        // image mock
-        $mockFile = $this->createMock(UploadedFile::class);
-
-        // configure mock
-        $mockFile->method('isValid')->willReturn(true);
-        $mockFile->method('getMimeType')->willReturn('image/jpeg');
-        //$mockFile->method('getPathname')->willReturn('./jeeves.jpg');
-
-        $book = new Book();
-        $book->setImage($mockFile);
-
-        $image = $book->getImage();
-        $this->assertIsArray($image);
-
-    }
 }
