@@ -132,32 +132,4 @@ class Book
         throw new Exception('File upload error');
     }
 
-
-
-    /*
-    public function setImageOLD(object | null $imageFile, ?bool $defaultImage = false): void
-    {
-        if($defaultImage) {
-            $defaultImage = '../public/img/book-cover-placeholder.png';
-            $imageData = file_get_contents($defaultImage);
-            $this->image = $imageData;
-            return;
-        }
-
-        if ($imageFile && $imageFile->isValid()) {
-            $imageMimeType = $imageFile->getMimeType();
-            if (!in_array($imageMimeType, ['image/jpeg', 'image/png', 'image/gif'])) {
-                throw new \Exception('Unsupported image type: ' . $imageMimeType);
-            }
-            // Read the binary content of the image file
-            $imageData = file_get_contents($imageFile->getPathname());
-            $this->image = $imageData;
-            return;
-        } else {
-            $error = $imageFile->getError();
-            throw new \Exception('File upload error: ' . $error);
-        }
-    }
-    */
-
 }

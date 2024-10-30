@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1730248187">
-  <project timestamp="1730248187">
+<coverage generated="1730249296">
+  <project timestamp="1730249296">
     <file name="/Users/axeljonsson/dbwebb-kurser/mvc/me/report/src/Card/BankHand.php">
       <class name="App\Card\BankHand" namespace="global">
         <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
@@ -62,12 +62,12 @@
       <line num="43" type="stmt" count="2"/>
       <line num="44" type="stmt" count="2"/>
       <line num="47" type="stmt" count="2"/>
-      <line num="49" type="stmt" count="1"/>
-      <line num="51" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="2"/>
+      <line num="51" type="stmt" count="2"/>
       <line num="52" type="stmt" count="1"/>
-      <line num="56" type="stmt" count="1"/>
-      <line num="57" type="stmt" count="1"/>
-      <line num="58" type="stmt" count="1"/>
+      <line num="56" type="stmt" count="2"/>
+      <line num="57" type="stmt" count="2"/>
+      <line num="58" type="stmt" count="2"/>
       <line num="61" type="stmt" count="2"/>
       <metrics loc="64" ncloc="51" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="21" coveredelements="21"/>
     </file>
@@ -546,16 +546,16 @@
     </file>
     <file name="/Users/axeljonsson/dbwebb-kurser/mvc/me/report/src/Dice/Dice.php">
       <class name="App\Dice\Dice" namespace="global">
-        <metrics complexity="3" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="2" elements="7" coveredelements="4"/>
+        <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="7" coveredelements="7"/>
       </class>
-      <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="11" type="stmt" count="2"/>
-      <line num="14" type="method" name="roll" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="16" type="stmt" count="0"/>
-      <line num="17" type="stmt" count="0"/>
+      <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="11" type="stmt" count="3"/>
+      <line num="14" type="method" name="roll" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="16" type="stmt" count="1"/>
+      <line num="17" type="stmt" count="1"/>
       <line num="20" type="method" name="getAsString" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="22" type="stmt" count="1"/>
-      <metrics loc="25" ncloc="25" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="2" elements="7" coveredelements="4"/>
+      <metrics loc="25" ncloc="25" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="7" coveredelements="7"/>
     </file>
     <file name="/Users/axeljonsson/dbwebb-kurser/mvc/me/report/src/Entity/Book.php">
       <class name="App\Entity\Book" namespace="global">
@@ -616,7 +616,7 @@
       <line num="129" type="stmt" count="0"/>
       <line num="130" type="stmt" count="0"/>
       <line num="132" type="stmt" count="1"/>
-      <metrics loc="164" ncloc="136" classes="1" methods="10" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="45" coveredstatements="9" elements="55" coveredelements="11"/>
+      <metrics loc="136" ncloc="133" classes="1" methods="10" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="45" coveredstatements="9" elements="55" coveredelements="11"/>
     </file>
     <file name="/Users/axeljonsson/dbwebb-kurser/mvc/me/report/src/Kernel.php">
       <class name="App\Kernel" namespace="global">
@@ -646,6 +646,6 @@
       <line num="48" type="stmt" count="0"/>
       <metrics loc="76" ncloc="40" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="16" coveredelements="0"/>
     </file>
-    <metrics files="17" loc="1421" ncloc="1252" classes="16" methods="75" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="468" coveredstatements="94" elements="543" coveredelements="120"/>
+    <metrics files="17" loc="1393" ncloc="1249" classes="16" methods="75" coveredmethods="27" conditionals="0" coveredconditionals="0" statements="468" coveredstatements="96" elements="543" coveredelements="123"/>
   </project>
 </coverage>

@@ -20,7 +20,6 @@ class DiceTest extends TestCase
         $this->assertInstanceOf("\App\Dice\Dice", $die);
 
         $res = $die->getAsString();
-        $res = $die->getAsString();
 
         $this->assertNotEmpty($res);
     }
@@ -30,6 +29,21 @@ class DiceTest extends TestCase
      * 
      */
     public function testRollDice(): void
+    {
+        $die = new Dice();
+        $this->assertInstanceOf("\App\Dice\Dice", $die);
+
+        $res = $die->roll();
+        $this->assertGreaterThanOrEqual(1, $res);
+        $this->assertLessThanOrEqual(6, $res);
+    }
+
+
+    /**
+     * Construct object and verify that the roll method works as expected.
+     * 
+     */
+    public function testRollMockedDice(): void
     {
         $die = new Dice();
         $this->assertInstanceOf("\App\Dice\Dice", $die);
