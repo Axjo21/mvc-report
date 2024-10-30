@@ -239,7 +239,67 @@
 
 
     <h2><a id="kmom06">Kmom06</a></h2>
-    <p></p>
+
+
+    <h3>
+        Berätta hur det gick att integrera med Scrutinizer och vilken är din första känsla av verktyget och dess badges?
+        Vilken kodtäckning och kodkvalitet fick du efter första bygget?
+    </h3>
+
+    <p>
+        När jag körde min första Scrutinizer inspection stötte jag på ett antal problem.
+        Min "my-tests" node fungerade som den skulle med rätt composer och php version, men "analysis" noden bråkade.
+        Av någon anledning använde den fel composer version (1.x).. jag försökte specificera i scrutinizer.yml att den skulle
+        köra en self-update till 2.x men det funkade inte, jag förstod inte varför "analysis" använde fel version medan det funkade i "my-tests".
+        Jag tänkte att jag kanske hade en gammal composer eller php installation som låg och skräpade, eller att en cache någonstans strulade. 
+    </p>
+    <p>
+        Efter många om och men så lyckades jag lösa det genom att berätta för analysis noden vilken PHP version jag ville använda,
+        vilket löste problemet med fel composer version. Hur saker och ting hänger ihop på en sådan nivå känns ganska abstrakt för mig,
+        men man lär sig mycket av det. 
+    </p>
+    <p>
+        Coverage var inte med per automatik, men det var inga större svårigheter att lösa den biten.
+    </p>
+    <p>
+        Jag tycker personligen att Scrutinizer gav en mycket bättre insikt på ens kodkvalitet än vad Phpmetrics gjorde.
+        Speciellt när det gäller coverage.
+    </p>
+    <p>
+        Min coverage var 20% vid min första inspection. Efter detta kmom ligger den på 23%.
+        Modellerna har 100% coverage men mina Controllers har inga tester. Jag är osäker på vad kravet är vad gäller coverage för Controllers,
+        de kan ju vara svåra att enhetstesta.</p>
+    <p>
+        Scrutinizers badges var bra, de gör det som dem ska göra, fast inte mycket mer. </p>
+
+
+    <h3>
+        Hur är din egen syn på kodkvalitet, berätta lite om den?
+        Tror du man kan man påvisa kodkvalitet i någon viss mån med badges eller vad tror du?
+    </h3>
+    <p>
+        Jag tror att kodkvalitet är något som inte altid går att komprimera ner till mätvärden.
+        Jag märkte att när jag skapade min metod för att lägga till en bild till en Book så blev metodens
+        mätvärden för bland annat komplexitet mycket högre än andra, samtidigt som jag var nöjd med metodens funktionalitet och struktur.
+        När man arbetar med kodkvalitet så kan man ta hjälp av mätvärdena, men man får komma ihåg att de är till för att hjälpa en,
+        inte att diktera vad eller hur man skriver sin kod. </p>
+    <p>
+        Absolut så kan badges skapa en bild över kodkvalitet,
+        men de ger inte en helhetsbild. De kan vara bra för att snabbt och lätt se ifall något gick fel med ens kod efter man pushat till ett remote repo,
+        men för att förstå kodens kvalitet så måste man analysera den på en djupare nivå.
+    </p>
+
+
+    <h3>Vilken är din TIL för detta kmom?</h3>
+    <p>
+        Jag lärde mig mycket om kodkvalitet, speciellt kring komplexitet.
+        Jag lärde mig även kring att configurera Scrutinizer, vilket jag hade problem med,
+        men jag vet inte hur mycket den kunskapen kan översättas till andra åtaganden. 
+        Det jag främst kommer ta med mig efter detta kursmomentet är en nyfunnen insikt i att den koden man skriver antingen kan vara bra eller dålig,
+        att ha kodkvalitet i åtanke samtidigt som man utvecklar kan nog vara en bra ide.
+    </p>
+
+
 
     <h2><a id="kmom07/10">Kmom07/10</a></h2>
     <p></p>

@@ -166,6 +166,26 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Card-DeckOfCards.html#property_deck"
         },                {
+            "fqsen": "\\App\\Controller\\ApiControllerBookJson",
+            "name": "ApiControllerBookJson",
+            "summary": "",
+            "url": "classes/App-Controller-ApiControllerBookJson.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiControllerBookJson\u003A\u003AshowAllBook\u0028\u0029",
+            "name": "showAllBook",
+            "summary": "",
+            "url": "classes/App-Controller-ApiControllerBookJson.html#method_showAllBook"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiControllerBookJson\u003A\u003AshowBookByIsbn\u0028\u0029",
+            "name": "showBookByIsbn",
+            "summary": "",
+            "url": "classes/App-Controller-ApiControllerBookJson.html#method_showBookByIsbn"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiControllerBookJson\u003A\u003AshowBookById\u0028\u0029",
+            "name": "showBookById",
+            "summary": "",
+            "url": "classes/App-Controller-ApiControllerBookJson.html#method_showBookById"
+        },                {
             "fqsen": "\\App\\Controller\\ApiControllerJson",
             "name": "ApiControllerJson",
             "summary": "",
@@ -200,21 +220,6 @@ Search.appendIndex(
             "name": "testDiceHand",
             "summary": "",
             "url": "classes/App-Controller-ApiControllerJson.html#method_testDiceHand"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiControllerJson\u003A\u003AshowAllBook\u0028\u0029",
-            "name": "showAllBook",
-            "summary": "",
-            "url": "classes/App-Controller-ApiControllerJson.html#method_showAllBook"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiControllerJson\u003A\u003AshowBookByIsbn\u0028\u0029",
-            "name": "showBookByIsbn",
-            "summary": "",
-            "url": "classes/App-Controller-ApiControllerJson.html#method_showBookByIsbn"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiControllerJson\u003A\u003AshowBookById\u0028\u0029",
-            "name": "showBookById",
-            "summary": "",
-            "url": "classes/App-Controller-ApiControllerJson.html#method_showBookById"
         },                {
             "fqsen": "\\App\\Controller\\BookController",
             "name": "BookController",

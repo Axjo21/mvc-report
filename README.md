@@ -6,7 +6,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Axjo21/mvc-report/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/Axjo21/mvc-report/?branch=main)
 
 
-### coverage (not enabled)
+### coverage
 [![Code Coverage](https://scrutinizer-ci.com/g/Axjo21/mvc-report/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/Axjo21/mvc-report/?branch=main)
 
 
