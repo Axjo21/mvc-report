@@ -258,8 +258,10 @@
                         <img src="{{ asset('img/scrut-crap3.png') }}" width="600px" alt="scrutinizer crap 3">
                         <p>As expected, after placing the logic in the Book entity, it now has the same problem.</p>
                         <p><strong>After fixing some errors that came up when validating my code i had to make further adjustments, which resulted in this:</strong></p> 
-                        <img src="{{ asset('img/updated-CRAP.png') }}" width="800px" alt="BookController updateBook crap 1">
-                        <p>I am actually quite happy with how the method looks. To better it's CRAP score i will write some unit tests for it.</p>
+                        <img src="{{ asset('img/updated-CRAP.png') }}" width="800px" alt="BookController updateBook crap 2">
+                        <p>I am actually quite happy with how the method works, but a CRAP score of 72 is too high.</p>
+                        <p>After writing unit tests for the method it's crap score is now 25.7</p>
+                        <img src="{{ asset('img/crap-changes.png') }}" width="800px" alt="BookController updateBook crap 3">
 
 
 
@@ -302,7 +304,15 @@
                             After implementing these changes this is how it looks. It's WCM dropped from 27 to 21, it's cyclomatic complexity dropped from 
                             15 to 11. And it's Relative system and structural complexity dropped from around 800 to 400.
                         </p>
-                        
+                        <p><strong>
+                            When validating, i recieved a warning that "BookController had too many public methods".
+                            To fix this i placed the Api related routes into the ApiControllerJson class.
+                            This resulted in the following Phpmetric violation:
+                        </strong></p>
+                        <img src="{{ asset('img/god-blob.png') }}" width="800px" alt="god blob">
+                        <p>I will address this by creating a new ApiController where i place the book related routes.</p>
+                        <img src="{{ asset('img/no-god-blob.png') }}" width="200px" alt="god blob">
+                        <p>Phpmetrics doesn't provide a very clear report changes made. But as you can see, the violation no longer exists.</p>
 
 
                         <h3>Coverage</h3>

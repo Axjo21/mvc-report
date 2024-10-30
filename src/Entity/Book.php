@@ -126,7 +126,7 @@ class Book
             return;
         }
         if ($imageFile instanceof UploadedFile) {
-            $error = $imageFile->getError();
+            $error = (string) $imageFile->getError();
             throw new Exception($error);
         }
         throw new Exception('File upload error');

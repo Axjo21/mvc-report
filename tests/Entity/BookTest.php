@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Book;
+namespace App\Test;
 
 use PHPUnit\Framework\TestCase;
 use App\Entity\Book;
