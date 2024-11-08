@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/glider.svg') }}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="proj-body">
+        <header class="proj-site-header">
+            <span class="proj-site-title">MVC Proj, Axjo21</span>
+            <nav class="proj-main-nav">
+                <ul>
+                    <li class="proj-nav-li"><a class="proj-nav-a" href="{{ path('home') }}">Home</a></li>
+                    <li class="proj-nav-li"><a class="proj-nav-a" href="{{ path('about') }}">About</a></li>
+                    <li class="proj-nav-li"><a class="proj-nav-a" href="{{ path('report') }}">Report</a></li>
+                    <li class="proj-nav-li"><a class="proj-nav-a" href="{{ path('lucky') }}">Lucky</a></li>
+                    <li class="proj-nav-li"><a class="proj-nav-a" href="{{ path('card_start') }}">Card Game</a></li>
+                    <li class="proj-nav-li"><a class="proj-nav-a" href="{{ path('api_home') }}">Api</a></li>
+                    <li class="proj-nav-li"><a class="proj-nav-a" href="{{ path('game_home') }}">Twenty One Game</a></li>
+                    <li class="proj-nav-li"><a class="proj-nav-a" href="{{ path('library') }}">Library</a></li>
+                    <li class="proj-nav-li"><a class="proj-nav-a" href="{{ path('metrics_home') }}">Metrics</a></li>
+                    <li class="proj-nav-li"><a class="proj-nav-a" href="{{ path('proj_home') }}">Project</a></li><br>
+                </ul>
+            </nav>
+        </header>
+        <main class="proj-main">
+            {% block main %}{% endblock %}
+        </main>
+    </body>
+    <footer class="proj-footer">
+        <p>Author: Axel Jönsson</p>
+            {% block footer %}{% endblock %}
+    </footer>
+</html>

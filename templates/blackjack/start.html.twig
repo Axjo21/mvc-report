@@ -1,0 +1,41 @@
+{% extends "project-base.html.twig" %}
+
+{% block title %}MVC Project{% endblock %}
+
+{% block main %}
+<ul class="proj-secondary-nav">
+    <li class="proj-sec-nav-li"><a class="proj-nav-b" href="{{ path('proj_home') }}">Home</li></a>
+    <li class="proj-sec-nav-li"><a class="proj-nav-b" href="{{ path('proj_about') }}">About</li></a>
+    <li class="proj-sec-nav-li"><a class="proj-nav-b" href="{{ path('proj_init') }}">New Game</li></a>
+</ul>
+
+<h1 class="proj-h1">MVC Project</h1>
+
+<div>
+    {% for player in players %}
+        <div class="player-container">
+            <h3 class="player-h3">Player: {{ player.name }}</div>
+            <h4 class="player-h4">Points: {{ player.points }}</h4>
+            <div class="player-cards">
+                {% for card in player.cards %}
+                    {% if card[1] == 'spades' %}
+                        <span class="spades">{{ card[0] }} </span>
+                    {% elseif card[1] == 'hearts' %}
+                        <span class="hearts">{{ card[0] }} </span>
+                    {% elseif card[1] == 'diamonds' %}
+                        <span class="diamonds">{{ card[0] }} </span>
+                    {% elseif card[1] == 'clovers' %}
+                        <span class="clovers">{{ card[0] }} </span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% if player.playersTurn %}
+                <div class="proj-draw-btn">Draw</div>
+                <div class="proj-hold-btn">Hold</div>
+            {% endif %}
+
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

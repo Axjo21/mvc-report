@@ -1,0 +1,15 @@
+{% extends "project-base.html.twig" %}
+
+{% block title %}MVC Project{% endblock %}
+
+{% block main %}
+<ul class="proj-secondary-nav">
+    <li class="proj-sec-nav-li"><a class="proj-nav-b" href="{{ path('proj_home') }}">Home</li></a>
+    <li class="proj-sec-nav-li"><a class="proj-nav-b" href="{{ path('proj_about') }}">About</li></a>
+    <li class="proj-sec-nav-li"><a class="proj-nav-b" href="{{ path('proj_init') }}">New Game</li></a>
+</ul>
+
+<h1 class="proj-h1">MVC Project</h1>
+
+
+{% endblock %}
