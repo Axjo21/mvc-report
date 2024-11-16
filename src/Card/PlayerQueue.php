@@ -49,7 +49,7 @@ class PlayerQueue
      */
     public function promoteQueue(): void
     {
-        $this
+        $this->currentTurn += 1;
         return;
     }
 

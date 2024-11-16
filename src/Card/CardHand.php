@@ -12,12 +12,12 @@ class CardHand
      */
     protected array $hand = [];
 
-    public string $name = "";
+    public ?string $name = "";
 
     /**
      * Construct the values
      */
-    public function __construct(string $name = "")
+    public function __construct(?string $name = "")
     {
         $this->name = $name;
     }
