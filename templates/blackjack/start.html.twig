@@ -11,11 +11,14 @@
 
 <h1 class="proj-h1">MVC Project</h1>
 
-<div>
+<div class="blackjack-container">
+    {% if winnerName %}
+        <div class="proj-result">Winner: {{ winnerName }} {{ winnerPoints }}</div>
+    {% endif %}
     {% for player in players %}
         {% if player.bank == false %}
             <div class="player-container">
-                <h3 class="player-h3">Player: {{ player.name }}</div>
+                <h3 class="player-h3">Player: {{ player.name }}</h3>
                 <h4 class="player-h4">Points: {{ player.points }}</h4>
                 <div class="player-cards">
                     {% for card in player.cards %}
@@ -30,14 +33,14 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-                {% if player.playersTurn %}
+                {% if player.playersTurn and player.name != winnerName %}
                     <a class="proj-draw-btn" href="{{ path('proj_draw') }}">Draw</a>
                     <a class="proj-hold-btn" href="{{ path('proj_hold') }}">Hold</a>
                 {% endif %}
             </div>
-        {% elseif player.bank == true %}
-            <div class="player-container">
-                <h3 class="player-h3">{{ player.name }}</div>
+        {% elseif player.bank == true or winnerName %}
+            <div class="bank-container">
+                <h3 class="player-h3">{{ player.name }}</h3>
                 <h4 class="player-h4">Points: {{ player.points }}</h4>
                 <div class="player-cards">
                     {% for card in player.cards %}
@@ -52,9 +55,8 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-                {% if player.playersTurn %}
-                    <a class="proj-draw-btn" href="{{ path('proj_draw') }}">Draw</a>
-                    <a class="proj-hold-btn" href="{{ path('proj_hold') }}">Hold</a>
+                {% if player.playersTurn and player.name != winnerName %}
+                    <a class="proj-draw-btn" href="{{ path('proj_hold') }}">Execute banks turn</a>
                 {% endif %}
             </div>
         {% endif %}

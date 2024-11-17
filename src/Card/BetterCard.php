@@ -25,4 +25,9 @@ class BetterCard extends Card
     {
         return $this->points;
     }
+    
+    public function setSuit(string $newSuit): void
+    {
+        $this->suit = $newSuit;
+    }
 }

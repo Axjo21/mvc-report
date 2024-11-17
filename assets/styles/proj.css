@@ -122,18 +122,52 @@
 
 .proj-draw-btn {
     padding: 5px 15px;
-    background-color: rgb(105, 105, 105);
-    color: green;
-    border: solid green;
+    background-color: rgb(60, 60, 60);
+    color: rgb(74, 194, 74);
+    border: solid rgb(74, 194, 74);
     border-radius: 5px;
     width: 80px;
 }
 
 .proj-hold-btn {
     padding: 5px 15px;
-    background-color: rgb(105, 105, 105);
+    background-color: rgb(60, 60, 60);
     color: red;
     border: solid red;
     border-radius: 5px;
     width: 80px;
+}
+
+.blackjack-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.player-container {
+    display: flex;
+    flex-direction: column;
+    border: solid rgb(109, 109, 176) 2px;
+    padding: 10px;
+    margin: 25px;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.bank-container {
+    display: flex;
+    flex-direction: column;
+    border: solid rgb(179, 0, 255) 2px;
+    padding: 10px;
+    margin: 25px;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.proj-result {
+    width: 80%;
+    font-size: 2em;
+    border: gray;
+    position: absolute;
+    display: flex;
+    justify-content: center;
 }

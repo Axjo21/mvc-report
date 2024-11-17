@@ -8,7 +8,6 @@ use App\Card\CardHand;
 use App\Card\BankHand;
 use App\Card\DeckOfCards;
 use App\Card\PlayerQueue;
-use App\Card\LinkedList;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -69,30 +68,54 @@ class BlackJackController extends AbstractController
         SessionInterface $session
     ): Response {
 
-        $playerQueue = new LinkedList();
+        $playerQueue = new PlayerQueue();
 
         // check if player 1 is set
         $firstName = (string) $request->request->get('player1');
-        $firstName && $playerQueue->addPlayer($firstName);
+        if ($firstName) {
+            $playerOne = $playerQueue->addPlayer($firstName);
+        }
 
         // check if player 2 is set
         $secondName = (string) $request->request->get('player2');
-        $secondName && $playerQueue->addPlayer($secondName);
-
+        if ($secondName) {
+            $playerTwo = $playerQueue->addPlayer($secondName);
+        }
+        
         // check if player 3 is set
         $thirdName = (string) $request->request->get('player3');
-        $thirdName && $playerQueue->addPlayer($thirdName);
+        if ($thirdName) {
+            $playerThree = $playerQueue->addPlayer($thirdName);
+        }
 
         // create bank hand
-        $playerQueue->addPlayer("Bank", true);
-
+        $bankPlayer = $playerQueue->addPlayer("Bank", true);
         $session->set("playerQueue", $playerQueue);
 
-        $players = $playerQueue->getPlayerDataAsArray();
+
+        
         $banksTurn = $playerQueue->banksTurn();
+        $players = $playerQueue->getPlayerDataAsArray();
+
+
+
+        if ($playerOne || $playerTwo || $playerThree || $bankPlayer) {
+            $winners = $playerQueue->calculateWinner();
+            $data = [
+                "players" => $players,
+                "banksTurn" => $banksTurn,
+                "winnerName" => $winners[0]->data->name,
+                "winnerPoints" => $winners[0]->data->getPoints()
+            ];
+    
+            return $this->render('blackjack/start.html.twig', $data);
+        }
+
+
         $data = [
             "players" => $players,
-            "banksTurn" => $banksTurn
+            "banksTurn" => $banksTurn,
+            "winnerName" => null
         ];
 
         return $this->render('blackjack/start.html.twig', $data);
@@ -112,11 +135,23 @@ class BlackJackController extends AbstractController
 
         $playerQueue->drawCardForCurrentPlayer();
 
-        $players = $playerQueue->getPlayerDataAsArray();
         $banksTurn = $playerQueue->banksTurn(); // tror ej behövs här
+        $players = $playerQueue->getPlayerDataAsArray();
+        if ($banksTurn) {
+            $winners = $playerQueue->calculateWinner();
+            $data = [
+                "players" => $players,
+                "banksTurn" => $banksTurn,
+                "winnerName" => $winners[0]->data->name,
+                "winnerPoints" => $winners[0]->data->getPoints(),
+            ];
+    
+            return $this->render('blackjack/start.html.twig', $data);
+        }
         $data = [
             "players" => $players,
-            "banksTurn" => $banksTurn
+            "banksTurn" => $banksTurn,
+            "winnerName" => null
         ];
 
         return $this->render('blackjack/start.html.twig', $data);
@@ -135,11 +170,23 @@ class BlackJackController extends AbstractController
 
         $playerQueue->advanceQueue();
 
-        $players = $playerQueue->getPlayerDataAsArray();
         $banksTurn = $playerQueue->banksTurn();
+        $players = $playerQueue->getPlayerDataAsArray();
+        if ($banksTurn) {
+            $winners = $playerQueue->calculateWinner();
+            $data = [
+                "players" => $players,
+                "banksTurn" => $banksTurn,
+                "winnerName" => $winners[0]->data->name,
+                "winnerPoints" => $winners[0]->data->getPoints(),
+            ];
+    
+            return $this->render('blackjack/start.html.twig', $data);
+        }
         $data = [
             "players" => $players,
-            "banksTurn" => $banksTurn
+            "banksTurn" => $banksTurn,
+            "winnerName" => null
         ];
 
         return $this->render('blackjack/start.html.twig', $data);
