@@ -13,6 +13,7 @@ class Node
     public CardHand $data;
     public ?Node $next;
     public ?bool $bank;
+    public int $betPool;
 
 
     /**
@@ -23,6 +24,7 @@ class Node
         $this->data = $data;
         $this->next = null;
         $this->bank = false;
+        $this->betPool = 0;
     }
 
 
@@ -64,6 +66,26 @@ class Node
     {
         $this->next = $next;
     }
+
+    /**
+     * Place a bet.
+     * @return void
+     */
+    public function placeBet(int $placedBet): void
+    {
+        $this->betPool += $placedBet;
+    }
+
+    /**
+     * Get bets
+     * @return int
+     */
+    public function getBetPool(): int
+    {
+        return $this->betPool;
+    }
+
+
 
 
 

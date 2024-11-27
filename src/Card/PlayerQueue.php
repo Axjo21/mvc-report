@@ -279,58 +279,67 @@ class PlayerQueue
      * Draw a card for the player att certain index.
      * House rules: 
      *  - If more than one player has 21, they win. 
-     * @return mixed
+     * @return array
      */
-    public function calculateWinner(): mixed
+    public function calculateWinner(): array
     {
         // $result = $this->getScores();
         
         $current = $this->head;
-        $highestPoint = $this->head;
+        $nodeWithHighestPoint = $this->head;
         $winners = [];
         while ($current !== null) {
             $point = $current->data->getPoints();
             if($point === 21) {
                 array_push($winners, $current);
             }
-            if($point <= 21 && $point >= $highestPoint->data->getPoints()) {
-                $highestPoint = $current;
+            if($point <= 21 && $point >= $nodeWithHighestPoint->data->getPoints()) {
+                $nodeWithHighestPoint = $current;
+            }
+            // ifall ingen har vunnit, och current är banken
+            if($current->next === null && count($winners) === 0){
+                array_push($winners, $current);
             }
             $current = $current->next;
         }
-        if($highestPoint->data->getPoints() <= 21) {
-            array_push($winners, $highestPoint);
+        if($nodeWithHighestPoint->data->getPoints() <= 21 && !in_array($nodeWithHighestPoint, $winners)) {
+            array_push($winners, $nodeWithHighestPoint);
         }
         return $winners;
     }
 
 
-
     /**
-     * Draw a card for the player att certain index.
-     * @return ?Node
+     * Place a bet.
+     * @return void
      */
-    public function OLDdrawCardForPlayerAtIndex(int $index): ?Node
+    public function placeBet(int $bet, int $position): void
     {
         $current = $this->head;
-        $count = 0;
-
+        $count = 1;
         while ($current !== null) {
-            if ($count === $index) {
-                // player found, now draw card!
-
-                // draws card from deck
-                $card = $this->deck->drawCard();
-
-                // adds it to the CardHand
-                $current->data->add($card);
-
-                return $current->data->getValues();
+            if ($count === $position) {
+                $current->placeBet($bet);
             }
             $count++;
             $current = $current->next;
         }
-        return null;
+        return;
     }
 
+    /**
+     * Get total bets.
+     * @return int
+     */
+    public function getPlacedBets(): int
+    {
+        $current = $this->head;
+        $betPool = 0;
+        while ($current !== null) {
+            $currentBet = $current->getBetPool();
+            $betPool += $currentBet;
+            $current = $current->next;
+        }
+        return $betPool;
+    }
 }

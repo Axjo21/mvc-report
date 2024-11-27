@@ -81,6 +81,7 @@ class BankHand extends CardHand
     }
     /**
      * Drar resterande kort baserat på vad de andra spelarna har fått för poäng.
+     * Parametern playerPoints representerar vad spelaren med högts poäng har för poäng.
      *
      * @return BetterCard[]
      */

@@ -1,0 +1,30 @@
+
+{% extends "project-base.html.twig" %}
+
+{% block title %}MVC Project{% endblock %}
+
+{% block main %}
+<ul class="proj-secondary-nav">
+    <li class="proj-sec-nav-li"><a class="proj-nav-b" href="{{ path('proj_home') }}">Home</li></a>
+    <li class="proj-sec-nav-li"><a class="proj-nav-b" href="{{ path('proj_about') }}">About</li></a>
+    <li class="proj-sec-nav-li"><a class="proj-nav-b" href="{{ path('proj_init') }}">New Game</li></a>
+</ul>
+
+<h1 class="proj-h1">Blackjack</h1>
+
+<div class="blackjack-div">
+
+    <div class="blackjack-div">
+        <h2>Place Your bets:</h2>
+        <form method="post" action="{{ path('proj_place_bet') }}">
+            {% for player in playerNames %}
+                <label class="blackjack-form-label" for="place-bet-{{player.playerNumber}}">{{ player.name }}s bet:</label><br>
+                <input class="blackjack-form-input" type="number" name="place-bet-{{player.playerNumber}}"
+                    min="0" max="100000"required><br>
+            {% endfor %}
+            <input class="blackjack-form-submit" type="submit" name="do_it" value="Confirm">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -13,11 +13,22 @@
 
 <div class="blackjack-container">
     {% if winnerName %}
-        <div class="proj-result">Winner: {{ winnerName }} {{ winnerPoints }}</div>
+        <div class="proj-result">
+            Winner: {{ winnerName }}<br>
+            {% if winnerName == "Bank" %}
+                {{winnerName}} won: {{ totalBetPool }}kr
+            {% else %}
+                {{winnerName}} won: {{ winnerBetPool }}kr
+            {% endif %}
+        </div>
     {% endif %}
     {% for player in players %}
         {% if player.bank == false %}
-            <div class="player-container">
+            {% if player.name == winnerName %}
+                <div class="player-container player-has-won">
+            {% else %}
+                <div class="player-container">
+            {% endif %}
                 <h3 class="player-h3">Player: {{ player.name }}</h3>
                 <h4 class="player-h4">Points: {{ player.points }}</h4>
                 <div class="player-cards">
@@ -36,6 +47,7 @@
                 {% if player.playersTurn and player.name != winnerName %}
                     <a class="proj-draw-btn" href="{{ path('proj_draw') }}">Draw</a>
                     <a class="proj-hold-btn" href="{{ path('proj_hold') }}">Hold</a>
+
                 {% endif %}
             </div>
         {% elseif player.bank == true or winnerName %}

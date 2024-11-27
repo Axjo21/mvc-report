@@ -68,24 +68,38 @@ class BlackJackController extends AbstractController
         SessionInterface $session
     ): Response {
 
+        $playerCount = 0;
+        $playerData = [];
         $playerQueue = new PlayerQueue();
+        $playerOne = null;
+        $playerTwo = null;
+        $playerThree = null;
 
         // check if player 1 is set
         $firstName = (string) $request->request->get('player1');
         if ($firstName) {
             $playerOne = $playerQueue->addPlayer($firstName);
+            $playerCount++;
+            $data = ["name" => $firstName, "playerNumber" => $playerCount];
+            array_push($playerData, $data);
         }
 
         // check if player 2 is set
         $secondName = (string) $request->request->get('player2');
         if ($secondName) {
             $playerTwo = $playerQueue->addPlayer($secondName);
+            $playerCount++;
+            $data = ["name" => $secondName, "playerNumber" => $playerCount];
+            array_push($playerData, $data);
         }
         
         // check if player 3 is set
         $thirdName = (string) $request->request->get('player3');
         if ($thirdName) {
             $playerThree = $playerQueue->addPlayer($thirdName);
+            $playerCount++;
+            $data = ["name" => $thirdName, "playerNumber" => $playerCount];
+            array_push($playerData, $data);
         }
 
         // create bank hand
@@ -93,32 +107,19 @@ class BlackJackController extends AbstractController
         $session->set("playerQueue", $playerQueue);
 
 
-        
-        $banksTurn = $playerQueue->banksTurn();
-        $players = $playerQueue->getPlayerDataAsArray();
-
-
-
+        // kolla ifall någon redan har vunnit
         if ($playerOne || $playerTwo || $playerThree || $bankPlayer) {
             $winners = $playerQueue->calculateWinner();
-            $data = [
-                "players" => $players,
-                "banksTurn" => $banksTurn,
-                "winnerName" => $winners[0]->data->name,
-                "winnerPoints" => $winners[0]->data->getPoints()
-            ];
-    
-            return $this->render('blackjack/start.html.twig', $data);
+            $session->set("winnerName", $winners[0]->data->name);
+            $session->set("winnerPoints", $winners[0]->data->getPoints());
         }
 
 
         $data = [
-            "players" => $players,
-            "banksTurn" => $banksTurn,
-            "winnerName" => null
+            "playerNames" => $playerData
         ];
 
-        return $this->render('blackjack/start.html.twig', $data);
+        return $this->render('blackjack/bets.html.twig', $data);
     }
 
     /**
@@ -135,8 +136,9 @@ class BlackJackController extends AbstractController
 
         $playerQueue->drawCardForCurrentPlayer();
 
-        $banksTurn = $playerQueue->banksTurn(); // tror ej behövs här
+        $banksTurn = $playerQueue->banksTurn();
         $players = $playerQueue->getPlayerDataAsArray();
+        // ANVÄNDS DENNA ENS? Jag trycker ju på "proj_hold" knappen för att exekvera bankens tur. 
         if ($banksTurn) {
             $winners = $playerQueue->calculateWinner();
             $data = [
@@ -144,6 +146,7 @@ class BlackJackController extends AbstractController
                 "banksTurn" => $banksTurn,
                 "winnerName" => $winners[0]->data->name,
                 "winnerPoints" => $winners[0]->data->getPoints(),
+                "winnerBetPool" => $winners[0]->getBetPool()
             ];
     
             return $this->render('blackjack/start.html.twig', $data);
@@ -169,20 +172,68 @@ class BlackJackController extends AbstractController
         $playerQueue = $session->get('playerQueue');
 
         $playerQueue->advanceQueue();
-
+        
+        // här exekveras även bankens tur, ifall det är det. bool representation på ifall det är bankens tur returneras. 
         $banksTurn = $playerQueue->banksTurn();
         $players = $playerQueue->getPlayerDataAsArray();
+
+        // Winner: No winner 0 You won: 0
+        // när spelare van, spelare hade 20, annan spelare hade mer än 21, bank hade mer än 21
         if ($banksTurn) {
             $winners = $playerQueue->calculateWinner();
-            $data = [
-                "players" => $players,
-                "banksTurn" => $banksTurn,
-                "winnerName" => $winners[0]->data->name,
-                "winnerPoints" => $winners[0]->data->getPoints(),
-            ];
+            if(count($winners) > 0) { // ifall en eller fler vinnare
+                $data = [
+                    "players" => $players,
+                    "banksTurn" => $banksTurn,
+                    "winnerName" => $winners[0]->data->name,
+                    "winnerPoints" => $winners[0]->data->getPoints(),
+                    "winnerBetPool" => $winners[0]->getBetPool(),
+                    "totalBetPool" => $playerQueue->getPlacedBets()
+                ];
+            } else { // ifall ingen vinnare
+                $data = [
+                    "players" => $players,
+                    "banksTurn" => $banksTurn,
+                    "winnerName" => "No winner",
+                    "winnerPoints" => 0,
+                    "winnerBetPool" => 0
+                ];
+            }
     
             return $this->render('blackjack/start.html.twig', $data);
         }
+        $data = [
+            "players" => $players,
+            "banksTurn" => $banksTurn,
+            "winnerName" => null
+        ];
+
+        return $this->render('blackjack/start.html.twig', $data);
+    }
+
+
+    /**
+     * Route for handling of bet placement. 
+    */
+    #[Route("/proj/placeBet", name: "proj_place_bet", methods: ['POST'])]
+    public function placeBet(
+        Request $request,
+        SessionInterface $session
+    ): Response {
+        $playerQueue = $session->get('playerQueue');
+        $winnerName = $session->get('winnerName'); // glöm ej använda!
+
+        $placedBetOne = (int) $request->request->get('place-bet-1');
+        $placedBetTwo = (int) $request->request->get('place-bet-2');
+        $placedBetThree = (int) $request->request->get('place-bet-3');
+
+        $placedBetOne && $playerQueue->placeBet($placedBetOne, 1);
+        $placedBetTwo && $playerQueue->placeBet($placedBetTwo, 2);
+        $placedBetThree && $playerQueue->placeBet($placedBetThree, 3);
+
+        $banksTurn = $playerQueue->banksTurn();
+        $players = $playerQueue->getPlayerDataAsArray();
+
         $data = [
             "players" => $players,
             "banksTurn" => $banksTurn,
