@@ -55,6 +55,5 @@ class DiceTest extends TestCase
         $res = $mockedDie->roll();
         $exp = 3;
         $this->assertEquals($exp, $res);
-
     }
 }

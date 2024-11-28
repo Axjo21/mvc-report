@@ -75,7 +75,8 @@ class PlayerQueue
             $prev = $current;
             $current = $current->next;
         }
-        if ($prev->data instanceof BankHand) {
+        if ($prev instanceof Node && $prev->data instanceof BankHand) {
+            /** @scrutinizer ignore-call */
             $prev->data->showHiddenCard();
         }
     }
@@ -98,7 +99,8 @@ class PlayerQueue
             $counter++;
         }
         // if it is the banks turn
-        if ($this->turn === $counter && $prev->data instanceof BankHand) {
+        if ($this->turn === $counter && $prev instanceof Node && $prev->data instanceof BankHand) {
+            /** @scrutinizer ignore-call */
             $prev->data->executeTurn($playersPoints);
         }
     }
@@ -109,43 +111,20 @@ class PlayerQueue
      * Since it is possible to get 21 from 2 cards, a check needs to be made aswell. 
      * @return ?Node
      */
-    public function addPlayer(string $name, ?bool $bank=false): ?Node
+    public function addPlayer(string $name): ?Node
     {
         $winnerNode = null;
-        if ($bank) {
-            $hand = new BankHand($this->deck, $name);
 
-            // "riktigt kort" som sedan återskapas i BankHand->executeTurn();
-            $firstCard = $this->deck->drawCard();
-            $hand->setHiddenCard($firstCard);
-
-            // "låtsas kort" som representerar nervänt
-            $temporaryCard = new BetterCard("🂠", "spades", 0);
-            $hand->add($temporaryCard);
-
-            // dra vanligt kort
-            $secondCard = $this->deck->drawCard();
-            $hand->add($secondCard);
-
-            $node = new Node($hand);
-            $node->bank = true;
-            // 21 check
-            $bankPoints = $firstCard->getPoints() + $firstCard->getPoints();
-            if($bankPoints === 21) {
-                $winnerNode =  $node;
-            }
-        } else {
-            $hand = new CardHand($name);
-            $firstCard = $this->deck->drawCard();
-            $secondCard = $this->deck->drawCard();
-            
-            $hand->add($firstCard);
-            $hand->add($secondCard);
-            $node = new Node($hand);
-            // 21 check
-            if($hand->getPoints() === 21) {
-                $winnerNode =  $node;
-            }
+        $hand = new CardHand($name);
+        $firstCard = $this->deck->drawCard();
+        $secondCard = $this->deck->drawCard();
+        
+        $hand->add($firstCard);
+        $hand->add($secondCard);
+        $node = new Node($hand);
+        // 21 check
+        if ($hand->getPoints() === 21) {
+            $winnerNode =  $node;
         }
 
         // create node with hand as data
@@ -166,55 +145,60 @@ class PlayerQueue
         return $winnerNode;
     }
 
-
     /**
-     * Check if there is a winner.
-     * @return ?array
-     */
-    public function getScores(): ?Node
-    {
-        $current = $this->head;
-        $points = [];
-
-        // loop through until you find the matching index
-        while ($current !== null) {
-            if ($current->data->getPoints() === 21) {
-                $this->winner = $current;
-                return $current;
-            }
-            array_push($points, $current->data->getPoints());
-            $current = $current->next;
-        }
-        return null;
-    }
-
-
-    /**
-     * Get player node through their index in the linked list. 
+     * Add player node to the linked list.
+     * Since it is possible to get 21 from 2 cards, a check needs to be made aswell. 
      * @return ?Node
      */
-    public function getPlayerThroughIndex(int $index): ?Node
+    public function addBank(string $name): ?Node
     {
-        $current = $this->head;
-        $count = 0;
+        $winnerNode = null;
+        $hand = new BankHand($this->deck, $name);
 
-        while ($current !== null) {
-            if ($count === $index) {
-                return $current->data;
-            }
-            $count++;
+        // "riktigt kort" som sedan återskapas i BankHand->executeTurn();
+        $firstCard = $this->deck->drawCard();
+        $hand->setHiddenCard($firstCard);
+
+        // "låtsas kort" som representerar nervänt
+        $temporaryCard = new BetterCard("🂠", "spades", 0);
+        $hand->add($temporaryCard);
+
+        // dra vanligt kort
+        $secondCard = $this->deck->drawCard();
+        $hand->add($secondCard);
+
+        $node = new Node($hand);
+        $node->bank = true;
+        // 21 check
+        $bankPoints = $firstCard->getPoints() + $firstCard->getPoints();
+        if ($bankPoints === 21) {
+            $winnerNode =  $node;
+        }
+
+
+        // create node with hand as data
+        if ($this->head === null) {
+            $this->head = $node;
+            return $winnerNode;
+        }
+
+        // koppla nod till listan
+        $current = $this->head;
+        while ($current->next !== null) {
             $current = $current->next;
         }
-        return null;
-    }
+        $current->next = $node;
 
+        $this->numberOfPlayers += 1;
+        return $winnerNode;
+    }
 
 
     /**
      * Return all nodes player-data in a list. 
-     * @return ?array
+     * @return array<array<mixed>>
      */
-    public function getPlayerDataAsArray(): ?array
+    public function getPlayerDataAsArray(): array
     {
         $current = $this->head;
         if ($current === null) {
@@ -279,30 +263,35 @@ class PlayerQueue
      * Draw a card for the player att certain index.
      * House rules: 
      *  - If more than one player has 21, they win. 
-     * @return array
+     * @return array<Node>
      */
     public function calculateWinner(): array
     {
-        // $result = $this->getScores();
-        
         $current = $this->head;
         $nodeWithHighestPoint = $this->head;
         $winners = [];
+
         while ($current !== null) {
             $point = $current->data->getPoints();
-            if($point === 21) {
+            if ($point === 21) {
                 array_push($winners, $current);
-            }
-            if($point <= 21 && $point >= $nodeWithHighestPoint->data->getPoints()) {
+            } elseif ($nodeWithHighestPoint instanceof Node &&
+                $point <= 21 && $point >= $nodeWithHighestPoint->data->getPoints()
+                ) {
                 $nodeWithHighestPoint = $current;
-            }
-            // ifall ingen har vunnit, och current är banken
-            if($current->next === null && count($winners) === 0){
+            } elseif ($current->next === null &&
+                count($winners) === 0 &&
+                $point <= 21
+                ) {
                 array_push($winners, $current);
             }
             $current = $current->next;
         }
-        if($nodeWithHighestPoint->data->getPoints() <= 21 && !in_array($nodeWithHighestPoint, $winners)) {
+
+        if ($nodeWithHighestPoint instanceof Node &&
+            $nodeWithHighestPoint->data->getPoints() <= 21 &&
+            !in_array($nodeWithHighestPoint, $winners)
+            ) {
             array_push($winners, $nodeWithHighestPoint);
         }
         return $winners;

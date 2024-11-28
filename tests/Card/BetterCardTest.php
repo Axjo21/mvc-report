@@ -2,16 +2,13 @@
 namespace App\Test;
 
 use PHPUnit\Framework\TestCase;
-
 use App\Card\BetterCard;
-
 
 /**
  * Test cases for class BetterCard.
  */
 final class BetterCardTest extends TestCase
 {
-
     /**
      * Construct object and verify that the object has the expected
      * properties.

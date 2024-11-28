@@ -25,7 +25,6 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $author = null;
 
-
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
@@ -83,7 +82,7 @@ class Book
 
     public function getImage(): mixed
     {
-        if($this->image) {
+        if ($this->image) {
             // Use finfo to detect the MIME type from the binary data
             $finfo = new finfo(FILEINFO_MIME_TYPE);
             $mimeType = $finfo->buffer($this->image);
@@ -131,5 +130,4 @@ class Book
         }
         throw new Exception('File upload error');
     }
-
 }

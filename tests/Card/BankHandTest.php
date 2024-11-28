@@ -2,8 +2,6 @@
 namespace App\Test;
 
 use PHPUnit\Framework\TestCase;
-
-
 use App\Card\BankHand;
 use App\Card\DeckOfCards;
 
@@ -33,5 +31,4 @@ final class BankHandTest extends TestCase
         $bankHandPoints = $bankHand->getPoints();
         $this->assertGreaterThan(0, $bankHandPoints);
     }
-
 }

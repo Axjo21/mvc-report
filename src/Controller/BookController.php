@@ -73,7 +73,7 @@ class BookController extends AbstractController
         // save images for each book
         foreach ($books as $book) {
             $result = $book->getImage();
-            if($result && is_array($result)) {
+            if ($result && is_array($result)) {
                 $imageData = $result['imageData'] ?? null;
                 $mimeType = $result['mimeType'] ?? null;
                 // save data and mime for each image to the images array
@@ -107,7 +107,7 @@ class BookController extends AbstractController
 
         $result = $book->getImage();
 
-        if($result && is_array($result)) {
+        if ($result && is_array($result)) {
             $imageData = $result['imageData'] ?? null;
             $mimeType = $result['mimeType'] ?? null;
             $data = [
@@ -231,5 +231,4 @@ class BookController extends AbstractController
 
         return $this->redirectToRoute('library_view_all');
     }
-
 }

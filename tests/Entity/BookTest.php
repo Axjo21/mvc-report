@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use App\Entity\Book;
 use Exception;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 /**
  * Test cases for class Book.
  */
@@ -41,7 +42,6 @@ class BookTest extends TestCase
         $book = new Book();
         $image =  '../public/img/book-cover-placeholder.png';
         $book->setImage($image);
-
     }
 
     /**
@@ -63,7 +63,5 @@ class BookTest extends TestCase
 
         $book = new Book();
         $book->setImage($mockFile);
-
     }
-
 }

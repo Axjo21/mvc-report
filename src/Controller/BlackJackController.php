@@ -2,19 +2,11 @@
 
 namespace App\Controller;
 
-use App\Card\Card;
-use App\Card\BetterCard;
-use App\Card\CardHand;
-use App\Card\BankHand;
-use App\Card\DeckOfCards;
 use App\Card\PlayerQueue;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use RuntimeException;
-
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -51,7 +43,8 @@ class BlackJackController extends AbstractController
      * Registers players.
     */
     #[Route("/proj/init", name: "proj_init", methods: ['GET'])]
-    public function init(): Response {
+    public function init(): Response
+    {
         return $this->render('blackjack/init.html.twig');
     }
 
@@ -103,7 +96,7 @@ class BlackJackController extends AbstractController
         }
 
         // create bank hand
-        $bankPlayer = $playerQueue->addPlayer("Bank", true);
+        $bankPlayer = $playerQueue->addBank("Bank");
         $session->set("playerQueue", $playerQueue);
 
 
@@ -128,36 +121,25 @@ class BlackJackController extends AbstractController
     */
     #[Route("/proj/draw", name: "proj_draw", methods: ['GET'])]
     public function draw(
-        Request $request,
         SessionInterface $session
     ): Response {
 
         $playerQueue = $session->get('playerQueue');
+        if ($playerQueue instanceof PlayerQueue) {
+            $playerQueue->drawCardForCurrentPlayer();
 
-        $playerQueue->drawCardForCurrentPlayer();
+            $banksTurn = $playerQueue->banksTurn();
+            $players = $playerQueue->getPlayerDataAsArray();
 
-        $banksTurn = $playerQueue->banksTurn();
-        $players = $playerQueue->getPlayerDataAsArray();
-        // ANVÄNDS DENNA ENS? Jag trycker ju på "proj_hold" knappen för att exekvera bankens tur. 
-        if ($banksTurn) {
-            $winners = $playerQueue->calculateWinner();
             $data = [
                 "players" => $players,
                 "banksTurn" => $banksTurn,
-                "winnerName" => $winners[0]->data->name,
-                "winnerPoints" => $winners[0]->data->getPoints(),
-                "winnerBetPool" => $winners[0]->getBetPool()
+                "winnerName" => null
             ];
-    
+
             return $this->render('blackjack/start.html.twig', $data);
         }
-        $data = [
-            "players" => $players,
-            "banksTurn" => $banksTurn,
-            "winnerName" => null
-        ];
-
-        return $this->render('blackjack/start.html.twig', $data);
+        return $this->render('blackjack/error.html.twig');
     }
 
     /**
@@ -170,45 +152,47 @@ class BlackJackController extends AbstractController
     ): Response {
 
         $playerQueue = $session->get('playerQueue');
+        if ($playerQueue instanceof PlayerQueue) {
+            $playerQueue->advanceQueue();
+            
+            // här exekveras även bankens tur, ifall det är det. bool representation på ifall det är bankens tur returneras. 
+            $banksTurn = $playerQueue->banksTurn();
+            $players = $playerQueue->getPlayerDataAsArray();
 
-        $playerQueue->advanceQueue();
+            // Winner: No winner 0 You won: 0
+            // när spelare van, spelare hade 20, annan spelare hade mer än 21, bank hade mer än 21
+            if ($banksTurn) {
+                $winners = $playerQueue->calculateWinner();
+                if (count($winners) > 0) { // ifall en eller fler vinnare
+                    $data = [
+                        "players" => $players,
+                        "banksTurn" => $banksTurn,
+                        "winnerName" => $winners[0]->data->name,
+                        "winnerPoints" => $winners[0]->data->getPoints(),
+                        "winnerBetPool" => $winners[0]->getBetPool(),
+                        "totalBetPool" => $playerQueue->getPlacedBets()
+                    ];
+                } else { // ifall ingen vinnare
+                    $data = [
+                        "players" => $players,
+                        "banksTurn" => $banksTurn,
+                        "winnerName" => "No winner",
+                        "winnerPoints" => 0,
+                        "winnerBetPool" => 0
+                    ];
+                }
         
-        // här exekveras även bankens tur, ifall det är det. bool representation på ifall det är bankens tur returneras. 
-        $banksTurn = $playerQueue->banksTurn();
-        $players = $playerQueue->getPlayerDataAsArray();
-
-        // Winner: No winner 0 You won: 0
-        // när spelare van, spelare hade 20, annan spelare hade mer än 21, bank hade mer än 21
-        if ($banksTurn) {
-            $winners = $playerQueue->calculateWinner();
-            if(count($winners) > 0) { // ifall en eller fler vinnare
-                $data = [
-                    "players" => $players,
-                    "banksTurn" => $banksTurn,
-                    "winnerName" => $winners[0]->data->name,
-                    "winnerPoints" => $winners[0]->data->getPoints(),
-                    "winnerBetPool" => $winners[0]->getBetPool(),
-                    "totalBetPool" => $playerQueue->getPlacedBets()
-                ];
-            } else { // ifall ingen vinnare
-                $data = [
-                    "players" => $players,
-                    "banksTurn" => $banksTurn,
-                    "winnerName" => "No winner",
-                    "winnerPoints" => 0,
-                    "winnerBetPool" => 0
-                ];
+                return $this->render('blackjack/start.html.twig', $data);
             }
-    
+            $data = [
+                "players" => $players,
+                "banksTurn" => $banksTurn,
+                "winnerName" => null
+            ];
+
             return $this->render('blackjack/start.html.twig', $data);
         }
-        $data = [
-            "players" => $players,
-            "banksTurn" => $banksTurn,
-            "winnerName" => null
-        ];
-
-        return $this->render('blackjack/start.html.twig', $data);
+        return $this->render('blackjack/error.html.twig');
     }
 
 
@@ -221,27 +205,27 @@ class BlackJackController extends AbstractController
         SessionInterface $session
     ): Response {
         $playerQueue = $session->get('playerQueue');
-        $winnerName = $session->get('winnerName'); // glöm ej använda!
+        if ($playerQueue instanceof PlayerQueue) {
+            $placedBetOne = (int) $request->request->get('place-bet-1');
+            $placedBetTwo = (int) $request->request->get('place-bet-2');
+            $placedBetThree = (int) $request->request->get('place-bet-3');
+    
+            $placedBetOne && $playerQueue->placeBet($placedBetOne, 1);
+            $placedBetTwo && $playerQueue->placeBet($placedBetTwo, 2);
+            $placedBetThree && $playerQueue->placeBet($placedBetThree, 3);
+    
+            $banksTurn = $playerQueue->banksTurn();
+            $players = $playerQueue->getPlayerDataAsArray();
+    
+            $data = [
+                "players" => $players,
+                "banksTurn" => $banksTurn,
+                "winnerName" => null
+            ];
+    
+            return $this->render('blackjack/start.html.twig', $data);
+        }
 
-        $placedBetOne = (int) $request->request->get('place-bet-1');
-        $placedBetTwo = (int) $request->request->get('place-bet-2');
-        $placedBetThree = (int) $request->request->get('place-bet-3');
-
-        $placedBetOne && $playerQueue->placeBet($placedBetOne, 1);
-        $placedBetTwo && $playerQueue->placeBet($placedBetTwo, 2);
-        $placedBetThree && $playerQueue->placeBet($placedBetThree, 3);
-
-        $banksTurn = $playerQueue->banksTurn();
-        $players = $playerQueue->getPlayerDataAsArray();
-
-        $data = [
-            "players" => $players,
-            "banksTurn" => $banksTurn,
-            "winnerName" => null
-        ];
-
-        return $this->render('blackjack/start.html.twig', $data);
+        return $this->render('blackjack/error.html.twig');
     }
-    
-    
 }

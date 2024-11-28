@@ -8,18 +8,43 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\BankHand\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Construct\u0020the\u0020values",
             "url": "classes/App-Card-BankHand.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Card\\BankHand\u003A\u003AsetHiddenCard\u0028\u0029",
+            "name": "setHiddenCard",
+            "summary": "",
+            "url": "classes/App-Card-BankHand.html#method_setHiddenCard"
         },                {
             "fqsen": "\\App\\Card\\BankHand\u003A\u003AdrawCards\u0028\u0029",
             "name": "drawCards",
             "summary": "Drar\u0020kort\u0020genom\u0020att\u0020anropa\u0020DeckOfCards.drawCard\u0028\u0029\u003B",
             "url": "classes/App-Card-BankHand.html#method_drawCards"
         },                {
+            "fqsen": "\\App\\Card\\BankHand\u003A\u003AshowHiddenCard\u0028\u0029",
+            "name": "showHiddenCard",
+            "summary": "Visar\u0020bankens\u0020g\u00F6mda\u0020kort.",
+            "url": "classes/App-Card-BankHand.html#method_showHiddenCard"
+        },                {
+            "fqsen": "\\App\\Card\\BankHand\u003A\u003AexecuteTurn\u0028\u0029",
+            "name": "executeTurn",
+            "summary": "Drar\u0020resterande\u0020kort\u0020baserat\u0020p\u00E5\u0020vad\u0020de\u0020andra\u0020spelarna\u0020har\u0020f\u00E5tt\u0020f\u00F6r\u0020po\u00E4ng.",
+            "url": "classes/App-Card-BankHand.html#method_executeTurn"
+        },                {
             "fqsen": "\\App\\Card\\BankHand\u003A\u003A\u0024deck",
             "name": "deck",
             "summary": "",
             "url": "classes/App-Card-BankHand.html#property_deck"
+        },                {
+            "fqsen": "\\App\\Card\\BankHand\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/App-Card-BankHand.html#property_name"
+        },                {
+            "fqsen": "\\App\\Card\\BankHand\u003A\u003A\u0024hiddenCard",
+            "name": "hiddenCard",
+            "summary": "",
+            "url": "classes/App-Card-BankHand.html#property_hiddenCard"
         },                {
             "fqsen": "\\App\\Card\\BetterCard",
             "name": "BetterCard",
@@ -45,6 +70,11 @@ Search.appendIndex(
             "name": "getPoints",
             "summary": "",
             "url": "classes/App-Card-BetterCard.html#method_getPoints"
+        },                {
+            "fqsen": "\\App\\Card\\BetterCard\u003A\u003AsetSuit\u0028\u0029",
+            "name": "setSuit",
+            "summary": "",
+            "url": "classes/App-Card-BetterCard.html#method_setSuit"
         },                {
             "fqsen": "\\App\\Card\\Card",
             "name": "Card",
@@ -86,6 +116,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Card-CardHand.html"
         },                {
+            "fqsen": "\\App\\Card\\CardHand\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Construct\u0020the\u0020values",
+            "url": "classes/App-Card-CardHand.html#method___construct"
+        },                {
             "fqsen": "\\App\\Card\\CardHand\u003A\u003Aadd\u0028\u0029",
             "name": "add",
             "summary": "",
@@ -110,6 +145,11 @@ Search.appendIndex(
             "name": "hand",
             "summary": "",
             "url": "classes/App-Card-CardHand.html#property_hand"
+        },                {
+            "fqsen": "\\App\\Card\\CardHand\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/App-Card-CardHand.html#property_name"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards",
             "name": "DeckOfCards",
@@ -166,6 +206,161 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Card-DeckOfCards.html#property_deck"
         },                {
+            "fqsen": "\\App\\Card\\Node",
+            "name": "Node",
+            "summary": "En\u0020Node\u0020klass\u0020f\u00F6r\u0020spelare\u0020i\u0020Black\u0020Jack.",
+            "url": "classes/App-Card-Node.html"
+        },                {
+            "fqsen": "\\App\\Card\\Node\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Construct\u0020the\u0020values",
+            "url": "classes/App-Card-Node.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Card\\Node\u003A\u003AgetData\u0028\u0029",
+            "name": "getData",
+            "summary": "Get\u0020data",
+            "url": "classes/App-Card-Node.html#method_getData"
+        },                {
+            "fqsen": "\\App\\Card\\Node\u003A\u003AsetData\u0028\u0029",
+            "name": "setData",
+            "summary": "Set\u0020data",
+            "url": "classes/App-Card-Node.html#method_setData"
+        },                {
+            "fqsen": "\\App\\Card\\Node\u003A\u003AgetNext\u0028\u0029",
+            "name": "getNext",
+            "summary": "Set\u0020next",
+            "url": "classes/App-Card-Node.html#method_getNext"
+        },                {
+            "fqsen": "\\App\\Card\\Node\u003A\u003AsetNext\u0028\u0029",
+            "name": "setNext",
+            "summary": "Set\u0020next",
+            "url": "classes/App-Card-Node.html#method_setNext"
+        },                {
+            "fqsen": "\\App\\Card\\Node\u003A\u003AplaceBet\u0028\u0029",
+            "name": "placeBet",
+            "summary": "Place\u0020a\u0020bet.",
+            "url": "classes/App-Card-Node.html#method_placeBet"
+        },                {
+            "fqsen": "\\App\\Card\\Node\u003A\u003AgetBetPool\u0028\u0029",
+            "name": "getBetPool",
+            "summary": "Get\u0020bets",
+            "url": "classes/App-Card-Node.html#method_getBetPool"
+        },                {
+            "fqsen": "\\App\\Card\\Node\u003A\u003A\u0024data",
+            "name": "data",
+            "summary": "",
+            "url": "classes/App-Card-Node.html#property_data"
+        },                {
+            "fqsen": "\\App\\Card\\Node\u003A\u003A\u0024next",
+            "name": "next",
+            "summary": "",
+            "url": "classes/App-Card-Node.html#property_next"
+        },                {
+            "fqsen": "\\App\\Card\\Node\u003A\u003A\u0024bank",
+            "name": "bank",
+            "summary": "",
+            "url": "classes/App-Card-Node.html#property_bank"
+        },                {
+            "fqsen": "\\App\\Card\\Node\u003A\u003A\u0024betPool",
+            "name": "betPool",
+            "summary": "",
+            "url": "classes/App-Card-Node.html#property_betPool"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue",
+            "name": "PlayerQueue",
+            "summary": "En\u0020helper\u0020klass\u0020f\u00F6r\u0020BlackJack.",
+            "url": "classes/App-Card-PlayerQueue.html"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Construct\u0020the\u0020values",
+            "url": "classes/App-Card-PlayerQueue.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AadvanceQueue\u0028\u0029",
+            "name": "advanceQueue",
+            "summary": "Advances\u0020the\u0020queue\u0020so\u0020that\u0020it\u0020is\u0020the\u0020next\u0020players\u0020turn.",
+            "url": "classes/App-Card-PlayerQueue.html#method_advanceQueue"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AbanksTurn\u0028\u0029",
+            "name": "banksTurn",
+            "summary": "Performs\u0020a\u0020check\u0020and\u0020returns\u0020a\u0020boolean\u0020for\u0020wether\u0020or\u0020not\neach\u0020player\u0020has\u0020already\u0020had\u0020their\u0020turn.",
+            "url": "classes/App-Card-PlayerQueue.html#method_banksTurn"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AshowBanksHiddenCard\u0028\u0029",
+            "name": "showBanksHiddenCard",
+            "summary": "Finds\u0020the\u0020bank\u0020and\u0020executes\u0020the\u0020mathod\u0020for\u0020showing\u0020the\u0020hidden\u0020card.",
+            "url": "classes/App-Card-PlayerQueue.html#method_showBanksHiddenCard"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AexecuteBanksTurn\u0028\u0029",
+            "name": "executeBanksTurn",
+            "summary": "Performs\u0020a\u0020check\u0020and\u0020returns\u0020a\u0020boolean\u0020for\u0020wether\u0020or\u0020not\neach\u0020player\u0020has\u0020already\u0020had\u0020their\u0020turn.",
+            "url": "classes/App-Card-PlayerQueue.html#method_executeBanksTurn"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AaddPlayer\u0028\u0029",
+            "name": "addPlayer",
+            "summary": "Add\u0020player\u0020node\u0020to\u0020the\u0020linked\u0020list.",
+            "url": "classes/App-Card-PlayerQueue.html#method_addPlayer"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AgetScores\u0028\u0029",
+            "name": "getScores",
+            "summary": "Check\u0020if\u0020there\u0020is\u0020a\u0020winner.",
+            "url": "classes/App-Card-PlayerQueue.html#method_getScores"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AgetPlayerThroughIndex\u0028\u0029",
+            "name": "getPlayerThroughIndex",
+            "summary": "Get\u0020player\u0020node\u0020through\u0020their\u0020index\u0020in\u0020the\u0020linked\u0020list.",
+            "url": "classes/App-Card-PlayerQueue.html#method_getPlayerThroughIndex"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AgetPlayerDataAsArray\u0028\u0029",
+            "name": "getPlayerDataAsArray",
+            "summary": "Return\u0020all\u0020nodes\u0020player\u002Ddata\u0020in\u0020a\u0020list.",
+            "url": "classes/App-Card-PlayerQueue.html#method_getPlayerDataAsArray"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AdrawCardForCurrentPlayer\u0028\u0029",
+            "name": "drawCardForCurrentPlayer",
+            "summary": "Draw\u0020a\u0020card\u0020for\u0020the\u0020player\u0020att\u0020certain\u0020index.",
+            "url": "classes/App-Card-PlayerQueue.html#method_drawCardForCurrentPlayer"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AcalculateWinner\u0028\u0029",
+            "name": "calculateWinner",
+            "summary": "Draw\u0020a\u0020card\u0020for\u0020the\u0020player\u0020att\u0020certain\u0020index.",
+            "url": "classes/App-Card-PlayerQueue.html#method_calculateWinner"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AplaceBet\u0028\u0029",
+            "name": "placeBet",
+            "summary": "Place\u0020a\u0020bet.",
+            "url": "classes/App-Card-PlayerQueue.html#method_placeBet"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AgetPlacedBets\u0028\u0029",
+            "name": "getPlacedBets",
+            "summary": "Get\u0020total\u0020bets.",
+            "url": "classes/App-Card-PlayerQueue.html#method_getPlacedBets"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003A\u0024head",
+            "name": "head",
+            "summary": "",
+            "url": "classes/App-Card-PlayerQueue.html#property_head"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003A\u0024deck",
+            "name": "deck",
+            "summary": "",
+            "url": "classes/App-Card-PlayerQueue.html#property_deck"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003A\u0024numberOfPlayers",
+            "name": "numberOfPlayers",
+            "summary": "",
+            "url": "classes/App-Card-PlayerQueue.html#property_numberOfPlayers"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003A\u0024turn",
+            "name": "turn",
+            "summary": "",
+            "url": "classes/App-Card-PlayerQueue.html#property_turn"
+        },                {
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003A\u0024winner",
+            "name": "winner",
+            "summary": "",
+            "url": "classes/App-Card-PlayerQueue.html#property_winner"
+        },                {
             "fqsen": "\\App\\Controller\\ApiControllerBookJson",
             "name": "ApiControllerBookJson",
             "summary": "",
@@ -220,6 +415,46 @@ Search.appendIndex(
             "name": "testDiceHand",
             "summary": "",
             "url": "classes/App-Controller-ApiControllerJson.html#method_testDiceHand"
+        },                {
+            "fqsen": "\\App\\Controller\\BlackJackController",
+            "name": "BlackJackController",
+            "summary": "Class\u0020BlackJackController",
+            "url": "classes/App-Controller-BlackJackController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\BlackJackController\u003A\u003Ahome\u0028\u0029",
+            "name": "home",
+            "summary": "Home\u0020page\u0020of\u0020the\u0020Project.",
+            "url": "classes/App-Controller-BlackJackController.html#method_home"
+        },                {
+            "fqsen": "\\App\\Controller\\BlackJackController\u003A\u003Aabout\u0028\u0029",
+            "name": "about",
+            "summary": "About\u0020page\u0020of\u0020the\u0020Project.",
+            "url": "classes/App-Controller-BlackJackController.html#method_about"
+        },                {
+            "fqsen": "\\App\\Controller\\BlackJackController\u003A\u003Ainit\u0028\u0029",
+            "name": "init",
+            "summary": "Registers\u0020players.",
+            "url": "classes/App-Controller-BlackJackController.html#method_init"
+        },                {
+            "fqsen": "\\App\\Controller\\BlackJackController\u003A\u003Astart\u0028\u0029",
+            "name": "start",
+            "summary": "Begins\u0020the\u0020game.",
+            "url": "classes/App-Controller-BlackJackController.html#method_start"
+        },                {
+            "fqsen": "\\App\\Controller\\BlackJackController\u003A\u003Adraw\u0028\u0029",
+            "name": "draw",
+            "summary": "This\u0020route\u0020gets\u0020executed\u0020whenever\u0020a\u0020player\u0020has\u0020requested\u0020to\u0020draw\u0020a\u0020card.",
+            "url": "classes/App-Controller-BlackJackController.html#method_draw"
+        },                {
+            "fqsen": "\\App\\Controller\\BlackJackController\u003A\u003Ahold\u0028\u0029",
+            "name": "hold",
+            "summary": "This\u0020route\u0020gets\u0020executed\u0020whenever\u0020a\u0020player\u0020has\u0020requested\u0020to\u0020draw\u0020a\u0020card.",
+            "url": "classes/App-Controller-BlackJackController.html#method_hold"
+        },                {
+            "fqsen": "\\App\\Controller\\BlackJackController\u003A\u003AplaceBet\u0028\u0029",
+            "name": "placeBet",
+            "summary": "Route\u0020for\u0020handling\u0020of\u0020bet\u0020placement.",
+            "url": "classes/App-Controller-BlackJackController.html#method_placeBet"
         },                {
             "fqsen": "\\App\\Controller\\BookController",
             "name": "BookController",

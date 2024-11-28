@@ -71,7 +71,6 @@ final class DeckOfCardsTest extends TestCase
         ];
 
         $this->assertSame($cardValues, $expected);
-
     }
 
     /**
@@ -101,7 +100,6 @@ final class DeckOfCardsTest extends TestCase
         ];
 
         $this->assertSame($cardSuits, $expected);
-
     }
 
     /**
@@ -142,7 +140,6 @@ final class DeckOfCardsTest extends TestCase
 
         // check that the deck has been shuffled correctly.
         $this->assertNotSame($expected, $cardValuesNew);
-
     }
 
     /**
@@ -167,7 +164,6 @@ final class DeckOfCardsTest extends TestCase
         // check number of cards is one less after drawing a card
         $numberOfCardsNew = $deck->getNumberCards();
         $this->assertEquals(51, $numberOfCardsNew);
-
     }
 
     /**
@@ -217,6 +213,4 @@ final class DeckOfCardsTest extends TestCase
         $cards = $deck->getCards();
         $this->assertNotContains($cardOfInterest, $cards);
     }
-
-
 }

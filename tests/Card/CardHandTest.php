@@ -2,8 +2,6 @@
 namespace App\Test;
 
 use PHPUnit\Framework\TestCase;
-
-
 use App\Card\CardHand;
 use App\Card\BetterCard;
 
@@ -24,7 +22,6 @@ final class CardHandTest extends TestCase
 
         $this->assertEquals(0, $numberOfCards);
     }
-
 
     /**
      * Test that add method works as intended.
@@ -96,5 +93,4 @@ final class CardHandTest extends TestCase
         $handPoints = $cardHand->getPoints();
         $this->assertEquals(15, $handPoints);
     }
-
 }

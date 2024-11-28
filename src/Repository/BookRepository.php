@@ -70,6 +70,4 @@ class BookRepository extends ServiceEntityRepository
         return $resultSet->fetchAllAssociative();
     }
     */
-
-
 }

@@ -14,5 +14,4 @@ class MetricsController extends AbstractController
     {
         return $this->render('metrics.html.twig');
     }
-
 }

@@ -2,8 +2,6 @@
 namespace App\Test;
 
 use PHPUnit\Framework\TestCase;
-
-
 use App\Controller\BookController;
 
 /**
@@ -20,5 +18,4 @@ final class BookControllerTest extends TestCase
         $bookController = new BookController;
         $this->assertInstanceOf("\App\Controller\BookController", $bookController);
     }
-
 }

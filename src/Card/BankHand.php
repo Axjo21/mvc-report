@@ -14,40 +14,20 @@ class BankHand extends CardHand
 
     // initierar DeckOfCards
     // behövs eftersom det är den klassen som faktiskt drar ett kort
-    public function __construct(DeckOfCards $deck, ?string $name="Bank")
+    public function __construct(DeckOfCards $deck, ?string $name = "Bank")
     {
         $this->deck = $deck;
         $this->name = $name;
         $this->hiddenCard = null;
-
     }
-
-    // $this->hiddenCard = $values[0][1];
-
-    // $values[0][0] = "🂠";
-    // $values[0][1] = "spades";
 
 
     public function setHiddenCard(BetterCard $card): void
     {
-
         $this->hiddenCard = $card;
-
         return;
     }
 
-
-    // public function getValues(): array
-    // {
-    //     $values = parent::getValues();
-
-    //     $this->hiddenCard = $values[0][1];
-
-    //     $values[0][0] = "🂠";
-    //     $values[0][1] = "spades";
-
-    //     return $values;
-    // }
 
     /**
      * Drar kort genom att anropa DeckOfCards.drawCard();
@@ -76,32 +56,29 @@ class BankHand extends CardHand
      */
     public function showHiddenCard(): void
     {
-        $this->hand[0] = $this->hiddenCard;
+        $this->hiddenCard !== null && $this->hand[0] = $this->hiddenCard;
         return;
     }
+
+
     /**
      * Drar resterande kort baserat på vad de andra spelarna har fått för poäng.
      * Parametern playerPoints representerar vad spelaren med högts poäng har för poäng.
-     *
+     * @param array<int> $playersPoints
      * @return BetterCard[]
      */
     public function executeTurn(array $playersPoints): array
     {
-        // $this->hand[0]->setValue($this->hiddenValue);
-        // $this->hand[0]->setSuit($this->hiddenSuit);
-        $this->hand[0] = $this->hiddenCard;
-        // var_dump($this->hand[0]);
+        $this->hiddenCard !== null && $this->hand[0] = $this->hiddenCard;
         // hittar spelaren som har högst poäng som är under 21.
         $highestPoint = 0;
-        forEach($playersPoints as $point) {
-            if($point < 21 && $point > $highestPoint) {
+        foreach ($playersPoints as $point) {
+            if ($point < 21 && $point > $highestPoint) {
                 $highestPoint = $point;
             }
         }
-        // var_dump("card to beat", $highestPoint);
         // drar kort tills banken har fler kort än de andra spelarna. 
         $score = $this->getPoints();
-        // var_dump("banks score", $score);
 
         while ($score < $highestPoint) {
             $drawnCard = $this->deck->drawCard();

@@ -49,10 +49,10 @@ class Node
 
 
     /**
-     * Set next
-     * @return Node
+     * Get next
+     * @return ?Node
      */
-    public function getNext(): Node
+    public function getNext(): ?Node
     {
         return $this->next;
     }
@@ -62,7 +62,7 @@ class Node
      * Set next
      * @return void
      */
-    public function setNext(string $next): void
+    public function setNext(Node $next): void
     {
         $this->next = $next;
     }
@@ -84,10 +84,4 @@ class Node
     {
         return $this->betPool;
     }
-
-
-
-
-
-
 }

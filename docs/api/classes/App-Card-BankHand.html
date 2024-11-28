@@ -176,6 +176,18 @@
                         &nbsp;: <a href="classes/App-Card-DeckOfCards.html"><abbr title="\App\Card\DeckOfCards">DeckOfCards</abbr></a>            </span>
 </dt>
 
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a class="" href="classes/App-Card-BankHand.html#property_hiddenCard">$hiddenCard</a>
+    <span>
+                        &nbsp;: <a href="classes/App-Card-BetterCard.html"><abbr title="\App\Card\BetterCard">BetterCard</abbr></a>|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a class="" href="classes/App-Card-BankHand.html#property_name">$name</a>
+    <span>
+                        &nbsp;: string|null            </span>
+</dt>
+
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/App-Card-CardHand.html#property_hand">$hand</a>
     <span>
@@ -195,6 +207,7 @@
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
+<dd>Construct the values</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-CardHand.html#method_add">add()</a>
@@ -208,6 +221,13 @@
                                 &nbsp;: array&lt;string|int, <a href="classes/App-Card-BetterCard.html"><abbr title="\App\Card\BetterCard">BetterCard</abbr></a>&gt;    </span>
 </dt>
 <dd>Drar kort genom att anropa DeckOfCards.drawCard();</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-BankHand.html#method_executeTurn">executeTurn()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, <a href="classes/App-Card-BetterCard.html"><abbr title="\App\Card\BetterCard">BetterCard</abbr></a>&gt;    </span>
+</dt>
+<dd>Drar resterande kort baserat på vad de andra spelarna har fått för poäng.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-CardHand.html#method_getNumberCards">getNumberCards()</a>
@@ -228,6 +248,19 @@
 </dt>
 <dd>Såhär skriver man eftersom det returneras en array med arrayer som items
 och de arrayerna har strings i dem.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-BankHand.html#method_setHiddenCard">setHiddenCard()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-BankHand.html#method_showHiddenCard">showHiddenCard()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Visar bankens gömda kort.</dd>
 
     </dl>
 
@@ -269,6 +302,78 @@ och de arrayerna har strings i dem.</dd>
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type"><a href="classes/App-Card-DeckOfCards.html"><abbr title="\App\Card\DeckOfCards">DeckOfCards</abbr></a></span>
     <span class="phpdocumentor-signature__name">$deck</span>
+    </code>
+
+    
+    
+    
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_hiddenCard">
+        $hiddenCard
+        <a href="classes/App-Card-BankHand.html#property_hiddenCard" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/BankHand.php"><a href="files/src-card-bankhand.html"><abbr title="src/Card/BankHand.php">BankHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">12</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/App-Card-BetterCard.html"><abbr title="\App\Card\BetterCard">BetterCard</abbr></a>|null</span>
+    <span class="phpdocumentor-signature__name">$hiddenCard</span>
+    </code>
+
+    
+    
+    
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_name">
+        $name
+        <a href="classes/App-Card-BankHand.html#property_name" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/BankHand.php"><a href="files/src-card-bankhand.html"><abbr title="src/Card/BankHand.php">BankHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">11</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string|null</span>
+    <span class="phpdocumentor-signature__name">$name</span>
     </code>
 
     
@@ -336,14 +441,15 @@ och de arrayerna har strings i dem.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/BankHand.php"><a href="files/src-card-bankhand.html"><abbr title="src/Card/BankHand.php">BankHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Construct the values</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-DeckOfCards.html"><abbr title="\App\Card\DeckOfCards">DeckOfCards</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$deck</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-DeckOfCards.html"><abbr title="\App\Card\DeckOfCards">DeckOfCards</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$deck</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&quot;Bank&quot;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -355,6 +461,13 @@ och de arrayerna har strings i dem.</dd>
                 <span class="phpdocumentor-signature__argument__name">$deck</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-DeckOfCards.html"><abbr title="\App\Card\DeckOfCards">DeckOfCards</abbr></a></span>
                             </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$name</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&quot;Bank&quot;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -380,7 +493,7 @@ och de arrayerna har strings i dem.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/CardHand.php"><a href="files/src-card-cardhand.html"><abbr title="src/Card/CardHand.php">CardHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">15</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
@@ -424,7 +537,7 @@ och de arrayerna har strings i dem.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/BankHand.php"><a href="files/src-card-bankhand.html"><abbr title="src/Card/BankHand.php">BankHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">57</span>
 
     </aside>
 
@@ -455,6 +568,57 @@ och de arrayerna har strings i dem.</dd>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_executeTurn">
+        executeTurn()
+        <a href="classes/App-Card-BankHand.html#method_executeTurn" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/BankHand.php"><a href="files/src-card-bankhand.html"><abbr title="src/Card/BankHand.php">BankHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">88</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Drar resterande kort baserat på vad de andra spelarna har fått för poäng.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">executeTurn</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$playersPoints</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Card-BetterCard.html"><abbr title="\App\Card\BetterCard">BetterCard</abbr></a>&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Parametern playerPoints representerar vad spelaren med högts poäng har för poäng.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$playersPoints</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Card-BetterCard.html"><abbr title="\App\Card\BetterCard">BetterCard</abbr></a>&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getNumberCards">
         getNumberCards()
         <a href="classes/App-Card-CardHand.html#method_getNumberCards" class="headerlink"><i class="fas fa-link"></i></a>
@@ -463,7 +627,7 @@ och de arrayerna har strings i dem.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/CardHand.php"><a href="files/src-card-cardhand.html"><abbr title="src/Card/CardHand.php">CardHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
@@ -501,7 +665,7 @@ och de arrayerna har strings i dem.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/CardHand.php"><a href="files/src-card-cardhand.html"><abbr title="src/Card/CardHand.php">CardHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">39</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 
     </aside>
 
@@ -539,7 +703,7 @@ och de arrayerna har strings i dem.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/CardHand.php"><a href="files/src-card-cardhand.html"><abbr title="src/Card/CardHand.php">CardHand.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">40</span>
 
     </aside>
 
@@ -564,6 +728,87 @@ och de arrayerna har strings i dem.</p>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, array&lt;string|int, string&gt;&gt;</span>
             </section>
 
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setHiddenCard">
+        setHiddenCard()
+        <a href="classes/App-Card-BankHand.html#method_setHiddenCard" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/BankHand.php"><a href="files/src-card-bankhand.html"><abbr title="src/Card/BankHand.php">BankHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">31</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setHiddenCard</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-BetterCard.html"><abbr title="\App\Card\BetterCard">BetterCard</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$card</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$card</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-BetterCard.html"><abbr title="\App\Card\BetterCard">BetterCard</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_showHiddenCard">
+        showHiddenCard()
+        <a href="classes/App-Card-BankHand.html#method_showHiddenCard" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/BankHand.php"><a href="files/src-card-bankhand.html"><abbr title="src/Card/BankHand.php">BankHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">77</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Visar bankens gömda kort.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">showHiddenCard</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Används när någon oväntat fått 21.</p>
+</section>
+
+    
+    
+
+    
+
+    
 </article>
             </section>
 
@@ -679,6 +924,8 @@ och de arrayerna har strings i dem.</p>
                 <li>
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="classes/App-Card-BankHand.html#property_deck">$deck</a></li>
+                                                    <li class=""><a href="classes/App-Card-BankHand.html#property_hiddenCard">$hiddenCard</a></li>
+                                                    <li class=""><a href="classes/App-Card-BankHand.html#property_name">$name</a></li>
                                                     <li class=""><a href="classes/App-Card-CardHand.html#property_hand">$hand</a></li>
                                             </ul>
                 </li>
@@ -689,9 +936,12 @@ och de arrayerna har strings i dem.</p>
                                             <li class=""><a href="classes/App-Card-BankHand.html#method___construct">__construct()</a></li>
                                             <li class=""><a href="classes/App-Card-CardHand.html#method_add">add()</a></li>
                                             <li class=""><a href="classes/App-Card-BankHand.html#method_drawCards">drawCards()</a></li>
+                                            <li class=""><a href="classes/App-Card-BankHand.html#method_executeTurn">executeTurn()</a></li>
                                             <li class=""><a href="classes/App-Card-CardHand.html#method_getNumberCards">getNumberCards()</a></li>
                                             <li class=""><a href="classes/App-Card-CardHand.html#method_getPoints">getPoints()</a></li>
                                             <li class=""><a href="classes/App-Card-CardHand.html#method_getValues">getValues()</a></li>
+                                            <li class=""><a href="classes/App-Card-BankHand.html#method_setHiddenCard">setHiddenCard()</a></li>
+                                            <li class=""><a href="classes/App-Card-BankHand.html#method_showHiddenCard">showHiddenCard()</a></li>
                                     </ul>
             </li>
                     </ul>
