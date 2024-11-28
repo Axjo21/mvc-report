@@ -130,6 +130,7 @@ class PlayerQueue
         // create node with hand as data
         if ($this->head === null) {
             $this->head = $node;
+            $this->numberOfPlayers += 1;
             return $winnerNode;
         }
 
@@ -179,6 +180,7 @@ class PlayerQueue
         // create node with hand as data
         if ($this->head === null) {
             $this->head = $node;
+            $this->numberOfPlayers += 1;
             return $winnerNode;
         }
 
