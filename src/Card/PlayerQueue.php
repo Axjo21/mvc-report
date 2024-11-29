@@ -270,7 +270,11 @@ class PlayerQueue
     public function calculateWinner(): array
     {
         $current = $this->head;
-        $nodeWithHighestPoint = $this->head;
+        $nodeWithHighestPoint = 0;
+        if ($this->head instanceof Node && $this->head->data->getPoints() <= 21) {
+            $nodeWithHighestPoint = $this->head;
+        }
+
         $winners = [];
 
         while ($current !== null) {
@@ -280,6 +284,8 @@ class PlayerQueue
             } elseif ($nodeWithHighestPoint instanceof Node &&
                 $point <= 21 && $point >= $nodeWithHighestPoint->data->getPoints()
                 ) {
+                $nodeWithHighestPoint = $current;
+            } elseif ($point <= 21 && $nodeWithHighestPoint === 0 ) {
                 $nodeWithHighestPoint = $current;
             } elseif ($current->next === null &&
                 count($winners) === 0 &&

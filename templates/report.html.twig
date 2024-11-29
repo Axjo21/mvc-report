@@ -302,6 +302,59 @@
 
 
     <h2><a id="kmom07/10">Kmom07/10</a></h2>
-    <p></p>
+    <h3>Hur jag löste krav 1-3</h3>
+    <p>
+        För att få till min nya design så skapade jag en ny css fil i /styles där jag döpte om klasserna och ändrade deras css.
+        Jag skapade även en ny "base.html.twig" template fil som användes av mina projekt-relaterade template filer.
+        På så vis fick jag till så att stilen ändrades när man klickade på länken till projektet.
+        Jag gjorde även så att navbaren blev vertikal och låg till vänster på skärmen istället för att var horisontell vid toppen av skärmen.
+    </p>
+
+    <p>
+        Jag valde att implementera projektet "Blackjack".
+        Jag gjorde detta valet eftesom det gav mig en möjlighet att repetera de tekniker vi lärt oss under kursens gång,
+        och eftersom jag tyckte att det var ett intressant projekt som inte var allt för stort. Mitt mål var att få med alla krav,
+        eftersom krav 4 och krav 6 inte var speciellt krävande.
+        Men jag hade dessvärre inte tid till det eftersom jag hade underskattat tiden det tog att få till ett helt fungerande Blackjack spel.
+        Att hantera 1-3 spelare, och hålla koll på vems tur det är var var speciellt svårt. 
+        Jag började med att lägga spelarna i en vanlig lista som jag sparade i sessionen för att hålla koll på dem.
+        Men denna lösningen var jag inte nöjd med eftersom den var lite för enkel och ganska ful;
+        för mycket logik hamnade i kontrollerna. 
+    </p>
+    <p>
+        Jag bestämde mig för att skapa en länkad lista med noder som representerade spelarna.
+        Jag valde denna lösningen eftersom den var lite mer avancerad än en vanlig lista,
+        och eftersom det gav mig en dedikerad klass där jag kunde hålla koll på spelarna. 
+        Att använda en länkad lista i detta sammanhanget var inte helt nödvändigt och kanske lite "overkill", 
+        vilket jag var medveten om, men det var en lösning jag tyckte verkade intressant och jag ville repetera kunskap och tekniker från kursen "oopython". 
+    </p>
+
+
+    <h3>Allmänt stycke om hur projektet gick att genomföra.</h3>
+    <p>
+        Jag tycker att det är ett rimligt projekt för kursen. Det var ganska lätt att skriva koden,
+        eftersom det var samma tekniker som vi använt tidigare i kursen, vilket var bra eftersom det gav oss möjligheten att repetera.
+        Det svåra var just att få till ett "felfritt" projekt.
+        Att registrera 1-3 spelare på Blackjack och att låta dem dra kort var inte speciellt svårt,
+        men att hantera olika "edge cases" som att endast tillåta spelare att dra kort ifall de hade under 21 poäng,
+        och att banken drog kort utifrån vad spelarna fått för poäng var desto svårare att få till. 
+    </p>
+
+
+    <h3>Avslutande stycke med mina tankar om kursen</h3>
+    <p>
+        Jag tycker att det var för många composer relaterade verktyg i kursen.
+        Det blev till sist lite svårt att hålla isär dem och få en förståelse över deras syfte.
+        Jag tycker även att det var för lite repetition av ORM för att verkligen lära sig det. 
+        Jag tyckte om att arbeta enligt MVC design mönstret och att lära mig om kodkvalitet.
+        Handledningen har varit bra och jag känner mig nöjd med kursen. 
+    </p>
+    <p>
+        PHP har varit nytt för mig och att inte ha en etablerad kunskap gjorde att jag kände mig mer bekväm med att testa nya lösningar.
+        Jag lärde mig mycket av detta. 
+        Kursen får 7/10 i betyg av mig, det som drar ner den lite är just att det enligt mig var för många tekniker och verktyg.
+        Jag kan definitivt rekommendera kursen till vänner/kollegor. 
+    </p>
+
 
 {% endblock %}

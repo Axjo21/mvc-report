@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-11-27 23:40:29        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-11-29 21:31:57        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -60,24 +60,24 @@
         <div class="bloc bloc-number">
             <div class="label">Test suites</div>
             <div class="number">
-                8            </div>
+                10            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">Assertions</div>
             <div class="number">
-                71            </div>
+                107            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">
                 classes never called by tests
-                <small>(60 %)</small>
+                <small>(50 %)</small>
             </div>
             <div class="number">
-                12            </div>
+                10            </div>
         </div>
     </div>
 </div>
@@ -114,31 +114,9 @@
                                     </td>
                                                             </tr>
                                                         <tr>
-                                <td><span class="path">App\Card\Node</span></td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0);">
-                                        1                                        </span>
-                                    </td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.03);">
-                                        0.03                                        </span>
-                                    </td>
-                                                            </tr>
-                                                        <tr>
-                                <td><span class="path">App\Card\PlayerQueue</span></td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 1);">
-                                        34                                        </span>
-                                    </td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.72);">
-                                        0.72                                        </span>
-                                    </td>
-                                                            </tr>
-                                                        <tr>
                                 <td><span class="path">App\Controller\CardGameController</span></td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.24);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.21);">
                                         9                                        </span>
                                     </td>
                                                                     <td>
@@ -149,7 +127,7 @@
                                                         <tr>
                                 <td><span class="path">App\Controller\ApiControllerJson</span></td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.18);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.15);">
                                         7                                        </span>
                                     </td>
                                                                     <td>
@@ -171,7 +149,7 @@
                                                         <tr>
                                 <td><span class="path">App\Controller\GameController</span></td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.12);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.1);">
                                         5                                        </span>
                                     </td>
                                                                     <td>
@@ -182,18 +160,18 @@
                                                         <tr>
                                 <td><span class="path">App\Controller\BlackJackController</span></td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.39);">
-                                        14                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.38);">
+                                        16                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.62);">
-                                        0.62                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.6);">
+                                        0.6                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
                                 <td><span class="path">App\Controller\LuckyControllerJson</span></td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.06);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.05);">
                                         3                                        </span>
                                     </td>
                                                                     <td>
@@ -278,7 +256,7 @@
                                             5                                        </span>
                                         <span class="path">App\Card\DeckOfCards</span>
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
-                                            6                                        </span>
+                                            8                                        </span>
                                         <span class="path">App\Card\BankHand</span>
                                                                     </td>
                             </tr>
@@ -330,6 +308,31 @@
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             1                                        </span>
                                         <span class="path">App\Card\BetterCard</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
+                                <td valign="top"><span class="path">App\Test\NodeTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            7                                        </span>
+                                        <span class="path">App\Card\CardHand</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            1                                        </span>
+                                        <span class="path">App\Card\Node</span>
+                                                                    </td>
+                            </tr>
+                                                    <tr>
+                                <td valign="top"><span class="path">App\Test\PlayerQueueTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            40                                        </span>
+                                        <span class="path">App\Card\PlayerQueue</span>
                                                                     </td>
                             </tr>
                                                     <tr>
@@ -400,7 +403,7 @@
                             <path d="M0 0h24v24H0z" fill="none">
                             <path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z">
                         </svg>
-                        Violations (6)
+                        Violations (8)
                     </a>
                 </li>
                                     <li>
@@ -609,7 +612,7 @@
 
 
             
-            var json = {"name":"Execution time","children":[{"name":"App\\Test\\BankHandTest","time":0.011434},{"name":"App\\Test\\BetterCardTest","time":0.00144},{"name":"App\\Test\\CardHandTest","time":0.002421},{"name":"App\\Test\\CardTest","time":0.000724},{"name":"App\\Test\\DeckOfCardsTest","time":0.008877},{"name":"App\\Test\\BookControllerTest","time":0.004591},{"name":"App\\Test\\DiceTest","time":0.022474},{"name":"App\\Test\\BookTest","time":0.013453}]};
+            var json = {"name":"Execution time","children":[{"name":"App\\Test\\BankHandTest","time":0.011828},{"name":"App\\Test\\BetterCardTest","time":0.001512},{"name":"App\\Test\\CardHandTest","time":0.002741},{"name":"App\\Test\\CardTest","time":0.000949},{"name":"App\\Test\\DeckOfCardsTest","time":0.009262},{"name":"App\\Test\\NodeTest","time":0.001738},{"name":"App\\Test\\PlayerQueueTest","time":0.009067},{"name":"App\\Test\\BookControllerTest","time":0.004637},{"name":"App\\Test\\DiceTest","time":0.024305},{"name":"App\\Test\\BookTest","time":0.014053}]};
             root = json;
             var nodes = treemap.nodes(json)
                 .filter(function (d) {

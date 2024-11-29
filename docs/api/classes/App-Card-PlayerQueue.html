@@ -214,6 +214,13 @@
 <dd>Construct the values</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Card-PlayerQueue.html#method_addBank">addBank()</a>
+    <span>
+                                &nbsp;: <a href="classes/App-Card-Node.html"><abbr title="\App\Card\Node">Node</abbr></a>|null    </span>
+</dt>
+<dd>Add player node to the linked list.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-PlayerQueue.html#method_addPlayer">addPlayer()</a>
     <span>
                                 &nbsp;: <a href="classes/App-Card-Node.html"><abbr title="\App\Card\Node">Node</abbr></a>|null    </span>
@@ -238,7 +245,7 @@ each player has already had their turn.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-PlayerQueue.html#method_calculateWinner">calculateWinner()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: array&lt;string|int, <a href="classes/App-Card-Node.html"><abbr title="\App\Card\Node">Node</abbr></a>&gt;    </span>
 </dt>
 <dd>Draw a card for the player att certain index.</dd>
 
@@ -267,23 +274,9 @@ each player has already had their turn.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-PlayerQueue.html#method_getPlayerDataAsArray">getPlayerDataAsArray()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: array&lt;string|int, array&lt;string|int, mixed&gt;&gt;    </span>
 </dt>
 <dd>Return all nodes player-data in a list.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/App-Card-PlayerQueue.html#method_getPlayerThroughIndex">getPlayerThroughIndex()</a>
-    <span>
-                                &nbsp;: <a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a>|null    </span>
-</dt>
-<dd>Get player node through their index in the linked list.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/App-Card-PlayerQueue.html#method_getScores">getScores()</a>
-    <span>
-                                &nbsp;: <a href="classes/App-Card-Node.html"><abbr title="\App\Card\Node">Node</abbr></a>|null    </span>
-</dt>
-<dd>Check if there is a winner.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Card-PlayerQueue.html#method_placeBet">placeBet()</a>
@@ -541,15 +534,15 @@ each player has already had their turn.</dd>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_addPlayer">
-        addPlayer()
-        <a href="classes/App-Card-PlayerQueue.html#method_addPlayer" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_addBank">
+        addBank()
+        <a href="classes/App-Card-PlayerQueue.html#method_addBank" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/PlayerQueue.php"><a href="files/src-card-playerqueue.html"><abbr title="src/Card/PlayerQueue.php">PlayerQueue.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">154</span>
 
     </aside>
 
@@ -557,7 +550,7 @@ each player has already had their turn.</dd>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">addPlayer</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bank</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-Node.html"><abbr title="\App\Card\Node">Node</abbr></a>|null</span></code>
+                    <span class="phpdocumentor-signature__name">addBank</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-Node.html"><abbr title="\App\Card\Node">Node</abbr></a>|null</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -574,10 +567,54 @@ each player has already had their turn.</dd>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-Node.html"><abbr title="\App\Card\Node">Node</abbr></a>|null</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_addPlayer">
+        addPlayer()
+        <a href="classes/App-Card-PlayerQueue.html#method_addPlayer" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/PlayerQueue.php"><a href="files/src-card-playerqueue.html"><abbr title="src/Card/PlayerQueue.php">PlayerQueue.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">114</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Add player node to the linked list.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addPlayer</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-Node.html"><abbr title="\App\Card\Node">Node</abbr></a>|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Since it is possible to get 21 from 2 cards, a check needs to be made aswell.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$bank</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$name</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -687,7 +724,7 @@ each player has already had their turn.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/PlayerQueue.php"><a href="files/src-card-playerqueue.html"><abbr title="src/Card/PlayerQueue.php">PlayerQueue.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">286</span>
+    <span class="phpdocumentor-element-found-in__line">270</span>
 
     </aside>
 
@@ -695,7 +732,7 @@ each player has already had their turn.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">calculateWinner</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">calculateWinner</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Card-Node.html"><abbr title="\App\Card\Node">Node</abbr></a>&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -713,7 +750,7 @@ each player has already had their turn.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Card-Node.html"><abbr title="\App\Card\Node">Node</abbr></a>&gt;</span>
             </section>
 
 </article>
@@ -731,7 +768,7 @@ each player has already had their turn.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/PlayerQueue.php"><a href="files/src-card-playerqueue.html"><abbr title="src/Card/PlayerQueue.php">PlayerQueue.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">256</span>
+    <span class="phpdocumentor-element-found-in__line">240</span>
 
     </aside>
 
@@ -806,7 +843,7 @@ each player has already had their turn.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/PlayerQueue.php"><a href="files/src-card-playerqueue.html"><abbr title="src/Card/PlayerQueue.php">PlayerQueue.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">336</span>
+    <span class="phpdocumentor-element-found-in__line">331</span>
 
     </aside>
 
@@ -845,7 +882,7 @@ each player has already had their turn.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/PlayerQueue.php"><a href="files/src-card-playerqueue.html"><abbr title="src/Card/PlayerQueue.php">PlayerQueue.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">219</span>
+    <span class="phpdocumentor-element-found-in__line">203</span>
 
     </aside>
 
@@ -853,111 +890,7 @@ each player has already had their turn.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getPlayerDataAsArray</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/App-Card-PlayerQueue.html#method_getPlayerDataAsArray#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">@return</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>[][]</p>
-</section>
-
-                                    </dd>
-                                            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getPlayerThroughIndex">
-        getPlayerThroughIndex()
-        <a href="classes/App-Card-PlayerQueue.html#method_getPlayerThroughIndex" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/PlayerQueue.php"><a href="files/src-card-playerqueue.html"><abbr title="src/Card/PlayerQueue.php">PlayerQueue.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">198</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Get player node through their index in the linked list.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getPlayerThroughIndex</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$index</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a>|null</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$index</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a>|null</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getScores">
-        getScores()
-        <a href="classes/App-Card-PlayerQueue.html#method_getScores" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/PlayerQueue.php"><a href="files/src-card-playerqueue.html"><abbr title="src/Card/PlayerQueue.php">PlayerQueue.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">176</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Check if there is a winner.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getScores</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-Node.html"><abbr title="\App\Card\Node">Node</abbr></a>|null</span></code>
+                    <span class="phpdocumentor-signature__name">getPlayerDataAsArray</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, array&lt;string|int, mixed&gt;&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -970,7 +903,7 @@ each player has already had their turn.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-Node.html"><abbr title="\App\Card\Node">Node</abbr></a>|null</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, array&lt;string|int, mixed&gt;&gt;</span>
             </section>
 
 </article>
@@ -988,7 +921,7 @@ each player has already had their turn.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/PlayerQueue.php"><a href="files/src-card-playerqueue.html"><abbr title="src/Card/PlayerQueue.php">PlayerQueue.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">318</span>
+    <span class="phpdocumentor-element-found-in__line">313</span>
 
     </aside>
 
@@ -1186,6 +1119,7 @@ each player has already had their turn.</p>
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/App-Card-PlayerQueue.html#method___construct">__construct()</a></li>
+                                            <li class=""><a href="classes/App-Card-PlayerQueue.html#method_addBank">addBank()</a></li>
                                             <li class=""><a href="classes/App-Card-PlayerQueue.html#method_addPlayer">addPlayer()</a></li>
                                             <li class=""><a href="classes/App-Card-PlayerQueue.html#method_advanceQueue">advanceQueue()</a></li>
                                             <li class=""><a href="classes/App-Card-PlayerQueue.html#method_banksTurn">banksTurn()</a></li>
@@ -1194,8 +1128,6 @@ each player has already had their turn.</p>
                                             <li class=""><a href="classes/App-Card-PlayerQueue.html#method_executeBanksTurn">executeBanksTurn()</a></li>
                                             <li class=""><a href="classes/App-Card-PlayerQueue.html#method_getPlacedBets">getPlacedBets()</a></li>
                                             <li class=""><a href="classes/App-Card-PlayerQueue.html#method_getPlayerDataAsArray">getPlayerDataAsArray()</a></li>
-                                            <li class=""><a href="classes/App-Card-PlayerQueue.html#method_getPlayerThroughIndex">getPlayerThroughIndex()</a></li>
-                                            <li class=""><a href="classes/App-Card-PlayerQueue.html#method_getScores">getScores()</a></li>
                                             <li class=""><a href="classes/App-Card-PlayerQueue.html#method_placeBet">placeBet()</a></li>
                                             <li class=""><a href="classes/App-Card-PlayerQueue.html#method_showBanksHiddenCard">showBanksHiddenCard()</a></li>
                                     </ul>

@@ -228,7 +228,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Node\u003A\u003AgetNext\u0028\u0029",
             "name": "getNext",
-            "summary": "Set\u0020next",
+            "summary": "Get\u0020next",
             "url": "classes/App-Card-Node.html#method_getNext"
         },                {
             "fqsen": "\\App\\Card\\Node\u003A\u003AsetNext\u0028\u0029",
@@ -301,15 +301,10 @@ Search.appendIndex(
             "summary": "Add\u0020player\u0020node\u0020to\u0020the\u0020linked\u0020list.",
             "url": "classes/App-Card-PlayerQueue.html#method_addPlayer"
         },                {
-            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AgetScores\u0028\u0029",
-            "name": "getScores",
-            "summary": "Check\u0020if\u0020there\u0020is\u0020a\u0020winner.",
-            "url": "classes/App-Card-PlayerQueue.html#method_getScores"
-        },                {
-            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AgetPlayerThroughIndex\u0028\u0029",
-            "name": "getPlayerThroughIndex",
-            "summary": "Get\u0020player\u0020node\u0020through\u0020their\u0020index\u0020in\u0020the\u0020linked\u0020list.",
-            "url": "classes/App-Card-PlayerQueue.html#method_getPlayerThroughIndex"
+            "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AaddBank\u0028\u0029",
+            "name": "addBank",
+            "summary": "Add\u0020player\u0020node\u0020to\u0020the\u0020linked\u0020list.",
+            "url": "classes/App-Card-PlayerQueue.html#method_addBank"
         },                {
             "fqsen": "\\App\\Card\\PlayerQueue\u003A\u003AgetPlayerDataAsArray\u0028\u0029",
             "name": "getPlayerDataAsArray",

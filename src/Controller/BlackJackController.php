@@ -196,6 +196,7 @@ class BlackJackController extends AbstractController
     }
 
 
+
     /**
      * Route for handling of bet placement. 
     */
