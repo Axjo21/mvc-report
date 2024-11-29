@@ -111,7 +111,7 @@ final class PlayerQueueTest extends TestCase
     }
 
     /**
-     * Verify that playerQueue->addBank() works.
+     * Verify that playerQueue->getPlacedBets() works.
      */
     public function testPlayerQueueGetPlacedBets(): void
     {
@@ -126,5 +126,67 @@ final class PlayerQueueTest extends TestCase
 
         $placedBets = $playerQueue->getPlacedBets();
         $this->assertSame(100, $placedBets);
+    }
+
+    /**
+     * Verify that playerQueue->showBanksHiddenCard() works.
+     */
+    public function testPlayerQueueShowBanksHiddenCard(): void
+    {
+        $playerQueue = new PlayerQueue();
+
+        $playerQueue->addBank("Bank Test");
+        $bank = $playerQueue->head;
+        $this->assertInstanceOf("\App\Card\Node", $bank);
+        $this->assertInstanceOf("\App\Card\BankHand", $bank->data);
+        $cards = $bank->data->getValues();
+        $this->assertSame("🂠", $cards[0][0]);
+        
+        $playerQueue->showBanksHiddenCard();
+        $cards = $bank->data->getValues();
+        $this->assertNotSame("🂠", $cards[0][0]);
+    }
+
+    /**
+     * Verify that playerQueue->getPlayerDataAsArray() works.
+     */
+    public function testPlayerQueueGetPlayerDataAsArray(): void
+    {
+        $playerQueue = new PlayerQueue();
+        $playerQueue->addPlayer("Axel");
+        $playerQueue->addPlayer("John Doe");
+
+        $playerData = $playerQueue->getPlayerDataAsArray();
+        $this->assertIsArray($playerData);
+    }
+
+
+    /**
+     * Verify that playerQueue->calculateWinner() works.
+     */
+    public function testPlayerQueueCalculateWinner(): void
+    {
+        $playerQueue = new PlayerQueue();
+        $playerQueue->addPlayer("Axel");
+        $playerQueue->addPlayer("John Doe");
+
+        $winners = $playerQueue->calculateWinner();
+        $this->assertIsArray($winners);
+    }
+
+    /**
+     * Verify that playerQueue->drawCardForCurrentPlayer() works.
+     */
+    public function testPlayerQueueDrawCardForCurrentPlayer(): void
+    {
+        $playerQueue = new PlayerQueue();
+        $playerQueue->addPlayer("Axel");
+        $playerQueue->addPlayer("John Doe");
+
+        $activePlayerPoints = $playerQueue->head->data->getPoints();
+        $winners = $playerQueue->drawCardForCurrentPlayer();
+        $activePlayerPointsAfterDraw = $playerQueue->head->data->getPoints();
+
+        $this->assertNotSame($activePlayerPoints, $activePlayerPointsAfterDraw);
     }
 }
